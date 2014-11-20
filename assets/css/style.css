@@ -1,0 +1,74 @@
+/* CSS definition file containing site stylesheet */
+body {
+    background: url('/data/new-zealand-lord-of-the-rings-edoras-uruk-hai-marching-valley-rohan.jpg') no-repeat center center fixed;
+}
+#content {
+    width:100%; 
+    margin-left:10% auto;
+    margin-right:10% auto;
+    
+
+}
+#footer {
+    font-size: small; 
+    font-style:italic;
+    text-align:center;
+}
+.row>div {
+    margin-bottom:10px;
+    margin-left: 10% auto;
+    margin-right: 10% auto;
+}
+.navbar {
+    //background-color: #0081c2;
+    background-color: #FFFAF0;
+}
+a:hover {
+    
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity:1;
+}
+
+h1 {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    text-align: center;
+}
+td {
+    background-color: #FFFAF0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+    opacity:.8;
+}
+
+.span12
+{
+    text-align: center;
+    background-color: #FFFAF0;
+     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+    opacity:.8;
+}
+
+.span7
+{
+    text-align: center;
+    background-color: #cce5ff;
+     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+    opacity:.8;
+}
+
+.span4{
+    text-align: center;
+    background-color: #FFFAF0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+    opacity:.8;
+}
+form{
+    background-color: #FFFAF0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+    opacity:.8;
+}
