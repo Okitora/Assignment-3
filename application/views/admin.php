@@ -12,6 +12,7 @@
         <th>Sub Category</th>
         <th>Contact</th>
         <th>Date</th>
+        <th>Price</th>
         <th>Picture</th>
     </tr>
     {places}
@@ -23,6 +24,7 @@
         <td>{sub}</td>
         <td>{contact}</td>
         <td>{date}</td>
+        <td>{price}</td>
         <td class="span4 offset1"><img src="/data/{pic}" title="{id}"/></td>
     </tr>
     {/places}
