@@ -7,7 +7,7 @@
     {fsub}
     {fcontact}
     {fdate}
-    {fpicture}
     {fprice}
+    {fpicture}
     {fsubmit}
 </form>
