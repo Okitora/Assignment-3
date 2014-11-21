@@ -301,8 +301,8 @@ class Admin extends Application {
     }
     function choice($id)
     {
-        $this->data['pagebody'] = "areYouSure";
-        $this->data['title'] = "Are You Sure?";
+        $this->data['pagebody'] = 'areYouSure';
+        $this->data['title'] = 'Are You Sure?';
         
         $this->data['id'] = $id;
         
@@ -359,7 +359,7 @@ class Admin extends Application {
     function delete($id)
     {
         $record = $this->attractions->get($id);
-        $this->attractions->delete($record);
+        $this->attractions->delete($id);
         
         
         redirect('admin/editlist');
