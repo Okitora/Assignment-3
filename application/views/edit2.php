@@ -7,6 +7,7 @@
         <td>{sub}</td>
         <td>{contact}</td>
         <td>{date}</td>
+        <td>{price}</td>
     <td><img src="/data/{pic}" title="{id}"/></td>
     <td class="span1"><a href="/admin/edit3/{id}">Edit</a></td>
     

@@ -1,5 +1,6 @@
 <p class="lead">
     Our Menu List
+    <a href="/admin/add" class="btn btn-large btn-primary">+</a>
 </p>
 
 <div class="row text-center">
@@ -13,6 +14,7 @@
             <th>Sub Category</th>
             <th>Contact</th>
             <th>Date</th>
+            <th>Price</th>
             <th>Picture</th>
 
         </tr>
@@ -26,8 +28,10 @@
         <td>{sub}</td>
         <td>{contact}</td>
         <td>{date}</td>
+        <td>{price}</td>
         <td class="span4 offset1"><img src="/data/{pic}" title="{id}"/></td>
         <td class="span1"><a href="/admin/edit3/{id}">Edit</a></td>
+        <td><a href="admin/choice/{id}">-</a></td>
     </tr>
     
     {/places}
