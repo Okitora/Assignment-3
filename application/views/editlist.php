@@ -31,7 +31,7 @@
         <td>{price}</td>
         <td class="span4 offset1"><img src="/data/{pic}" title="{id}"/></td>
         <td class="span1"><a href="/admin/edit3/{id}">Edit</a></td>
-        <td><a href="admin/choice/{id}">-</a></td>
+        <td><a href="/admin/choice/{id}">-</a></td>
     </tr>
     
     {/places}
