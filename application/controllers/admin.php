@@ -128,7 +128,9 @@ class Admin extends Application {
         $this->data['fsub'] = makeComboField('Sub category', 'sub_id', $item_record['sub_id'], $options2, "Sub category. Used to group similar things by column for ordering");
         $this->data['fcontact'] = makeTextField('Contact', 'contact', $item_record['contact'], 'This is the contact info for the attraction');
         $this->data['fdate'] = makeTextArea('Date', 'date', $item_record['date'], 'Time stamp of when the attraction was added');
-        $this->data['fprice'] = makeTextField('Price', 'price', $item_record['price'], 'Price for the attraction');
+        
+        $options3 = array('c' => 'Cheap', 'm' => 'Moderate', 'e' => 'Expensive');
+        $this->data['fprice'] = makeComboField('Price', 'price', $item_record['price'], $options3, "Price range for the attraction");
         $this->data['fpicture'] = showImage('Attraction picture shown at ordering time', $item_record['image_name']);
         $this->data['fsubmit'] = makeSubmitButton('Post Changes', 'Do you feel lucky?');
         
@@ -144,17 +146,21 @@ class Admin extends Application {
         {
             $this->errors[] = 'An attraction has to have a name!';
         }
+        
+        //has have a description....or else!
         if (strlen($fields['description']) < 1) 
         {
             $this->errors[] = 'An attraction has to have a description!';
         }
 
+        //has to have a main category
         $cat = $fields['main_id'];
         if (($cat != 'e') && ($cat != 'f') && ($cat != 'w') && ($cat != 't') && ($cat != 's')) 
         {
             $this->errors[] = 'Your category has to be one of entertainment, family-fun, eco-tourism, shopping, sightseeing :(';
         }
         
+        //has to have a sub category
         $cat = $fields['sub_id'];
         
         if (($cat != 'ra') && ($cat != 'nc') && ($cat != 'st') && ($cat != 'mo') && ($cat != 'ng')
@@ -165,19 +171,24 @@ class Admin extends Application {
                 Stadium, Movies, Nature Garden, Theme Park, Shopping Malls, Duty Free, 
                 Tourist Shops, Volcanos, Bird Watching, Yacht Cruising, Trails, Walking Tracks, Coast Walks :(';
         }
+        
+        //needs to have a contact
         if (strlen($fields['contact']) < 1) 
         {
             $this->errors[] = 'An attraction has to have a contact!';
         }
         
+        //needs to have a date
         if (strlen($fields['date']) < 1) 
         {
             $this->errors[] = 'An attraction has to have a date!';
         }
         
-        if (strlen($fields['price']) < 1) 
+        //needs to have a price
+        $cat = $fields['price'];
+        if (($cat != 'c') && ($cat != 'm') && ($cat != 'e'))
         {
-            $this->errors[] = 'An attraction has to have a price!';
+            $this->errors[] = 'Your price range has to be cheap, moderate or expensive...';
         }
         
 
@@ -210,7 +221,8 @@ class Admin extends Application {
     }
     
     
-    // handle a proposed menu item form submission
+    // handle a proposed attraction form submission
+    //ends up either going back to the form or adding the attraction
     function post4() {
         $fields = $this->input->post(); // gives us an associative array
         
@@ -254,11 +266,25 @@ class Admin extends Application {
         {
             $this->errors[] = 'An attraction has to have a date!';
         }
-        if(strlen($fields['price']) < 1)
+        //needs to have a price
+        $cat = $fields['price'];
+        if (($cat != 'c') && ($cat != 'm') && ($cat != 'e'))
         {
-            $this->errors[] = 'An attraction has to have a price!';
+            $this->errors[] = 'Your price range has to be cheap, moderate or expensive...';
         }
         
+        //redo/fix later
+        // handle any file(s) uploaded
+        /*
+        $uploaded = array();
+        if (count($_FILES) > 0) {
+            foreach ($_FILES as $field => $record) {
+                if ($record['error'] == 0) {
+                    $uploaded[$field] = $this->handle_image_upload($record);
+                }
+            }
+        }
+        */
 
         // get the session item record
         $record = $this->session->userdata('item');
@@ -299,6 +325,11 @@ class Admin extends Application {
             $this->add();
         }
     }
+    
+    /**function to ask user if they are sure if they want to delete the 
+     * attraction specified,
+     * 
+     */
     function choice($id)
     {
         $this->data['pagebody'] = 'areYouSure';
@@ -310,6 +341,9 @@ class Admin extends Application {
         
     }
     
+    /**
+     * creates form to add an attraction to the db.
+     */
     function add()
     {
          $this->data['pagebody'] = 'add';
@@ -348,21 +382,46 @@ class Admin extends Application {
         $this->data['fsub'] = makeComboField('Sub category', 'sub_id', $item_record['sub_id'], $options2, "Sub category. Used to group similar things by column for ordering");
         $this->data['fcontact'] = makeTextField('Contact', 'contact', $item_record['contact'], 'This is the contact info for the attraction');
         $this->data['fdate'] = makeTextArea('Date', 'date', $item_record['date'], 'Time stamp of when the attraction was added');
-        $this->data['fprice'] = makeTextField('Price','price', $item_record['price'], 'Price for the attraction');
+        
+        $options3 = array('c' => 'Cheap', 'm' => 'Moderate', 'e' => 'Expensive');
+        $this->data['fprice'] = makeComboField('Price', 'price', $item_record['price'], $options3, "Price range for the attraction");
         $this->data['fpicture'] = showImage('Attraction picture shown at ordering time', $item_record['image_name']);
+        //$this->data['fpicture'] = makeImageUploader('Picture', $item_record['image_name'], 'Attraction picture uploaded');
         $this->data['fsubmit'] = makeSubmitButton('Post Changes', 'Do you feel lucky?');
-         
-         
+                
          $this->render();
     }
     
+    /**
+     * Deletes the attraction that was specified
+     * @param type $id
+     */
     function delete($id)
     {
+        //gets the record
         $record = $this->attractions->get($id);
+        
+        //delete record
         $this->attractions->delete($id);
         
         
         redirect('admin/editlist');
+    }
+    
+//redo
+    function handle_image_upload($record) 
+    {
+        $name = $record['name'];
+        $temp_name = $record['tmp_name'];
+        $size = $record['size'];
+        $member = $_SESSION['member'];
+        
+        $target = $this->config->item('data_folder') . '/members/' . $member->memberID . '/' . $name;
+        $target = str_replace(' ', '_', $target);
+        
+        move_uploaded_file($temp_name, $target);
+        
+        return $name;
     }
 
 

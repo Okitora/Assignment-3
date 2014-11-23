@@ -1,6 +1,6 @@
 <div class="header">
     <br />
-    <h2>Categories: {main}</h2>
+    <h2>Category: {main}</h2>
     <br />
 </div>
 {places}
