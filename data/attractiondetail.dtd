@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!--
+    TODO define vocabulary identification data
+    PUBLIC ID  : -//vendor//vocabulary//EN
+    SYSTEM ID  : http://server/path/__NAME__
+-->
+
+<!-- COMP 4711, Fall 2014, Asn3
+Details for the attractions, Fall 2014
+-->
+
+<!-- Details for Attractions -->
+<!ELEMENT detail (description, gallery*)>
+
+<!-- Description of the attraction -->
+<!ELEMENT description (#PCDATA)>
+
+<!-- A Gallery holds all the pictures for one attraction,-->
+<!ELEMENT gallery (pic)*>
+<!ELEMENT pic (#PCDATA)>
