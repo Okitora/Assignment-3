@@ -59,7 +59,7 @@ class Admin extends Application {
         
         //place every attraction into places array.
         foreach ($source as $record) {
-           //
+           //array to display to view
             $places[] = array(
                 'id'          => $record->attr_id,
                 'name'        => $record->attr_name, 
@@ -312,7 +312,7 @@ class Admin extends Application {
             $record->contact = $fields['contact'];
             $record->date = $fields['date'];
             $record->price = $fields['price'];
-            $record->image_name = '124844-004-2FC88AA3.jpg';
+            $record->image_name = 'Larnach-Castle-02_opt.jpg';
             
             $this->attractions->add($record);
             
@@ -385,7 +385,7 @@ class Admin extends Application {
         
         $options3 = array('c' => 'Cheap', 'm' => 'Moderate', 'e' => 'Expensive');
         $this->data['fprice'] = makeComboField('Price', 'price', $item_record['price'], $options3, "Price range for the attraction");
-        $this->data['fpicture'] = showImage('Attraction picture shown at ordering time', $item_record['image_name']);
+        $this->data['fpicture'] = showImage('Default Attraction picture will be shown, want a different picture? TBA', $item_record['image_name']);
         //$this->data['fpicture'] = makeImageUploader('Picture', $item_record['image_name'], 'Attraction picture uploaded');
         $this->data['fsubmit'] = makeSubmitButton('Post Changes', 'Do you feel lucky?');
                 
