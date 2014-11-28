@@ -28,10 +28,15 @@ class Attractions extends MY_Model {
     public function last() {
         $CI = & get_instance();
         
-        $index = count($CI->attraction) - 1;
-        return $CI->attraction[$index];
+        $index = count($CI->attractions) - 1;
+        return $CI->attractions[$index];
     }
-    
+    //number of attractions
+    public function many()
+    {
+        $CI = & get_instance();
+        return count($CI->attractions->all());
+    }
     //retrieve newest attraction
     
     public function newest()

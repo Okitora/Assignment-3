@@ -368,7 +368,8 @@ class Admin extends Application {
         
         // we need to construct pretty editing fields using the formfields helper
         $this->load->helper('formfields');
-        $this->data['fid'] = makeTextField('Attraction ID', 'attr_id', $item_record['attr_id'], "Item has to have an id");
+        //$item_record['attr_id'] = $this->attractions->many() + 1;
+        $this->data['fid'] = makeTextField('Attraction ID', 'attr_id', $this->attractions->many() + 1, "Item has to have an id", 10, 25, true);
         $this->data['fname'] = makeTextField('Name', 'attr_name', $item_record['attr_name'], "Name your customers are comfortable with");
         $this->data['fdescription'] = makeTextArea('Description', 'description', $item_record['description'], 'This is a long-winded and humorous caption that pops up if the visitor hovers over a menu item picture too long.', 1000);
         
