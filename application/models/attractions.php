@@ -66,6 +66,7 @@ class Attractions extends MY_Model {
         return $new;
     }
     
+    
     /**
      * Returns all the details for specific attraction from the xml file
      * @return the specified detail

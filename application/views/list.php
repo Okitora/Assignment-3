@@ -1,8 +1,13 @@
 <div class="header">
     <br />
-    <h2>Categories</h2>
+    <h2>Select by:</h2>
     <br />
+    <form action="/home/choice/{choice}" method="post">
+        {fmain}
+        {fsubmit}
+    </form>
 </div>
+
 {places}
 <div class="row">
     

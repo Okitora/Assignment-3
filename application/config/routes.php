@@ -40,11 +40,11 @@
 
 $route['default_controller'] = "main";
 $route['List'] = "home";
-$route['Entertainment'] = "home/sublist/e";
-$route['Eco'] = "home/sublist/t";
-$route['Family'] = "home/sublist/f";
-$route['Shopping'] = "home/sublist/s";
-$route['SightSeeing'] = "home/sublist/w";
+$route['Entertainment'] = "home/sublistType/e";
+$route['Eco'] = "home/sublistType/t";
+$route['Family'] = "home/sublistType/f";
+$route['Shopping'] = "home/sublistType/s";
+$route['SightSeeing'] = "home/sublistType/w";
 $route['admin'] = "admin";
 $route['404_override'] = '';
 

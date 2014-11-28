@@ -1,8 +1,7 @@
 <?php
 
 /**
- * Our homepage. Show a table of all the author pictures. Clicking on one should show their quote.
- * Our quotes model has been autoloaded, because we use it everywhere.
+ * Our homepage. Show the newest attraction for our site.
  * 
  * controllers/welcome.php
  *

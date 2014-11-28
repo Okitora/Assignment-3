@@ -16,13 +16,21 @@ class Home extends Application {
 
     //-------------------------------------------------------------
     //  The normal pages
-    //-------------------------------------------------------------
-
+    //--------------------------------------------------------------
+    
+    
     function index()
     {
         $this->data['pagebody'] = 'list';
+        $choice = '';
         
-        //get all the main categories
+        // we need to construct pretty editing fields using the formfields helper
+        $this->load->helper('formfields');
+        $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
+        $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
+        $this->data['fsubmit'] = makeSubmitButton('Post Changes', 'Do you feel lucky?');
+        
+         //get all the main categories
         $source = $this->categories->all();
         
         $catlist = array();
@@ -34,7 +42,69 @@ class Home extends Application {
                 'id'   => $cat->main_id,
                 'name' => $cat->main_name,
                 'pic'  => $cat->image_name,
-                'href' => '/home/sublist',
+                'href' => '/home/sublistType',
+            );
+            
+            $catlist[] = $this1;
+        }
+        
+        $this->data['places'] = $catlist;
+        
+        $this->render();
+    }
+    function choice($choice)
+    {
+        $fields = $this->input->post();
+       
+        if($fields['choice'] == 1)
+        {
+            redirect('/home/listByType/');
+        }
+        elseif($fields['choice'] == 2)
+        {
+           $this->listByTarget();
+        }
+        elseif($fields['choice'] == 3)
+        {
+            $this->listByPriceRange();
+        }
+        else
+        {
+           $this->errors[] = 'Did not get your answer';
+            redirect('/List');
+        }   
+       
+     
+    }
+    
+    /** 
+     * List all the main categories
+     *
+     */
+    function listByType()
+    {
+        $this->data['pagebody'] = 'list';
+        $choice = '';
+        
+        // we need to construct pretty editing fields using the formfields helper
+        $this->load->helper('formfields');
+        $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
+        $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
+        $this->data['fsubmit'] = makeSubmitButton('Post Changes', 'Do you feel lucky?');
+        
+         //get all the main categories
+        $source = $this->categories->all();
+        
+        $catlist = array();
+        
+        //retrieve all the variables for the view
+        foreach($source as $cat)
+        {
+            $this1 = array(
+                'id'   => $cat->main_id,
+                'name' => $cat->main_name,
+                'pic'  => $cat->image_name,
+                'href' => '/home/sublistType',
             );
             
             $catlist[] = $this1;
@@ -45,7 +115,94 @@ class Home extends Application {
         $this->render();
         
     }
-    function sublist($code)
+    
+    /**
+     * Showing all categories by target Audience
+     */
+    function listByTarget()
+    {
+        $this->data['pagebody'] = 'list';
+        $choice = '';
+        
+        // we need to construct pretty editing fields using the formfields helper
+        $this->load->helper('formfields');
+        $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
+        $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
+        $this->data['fsubmit'] = makeSubmitButton('Post Changes', 'Do you feel lucky?');
+        
+        //get all the target categories
+        $source = $this->sub->all();
+        
+        $catlist = array();
+        
+        foreach($source as $cat)
+        {
+            $this1 = array(
+                'id'   => $cat->sub_id,
+                'name' => 'Target :)',
+                'pic'  => $cat->image_name,
+                'href' => '/home/subListTarget',
+            );
+            
+            $catlist[] = $this1;
+        }
+        
+        $this->data['places'] = $catlist;
+        
+        $this->render();
+    }
+    
+    /**
+     * List all categories by the Price Range
+     */
+    function listByPriceRange()
+    {
+        $this->data['pagebody'] = 'list';
+        $choice = '';
+        
+        // we need to construct pretty editing fields using the formfields helper
+        $this->load->helper('formfields');
+        $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
+        $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
+        $this->data['fsubmit'] = makeSubmitButton('Post Changes', 'Do you feel lucky?');
+        
+        //bogus data until fix db
+        $this1 = array(
+            'id'   => 'c',
+            'name' => 'Cheap',
+            'pic'  => 'MFN_01.jpg',
+            'href' => '/home/subListPriceRange',
+            
+        );
+        $this2 = array(
+            'id'   => 'm',
+            'name' => 'Moderate',
+            'pic'  => 'Azteca-Stadium-1024x682.jpg',
+            'href' => '/home/subListPriceRange',
+        );
+        
+        $this3 = array(
+            'id'   => 'e',
+            'name' => 'Expensive',
+            'pic'  => 'Larnach-Castle-02_opt.jpg',
+            'href' => '/home/subListPriceRange',
+        );
+        $catlist[] = $this1;
+        $catlist[] = $this2;
+        $catlist[] = $this3;
+        
+        
+        $this->data['places'] = $catlist;
+        
+        $this->render();
+    }
+    
+    /**
+     * Showing the Sub list of all attractions within the category type
+     * 
+     * @param type $code the category code
+     */
+    function sublistType($code)
     {
         $this->data['pagebody'] = 'sublist';
         
@@ -75,6 +232,51 @@ class Home extends Application {
         
         $this->render();
     }
+    
+    
+    /**
+     * Showing the sublist of all attractions by Target Audience
+     * 
+     * @param type $code the target audience code
+     */
+    function sublistTarget($code)
+    {
+        $this->data['pagebody'] = 'sublist';
+        
+        //get all sub categories within the main category
+        //$source = $this->sub->some('main_id' , $code);
+        //$name = $this->categories->get($code);
+        $source = $this->attractions->some('sub_id', $code);
+        $catlist = array();
+        
+        //retrieve all variables from the view
+        foreach($source as $cat)
+        {
+            $this1 = array(
+                'id'   => $cat->attr_id,
+                'name' => $cat->attr_name,
+                'pic'  => $cat->image_name,
+                'description' => $cat->description,
+                'href' => '/home/destination',
+            );
+            
+            $catlist[] = $this1;
+        }
+        
+        $this->data['places'] = $catlist;
+        $this->data['main'] = $code;
+        
+        
+        $this->render();
+        
+    }
+    
+    /**
+     * Displays the specific attraction as specified by id
+     * 
+     * @param type $id 
+     * for specific attraction
+     */
     function destination($id) {
         $this->data['pagebody'] = 'homepage';    // this is the view we want shown
         
