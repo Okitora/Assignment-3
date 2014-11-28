@@ -62,20 +62,33 @@ class Attractions extends MY_Model {
     }
     
     /**
-     * Returns all the ports from the xml file
-     * @return the ports
+     * Returns all the details for specific attraction from the xml file
+     * @return the specified detail
      */
-    /*
-    function getPorts() 
+    
+    function getDetails($id) 
     {
-        $ports = array();
+        $details = array();
         
-        foreach($this->xml->ports->children() as $port) 
+        foreach($this->xml->children() as $detail) 
         {
-            $ports[(string)$port['code']] = $port->__toString();
+            
+            if($id == (string)$detail['id'])
+            {
+                $details = array(
+                    'id'            => $detail['id'],
+                    'contact'       => $detail['contact'],
+                    'date'          => $detail['date'],
+                    'price'         => $detail['price'],
+                    'description'   => $detail->description->__toString(),
+                    'pic1'          => $detail->gallery['pic1'],
+                    'pic2'          => $detail->gallery['pic2'],
+                    'pic3'          => $detail->gallery['pic3'],
+                );
+                return $details;
+            }
         }
         
-        return $ports;
     }
-   */
+   
 }

@@ -20,6 +20,7 @@ Details for the attractions, Fall 2014
 
 <!ELEMENT detail (description, gallery)>
 <!ATTLIST detail
+    id      CDATA   #REQUIRED
     contact CDATA   #REQUIRED
     date    CDATA   #REQUIRED
     price   CDATA   #REQUIRED >

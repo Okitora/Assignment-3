@@ -12,7 +12,7 @@ Details for the attractions, Fall 2014
 <list>
     
     <!-- Attraction details for Kaikohe Car Club -->
-    <detail contact="09 238 4680" price="50" date="1393621846">
+    <detail id="01" contact="09 238 4680" price="50" date="1393621846">
         <description>Kaikohe Speedway started in the Kaikohe District in 1974,
             on a grass track approximately 300 meters along the Ngawha Springs
             Road (7 km from Kaikohe). Kaikohe Car Club moved to its present 
@@ -31,7 +31,7 @@ Details for the attractions, Fall 2014
     </detail>
 
     <!-- Attraction details for Smart Bar -->
-    <detail contact="09 349 5791" price="30" date="1393125846">
+    <detail id="02" contact="09 349 5791" price="30" date="1393125846">
         <description>Our stylish modern bar is a popular local venue for a great 
             night out. Situated in Pukekohes town centre, Smart bar has a warm, 
             elegant and stylish seating areas that can be enjoyed while catching 
@@ -43,7 +43,7 @@ Details for the attractions, Fall 2014
     </detail>
 
     <!-- Attraction details for North Harbour Stadium -->
-    <detail contact="09 450 6802" price="20" date="1244621846">
+    <detail id="03" contact="09 450 6802" price="20" date="1244621846">
         <description>Opened in 1997, our architecturally designed, 25-000 
             capacity Stadium is purpose built for New Zealands favourite 
             sporting codes of rugby union, rugby league and football, and we 
@@ -56,7 +56,7 @@ Details for the attractions, Fall 2014
     </detail>
     
     <!-- Attraction details for Open Air Cinema -->
-    <detail contact="09 561 7913" price="12.99" date="1393625286">
+    <detail id="04" contact="09 561 7913" price="12.99" date="1393625286">
         <description>Openair Cinema Ltd. is a New Zealand based company founded 
             in 2003 – 100% Kiwi owned and operated. It staged the first big 
             screen open air cinema in New Zealand at Auckland’s Viaduct Harbour 
@@ -66,7 +66,7 @@ Details for the attractions, Fall 2014
     </detail>
     
     <!-- Attraction details for Kaipara Coast Sculpture Gardens -->
-    <detail contact="09 672 8024" price="9.99" date="1538221846">
+    <detail id="05" contact="09 672 8024" price="9.99" date="1538221846">
         <description>Kaipara Coast Sculpture Gardens are a tranquil, peaceful 
             oasis set in gardens on a rural property looking out to the Kaipara 
             Harbour. It features selected contemporary sculptures, created by 
@@ -76,7 +76,7 @@ Details for the attractions, Fall 2014
     </detail>
     
     <!-- Attraction details for Commando Attack Paintball -->
-    <detail contact="09 783 9135" price="49.99" date="1392055946">
+    <detail id="06" contact="09 783 9135" price="49.99" date="1392055946">
         <description>Paintball is an awesome way to anticipate teamwork and bonding. 
             perfect for sports clubs. also a great idea for a Memorable 
             Birthday. The perfect activity for a Stag or Hen party And just the 
@@ -86,7 +86,7 @@ Details for the attractions, Fall 2014
     </detail>
     
     <!-- Attraction details for Royal Oak Shopping Mall -->
-    <detail contact="09 894 0246" price="5.99" date="1295811846">
+    <detail id="07" contact="09 894 0246" price="5.99" date="1295811846">
         <description>There are over 50 shops, many of which are national brands. 
             We are a friendly community based Shopping Mall, with unique and 
             interesting Retailers that offer a diverse range for our customers. 
@@ -98,7 +98,7 @@ Details for the attractions, Fall 2014
     </detail>
     
     <!-- Attraction details for dfs galleria -->
-    <detail contact="09 905 1357" price="11.99" date="1393622846">
+    <detail id="08" contact="09 905 1357" price="11.99" date="1393622846">
         <description>Asia-Pacific was their frontier, and through the years, 
             DFS expanded quickly. Every store reflected the founders’ passions 
             for travel and service. Innovative merchandising strategies and the 
@@ -110,7 +110,7 @@ Details for the attractions, Fall 2014
     </detail>
     
     <!-- Attraction details for Victoria Park Market -->
-    <detail contact="09 538 6802" price="5" date="1254079945">
+    <detail id="09" contact="09 538 6802" price="5" date="1254079945">
         <description>The $20,000,000 refurbishment of Victoria Park Market is 
             now drawing to an end. With 85% of the revitalised shops now let to 
             a cross section of Food, Hospitality and Retail tenants. The market 
@@ -123,7 +123,7 @@ Details for the attractions, Fall 2014
     </detail>
     
     <!-- Attraction details for White Island Tours -->
-    <detail contact="09 448 1802" price="69.99" date="1139583769">
+    <detail id="10" contact="09 448 1802" price="69.99" date="1139583769">
         <description>White Island Tours offers you the incredible experience of 
             exploring the inner crater of New Zealand’s only active marine 
             volcano – White Island!  Located 49km off the coast of Whakatane, 
@@ -134,7 +134,7 @@ Details for the attractions, Fall 2014
     </detail>
 
     <!-- Attraction details for  Kiwi Wildlife Tours -->
-    <detail contact="09 539 6832" price="29.99" date="1459222481">
+    <detail id="11" contact="09 539 6832" price="29.99" date="1459222481">
         <description>Our very experienced leaders have intimate knowledge of the 
             whole country. We make frequent trips into the field as guides and 
             tour leaders as well as researching new locations. Our excellent 
@@ -148,7 +148,7 @@ Details for the attractions, Fall 2014
     </detail>
     
     <!-- Attraction details for  Te Vaka -->
-    <detail contact="09 938 7802" price="10" date="1222621846">
+    <detail id="12" contact="09 938 7802" price="10" date="1222621846">
         <description>Te Vaka is a modern powerful, sloop rigged, high 
             performance off shore cruising yacht based in the Bay of Islands. 
             This specially designed 60ft yacht has graceful racing lines 
@@ -159,7 +159,7 @@ Details for the attractions, Fall 2014
     </detail>
     
     <!-- Attraction details for  Hillary Trail -->
-    <detail contact="09 448 7902" price="3" date="1234621846">
+    <detail id="13" contact="09 448 7902" price="3" date="1234621846">
         <description>The Hillary Trail is a self-guided four day tramp through 
             77km of native forest and along the wild coast of the Waitakere 
             Ranges Regional Park. It connects various park tracks and basic 
@@ -171,7 +171,7 @@ Details for the attractions, Fall 2014
     </detail>
     
     <!-- Attraction details for Whangaruru North Head Walking Tracks -->
-    <detail contact="09 432 8812" price="2" date="1234521846">
+    <detail id="14" contact="09 432 8812" price="2" date="1234521846">
         <description>From the popular campsite and amenity area at Puriri Bay 
             are a series of interlinked walks. They follow through native forest 
             along ridgelines giving panoramic views of the harbour and open 
@@ -182,7 +182,7 @@ Details for the attractions, Fall 2014
     </detail>
     
     <!-- Attraction details for Bream Head Coast Walks -->
-    <detail contact="09 437 9803" price="2" date="1393621826">
+    <detail id="15" contact="09 437 9803" price="2" date="1393621826">
         <description>Situated at Whangarei Heads our boutique walk encompasses 
             private farmland, stunning ocean and harbour beaches, rural roads, 
             recreational reserves and existing public walkways.</description>
