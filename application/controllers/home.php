@@ -171,21 +171,21 @@ class Home extends Application {
             'id'   => 'c',
             'name' => 'Cheap',
             'pic'  => 'MFN_01.jpg',
-            'href' => '/home/subListPriceRange',
+            'href' => '/home/sublistPriceRange',
             
         );
         $this2 = array(
             'id'   => 'm',
             'name' => 'Moderate',
             'pic'  => 'Azteca-Stadium-1024x682.jpg',
-            'href' => '/home/subListPriceRange',
+            'href' => '/home/sublistPriceRange',
         );
         
         $this3 = array(
             'id'   => 'e',
             'name' => 'Expensive',
             'pic'  => 'Larnach-Castle-02_opt.jpg',
-            'href' => '/home/subListPriceRange',
+            'href' => '/home/sublistPriceRange',
         );
         $catlist[] = $this1;
         $catlist[] = $this2;
@@ -247,6 +247,38 @@ class Home extends Application {
         //$source = $this->sub->some('main_id' , $code);
         //$name = $this->categories->get($code);
         $source = $this->attractions->some('sub_id', $code);
+        $catlist = array();
+        
+        //retrieve all variables from the view
+        foreach($source as $cat)
+        {
+            $this1 = array(
+                'id'   => $cat->attr_id,
+                'name' => $cat->attr_name,
+                'pic'  => $cat->image_name,
+                'description' => $cat->description,
+                'href' => '/home/destination',
+            );
+            
+            $catlist[] = $this1;
+        }
+        
+        $this->data['places'] = $catlist;
+        $this->data['main'] = $code;
+        
+        
+        $this->render();
+        
+    }
+    
+    function sublistPriceRange($code)
+    {
+        $this->data['pagebody'] = 'sublist';
+        
+        //get all sub categories within the main category
+        //$source = $this->sub->some('main_id' , $code);
+        //$name = $this->categories->get($code);
+        $source = $this->attractions->some('price', $code);
         $catlist = array();
         
         //retrieve all variables from the view
