@@ -50,18 +50,19 @@ class Home extends Application {
         $this->data['pagebody'] = 'sublist';
         
         //get all sub categories within the main category
-        $source = $this->sub->some('main_id' , $code);
-        $name = $this->categories->get($code);
-        
+        //$source = $this->sub->some('main_id' , $code);
+        //$name = $this->categories->get($code);
+        $source = $this->attractions->some('main_id', $code);
         $catlist = array();
         
         //retrieve all variables from the view
         foreach($source as $cat)
         {
             $this1 = array(
-                'id'   => $cat->sub_id,
-                'name' => $cat->sub_name,
+                'id'   => $cat->attr_id,
+                'name' => $cat->attr_name,
                 'pic'  => $cat->image_name,
+                'description' => $cat->description,
                 'href' => '/home/destination',
             );
             
@@ -69,7 +70,7 @@ class Home extends Application {
         }
         
         $this->data['places'] = $catlist;
-        $this->data['main'] = $name->main_name;
+        $this->data['main'] = $code;
         
         
         $this->render();
@@ -78,19 +79,20 @@ class Home extends Application {
         $this->data['pagebody'] = 'homepage';    // this is the view we want shown
         
         // build the list of places, to pass on to our view
-        $source = $this->attractions->some('sub_id', $id);    //get all the attractions from DB
+        $record = $this->attractions->get($id);    //get all the attractions from DB
         $places = array();
         
         //place every attraction into places array.
-        foreach($source as $record)
-        {
+       
             $this1 = array(
-                'name' => $record->attr_name, 
-                'description' => $record->description,
-                'pic'   => $record->image_name
+                'name'          => $record->attr_name, 
+                'description'   => $record->description,
+                'price'         => $record->price,
+                'target'        => $record->sub_id,
+                'pic'           => $record->image_name
             );
             $places[] = $this1;
-        }
+            
         
         //send places array to our data
         $this->data['places'] = $places;
