@@ -1,15 +1,21 @@
 <?php
 
 /**
- * This is a "CMS" model for quotes, but with bogus hard-coded data
+ * This is a Attractions model for all attractions, with xml data and db
+ * data under bcitx762_d08 db
  *
  * @author Sharon
  */
 class Attractions extends MY_Model {
 
+    //xml doc to be loaded
+    private $xml;
+    
     // Constructor
     public function __construct() {
         parent::__construct('attraction', 'attr_id');
+        //load xml file
+        $this->xml = simplexml_load_file("data/attractiondetail.xml");
     }
 
 
@@ -54,5 +60,22 @@ class Attractions extends MY_Model {
          
         return $new;
     }
-   
+    
+    /**
+     * Returns all the ports from the xml file
+     * @return the ports
+     */
+    /*
+    function getPorts() 
+    {
+        $ports = array();
+        
+        foreach($this->xml->ports->children() as $port) 
+        {
+            $ports[(string)$port['code']] = $port->__toString();
+        }
+        
+        return $ports;
+    }
+   */
 }
