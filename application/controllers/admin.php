@@ -125,6 +125,7 @@ class Admin extends Application {
             'mo' => 'Movie', 'ng' => 'Nature Garden', 'tp' => 'Theme Park', 'sm' => 'Shopping Mall',
             'df' => 'Duty Free', 'ts' => 'Tourist Shops', 'vo' => 'volcanos', 'bw' => 'bird watching',
             'yc' => 'Yacht Cruising', 'tr' => 'Trails', 'wt' => 'Walking Tracks', 'cw' => 'Coast Walks');
+        //$options2 = array('adult' = >'Adult', 'teenager' => 'Teenager', 'kids' => 'Kids');
         $this->data['fsub'] = makeComboField('Sub category', 'sub_id', $item_record['sub_id'], $options2, "Sub category. Used to group similar things by column for ordering");
         $this->data['fcontact'] = makeTextField('Contact', 'contact', $item_record['contact'], 'This is the contact info for the attraction');
         $this->data['fdate'] = makeTextArea('Date', 'date', $item_record['date'], 'Time stamp of when the attraction was added');
@@ -166,6 +167,7 @@ class Admin extends Application {
         if (($cat != 'ra') && ($cat != 'nc') && ($cat != 'st') && ($cat != 'mo') && ($cat != 'ng')
             && ($cat != 'tp') && ($cat != 'sm') && ($cat != 'df') && ($cat != 'ts') && ($cat != 'vo')
             && ($cat != 'bw') && ($cat != 'yc') && ($cat != 'tr') && ($cat != 'wt') && ($cat != 'cw')) 
+        //if(($cat != 'adult) && ($cat != 'teenager') && ($cat != 'kids'))
         {
             $this->errors[] = 'Your sub-category has to be one of Racing, Night Club, 
                 Stadium, Movies, Nature Garden, Theme Park, Shopping Malls, Duty Free, 
@@ -251,6 +253,7 @@ class Admin extends Application {
         if (($cat != 'ra') && ($cat != 'nc') && ($cat != 'st') && ($cat != 'mo') && ($cat != 'ng')
             && ($cat != 'tp') && ($cat != 'sm') && ($cat != 'df') && ($cat != 'ts') && ($cat != 'vo')
             && ($cat != 'bw') && ($cat != 'yc') && ($cat != 'tr') && ($cat != 'wt') && ($cat != 'cw')) 
+        //if(($cat != 'adult) && ($cat != 'teenager') && ($cat != 'kids'))
         {
             $this->errors[] = 'Your sub-category has to be one of Racing, Night Club, 
                 Stadium, Movies, Nature Garden, Theme Park, Shopping Malls, Duty Free, 
@@ -380,6 +383,7 @@ class Admin extends Application {
             'mo' => 'Movie', 'ng' => 'Nature Garden', 'tp' => 'Theme Park', 'sm' => 'Shopping Mall',
             'df' => 'Duty Free', 'ts' => 'Tourist Shops', 'vo' => 'volcanos', 'bw' => 'bird watching',
             'yc' => 'Yacht Cruising', 'tr' => 'Trails', 'wt' => 'Walking Tracks', 'cw' => 'Coast Walks');
+        //$options2 = array('adult' = >'Adult', 'teenager' => 'Teenager', 'kids' => 'Kids');
         $this->data['fsub'] = makeComboField('Sub category', 'sub_id', $item_record['sub_id'], $options2, "Sub category. Used to group similar things by column for ordering");
         $this->data['fcontact'] = makeTextField('Contact', 'contact', $item_record['contact'], 'This is the contact info for the attraction');
         $this->data['fdate'] = makeTextArea('Date', 'date', $item_record['date'], 'Time stamp of when the attraction was added');

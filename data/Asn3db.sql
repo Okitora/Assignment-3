@@ -40,7 +40,7 @@ The Kaikohe Car Club became an Incorporated Society on the 7th December 1976.
 During the race season a standard race day can see up to 400 people through our gates, however during a special or invitation meet we see numbers of 4000 plus. 
 Visitors come from all over the North Island, this not only creates revenue for the Speedway but filters out to the wider community; Kaikohe, Kerikeri, Kawakawa, Paihia etc. 
 Kaikohe Speedway was put on the world map with the recognition of Florian Habichts movie Kaikohe Demolition.',
-'Adult'),
+'adult'),
 
 ('02', 'Smartbar', 'e', 'm', 
 	'Our stylish modern bar is a popular local venue for a great night out. 
@@ -114,11 +114,11 @@ It connects various park tracks and basic backcountry campgrounds. The trail cap
 	, 'From the popular campsite and amenity area at Puriri Bay are a series of interlinked walks. 
 They follow through native forest along ridgelines giving panoramic views of the harbour and open coastlines. 
 The tracks drop down into secluded bays, such as Admirals Bay, suitable for swimming and snorkelling.',
-'adults'),
+'adult'),
 
 ('15'	, 'Bream Head Coast Walks', 'w', 'm'
 	, 'Situated at Whangarei Heads our boutique walk encompasses private farmland, stunning ocean and harbour beaches, rural roads, recreational reserves and existing public walkways.',
-'teenagers');
+'teenager');
 	
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
