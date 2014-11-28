@@ -271,6 +271,12 @@ class Home extends Application {
         
     }
     
+    /**
+     * Showing the sublist for all attractions is the specific category
+     * 
+     * @param type $code
+     * the price range code
+     */
     function sublistPriceRange($code)
     {
         $this->data['pagebody'] = 'sublist';
@@ -323,6 +329,7 @@ class Home extends Application {
                 'description'   => $record->description,
                 'price'         => $record->price,
                 'target'        => $record->sub_id,
+                'contact'       => $record->contact,
                 'pic'           => $record->image_name
             );
             $places[] = $this1;

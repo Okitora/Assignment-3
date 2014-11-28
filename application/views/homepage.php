@@ -8,8 +8,9 @@
         <p>
             {description}
             <br/>
-        <h5>Target Audience: {target}</h5>
+            <h5>Target Audience: {target}</h5>
             <h5>Price: {price}</h5>
+            <h5>Contact: {contact}</h5>
         </p><br/>
     </div>
  
