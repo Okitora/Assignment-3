@@ -212,6 +212,7 @@ class Home extends Application {
             $this1 = array(
                 'id'   => $cat->attr_id,
                 'name' => $cat->attr_name,
+                'pic'  => $cat->image_name,
                 'description' => $cat->description,
                 'href' => '/home/destination',
             );
@@ -248,6 +249,7 @@ class Home extends Application {
             $this1 = array(
                 'id'   => $cat->attr_id,
                 'name' => $cat->attr_name,
+                'pic'  => $cat->image_name,
                 'description' => $cat->description,
                 'href' => '/home/destination',
             );
@@ -279,6 +281,7 @@ class Home extends Application {
             $this1 = array(
                 'id'   => $cat->attr_id,
                 'name' => $cat->attr_name,
+                'pic'  => $cat->image_name,
                 'description' => $cat->description,
                 'href' => '/home/destination',
             );

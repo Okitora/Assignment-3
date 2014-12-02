@@ -8,8 +8,8 @@
 <div class="row">
     
     <h3><a href="{href}/{id}">{name}</a></h3>
+    <div class="span5"><img src="/data/{pic}" id="{id}" /></div>
     
-    <br />
     <div class="span7">
         <p>{description}</p>
     </div>
