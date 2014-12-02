@@ -222,10 +222,6 @@ if (!defined('APPPATH'))
 			box-shadow: 0 0 50px #222;
 		}
 
-		body {
-			max-width: 700px;
-			margin: 0 auto;
-		}
 	</style>
         
         
