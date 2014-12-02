@@ -3,13 +3,12 @@
     <h2>Category: {main}</h2>
     <br />
 </div>
+<div class="contain">
 {places}
 <div class="row">
     
-    <h3>{name}</h3>
-    <div class="span5">
-        <a href="{href}/{id}"><img src="/data/{pic}" title="{id}"/></a>
-    </div>
+    <h3><a href="{href}/{id}">{name}</a></h3>
+    
     <br />
     <div class="span7">
         <p>{description}</p>
@@ -18,3 +17,4 @@
     
 </div>
 {/places}
+</div>

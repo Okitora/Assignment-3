@@ -31,14 +31,15 @@ class Attractions extends MY_Model {
         $index = count($CI->attractions) - 1;
         return $CI->attractions[$index];
     }
+    
     //number of attractions
     public function many()
     {
         $CI = & get_instance();
         return count($CI->attractions->all());
     }
-    //retrieve newest attraction
     
+    //retrieve newest attraction
     public function newest()
     {
         $CI = & get_instance();
@@ -66,6 +67,31 @@ class Attractions extends MY_Model {
         return $new;
     }
     
+    //retrieve oldest attraction
+    public function oldest()
+    {
+        $CI = & get_instance();
+        
+        //variable determining if it has the oldest date
+        $oldest = 0;
+        $old = 0;
+        
+        $source = $CI->attractions->all();
+        
+        foreach($source as $record)
+        {
+            $date = $record->date;
+            
+            if($date < $oldest)
+            {
+                $oldest = $date;
+                $old = $record;
+            }
+        }
+        
+        return $old;
+    }
+    
     
     /**
      * Returns all the details for specific attraction from the xml file
@@ -91,6 +117,7 @@ class Attractions extends MY_Model {
                     'pic2'          => $detail->gallery['pic2'],
                     'pic3'          => $detail->gallery['pic3'],
                 );
+                
                 return $details;
             }
         }

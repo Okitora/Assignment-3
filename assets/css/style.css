@@ -72,3 +72,10 @@ form{
     filter: alpha(opacity=80);
     opacity:.8;
 }
+.contain>div{
+    background-color: #FFFAF0;
+     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+    opacity:.8;
+    padding-left: 10px;
+}

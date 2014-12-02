@@ -28,7 +28,7 @@ class Home extends Application {
         $this->load->helper('formfields');
         $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
         $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
-        $this->data['fsubmit'] = makeSubmitButton('Post Changes', 'Do you feel lucky?');
+        $this->data['fsubmit'] = makeSubmitButton('Ok', 'Do you feel lucky?');
         
          //get all the main categories
         $source = $this->categories->all();
@@ -41,7 +41,6 @@ class Home extends Application {
             $this1 = array(
                 'id'   => $cat->main_id,
                 'name' => $cat->main_name,
-                'pic'  => $cat->image_name,
                 'href' => '/home/sublistType',
             );
             
@@ -58,7 +57,7 @@ class Home extends Application {
        
         if($fields['choice'] == 1)
         {
-            redirect('/home/listByType/');
+            $this->listByType();
         }
         elseif($fields['choice'] == 2)
         {
@@ -90,7 +89,7 @@ class Home extends Application {
         $this->load->helper('formfields');
         $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
         $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
-        $this->data['fsubmit'] = makeSubmitButton('Post Changes', 'Do you feel lucky?');
+        $this->data['fsubmit'] = makeSubmitButton('Ok', 'Do you feel lucky?');
         
          //get all the main categories
         $source = $this->categories->all();
@@ -103,7 +102,6 @@ class Home extends Application {
             $this1 = array(
                 'id'   => $cat->main_id,
                 'name' => $cat->main_name,
-                'pic'  => $cat->image_name,
                 'href' => '/home/sublistType',
             );
             
@@ -128,7 +126,7 @@ class Home extends Application {
         $this->load->helper('formfields');
         $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
         $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
-        $this->data['fsubmit'] = makeSubmitButton('Post Changes', 'Do you feel lucky?');
+        $this->data['fsubmit'] = makeSubmitButton('Ok', 'Do you feel lucky?');
         
         //get all the target categories
         $source = $this->sub->all();
@@ -139,8 +137,7 @@ class Home extends Application {
         {
             $this1 = array(
                 'id'   => $cat->sub_id,
-                'name' => 'Target :)',
-                'pic'  => $cat->image_name,
+                'name' => $cat->sub_id,
                 'href' => '/home/subListTarget',
             );
             
@@ -164,27 +161,24 @@ class Home extends Application {
         $this->load->helper('formfields');
         $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
         $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
-        $this->data['fsubmit'] = makeSubmitButton('Post Changes', 'Do you feel lucky?');
+        $this->data['fsubmit'] = makeSubmitButton('Ok', 'Do you feel lucky?');
         
         //bogus data until fix db
         $this1 = array(
             'id'   => 'c',
             'name' => 'Cheap',
-            'pic'  => 'MFN_01.jpg',
             'href' => '/home/sublistPriceRange',
             
         );
         $this2 = array(
             'id'   => 'm',
             'name' => 'Moderate',
-            'pic'  => 'Azteca-Stadium-1024x682.jpg',
             'href' => '/home/sublistPriceRange',
         );
         
         $this3 = array(
             'id'   => 'e',
             'name' => 'Expensive',
-            'pic'  => 'Larnach-Castle-02_opt.jpg',
             'href' => '/home/sublistPriceRange',
         );
         $catlist[] = $this1;
@@ -218,7 +212,6 @@ class Home extends Application {
             $this1 = array(
                 'id'   => $cat->attr_id,
                 'name' => $cat->attr_name,
-                'pic'  => $cat->image_name,
                 'description' => $cat->description,
                 'href' => '/home/destination',
             );
@@ -255,7 +248,6 @@ class Home extends Application {
             $this1 = array(
                 'id'   => $cat->attr_id,
                 'name' => $cat->attr_name,
-                'pic'  => $cat->image_name,
                 'description' => $cat->description,
                 'href' => '/home/destination',
             );
@@ -293,7 +285,6 @@ class Home extends Application {
             $this1 = array(
                 'id'   => $cat->attr_id,
                 'name' => $cat->attr_name,
-                'pic'  => $cat->image_name,
                 'description' => $cat->description,
                 'href' => '/home/destination',
             );
@@ -332,11 +323,13 @@ class Home extends Application {
                 'contact'       => $record->contact,
                 'pic'           => $record->image_name
             );
+       
             $places[] = $this1;
             
-        
+        //$this1 = $this->parser->parse('item', (array)$this->attractions->getDetails($id), true);
         //send places array to our data
         $this->data['places'] = $places;
+        //$this->data['test'] = $this1;
 
         $this->render();
     }
