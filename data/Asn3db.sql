@@ -119,6 +119,21 @@ The tracks drop down into secluded bays, such as Admirals Bay, suitable for swim
 ('15'	, 'Bream Head Coast Walks', 'w', 'm'
 	, 'Situated at Whangarei Heads our boutique walk encompasses private farmland, stunning ocean and harbour beaches, rural roads, recreational reserves and existing public walkways.',
 'teenager');
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users`
+(
+    `id`       varchar(24) NOT NULL,
+    `username` varchar(24) NOT NULL,
+    `password` varchar(24) NOT NULL,
+    `role`     varchar(24) NOT NULL,
+    PRIMARY KEY (`id`)
+)ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO `users`(`id`, `username`, `password`, `role`)VALUES
+    ('01', 'Donald', 'Duck', 'admin'),
+    ('02', 'Mickey', 'Mouse', 'user');
+
 	
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -1,11 +1,20 @@
 <div class="row">
-    
-    <div class="span13">
-        <br /><br/>
+    <br>
+    <br>
+    <div class="span6">
         <img src="/data/{pic}" title="{name}"/>
-        <br /><br /><br /><br/>
     </div>
-    <div class="span12">
+    <div class="span6">
+        
+        <!-- form to edit a menu item -->
+        <form action="/admin/login/{id}" method="post">
+            {fuserid}
+            {fpassword}
+            {fsubmit}
+        </form>
+
+    </div>
+    <div class="span6">
         <p class="lead">{description}</p>
     </div>
     

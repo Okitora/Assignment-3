@@ -175,4 +175,26 @@ if(!function_exists('makeImageUploader'))
     }
 }
 
+/** password field
+ * 
+ */
+
+if (!function_exists('makePasswordField')) {
+
+    function makePasswordField($label, $name, $value, $explain = "", $maxlen = 40, $size = 25, $disabled = false) {
+        $CI = &get_instance();
+        $parms = array(
+            'label' => $label,
+            'name' => $name,
+            'value' => htmlentities($value, ENT_COMPAT, 'UTF-8'),
+            'explain' => $explain,
+            'maxlen' => $maxlen,
+            'size' => $size,
+            'disabled' => ($disabled ? 'disabled="disabled"' : '')
+        );
+        return $CI->parser->parse('_fields/password', $parms, true);
+    }
+
+}
+
 /* End of file */

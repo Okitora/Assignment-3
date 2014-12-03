@@ -42,9 +42,9 @@ td {
     opacity:.8;
 }
 
-.span12
+.span6
 {
-    text-align: center;
+    text-align: left;
     background-color: #FFFAF0;
      -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     filter: alpha(opacity=80);
