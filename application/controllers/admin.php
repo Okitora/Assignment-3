@@ -429,8 +429,6 @@ class Admin extends Application {
         return $name;
     }
 
-
-
 }
 
 /* End of file admin.php */

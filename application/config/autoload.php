@@ -107,7 +107,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('attractions', 'categories', 'sub');
+$autoload['model'] = array('attractions', 'categories', 'sub', 'users');
 
 
 /* End of file autoload.php */

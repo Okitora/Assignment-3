@@ -46,6 +46,7 @@ $route['Family'] = "home/sublistType/f";
 $route['Shopping'] = "home/sublistType/s";
 $route['SightSeeing'] = "home/sublistType/w";
 $route['admin'] = "admin";
+$route['login'] = "authenticate/attempt";
 $route['404_override'] = '';
 
 

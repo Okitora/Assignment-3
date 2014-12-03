@@ -27,7 +27,7 @@ class Main extends Application {
         // we need to construct pretty editing fields using the formfields helper
         $this->load->helper('formfields');
         
-        $this->data['fuserid'] = makeTextField('UserID', 'id', '', "You must have an userID", 10, 25);
+        $this->data['fusername'] = makeTextField('UserID', 'userid', '', "You must have an userID", 10, 25);
         $this->data['fpassword'] = makePasswordField('Password', 'password', '', 'Account must have a password');
         $this->data['fsubmit'] = makeSubmitButton('Ok', 'Do you feel lucky?');
         

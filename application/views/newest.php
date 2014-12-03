@@ -7,8 +7,8 @@
     <div class="span6">
         
         <!-- form to edit a menu item -->
-        <form action="/admin/login/{id}" method="post">
-            {fuserid}
+        <form action="/authenticate/login/{userid}" method="post">
+            {fusername}
             {fpassword}
             {fsubmit}
         </form>

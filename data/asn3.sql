@@ -56,6 +56,19 @@ CREATE TABLE IF NOT EXISTS `main_cat` (
   PRIMARY KEY (`main_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 -- --------------------------------------------------------
+--
+-- Table structure for table `users`
+--
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users`
+(
+    `id`       varchar(24) NOT NULL,
+    `username` varchar(24) NOT NULL,
+    `password` varchar(24) NOT NULL,
+    `role`     varchar(24) NOT NULL,
+    PRIMARY KEY (`id`)
+)ENGINE=MyISAM DEFAULT CHARSET=latin1;
+-- --------------------------------------------------------
 
 -- images in /data folder in webapp
 INSERT INTO `main_cat` (`main_id`, `main_name`, `image_name`) VALUES
@@ -175,16 +188,6 @@ The tracks drop down into secluded bays, such as Admirals Bay, suitable for swim
 ('w', 'cw', 'bhcw'	, 'Bream Head Coast Walks'				, '09 437 9803', 'm'
 	, 'Situated at Whangarei Heads our boutique walk encompasses private farmland, stunning ocean and harbour beaches, rural roads, recreational reserves and existing public walkways.',
 1393621826, 'bhcw.jpg');
-
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users`
-(
-    `id`       varchar(24) NOT NULL,
-    `username` varchar(24) NOT NULL,
-    `password` varchar(24) NOT NULL,
-    `role`     varchar(24) NOT NULL,
-    PRIMARY KEY (`id`)
-)ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 INSERT INTO `users`(`id`, `username`, `password`, `role`)VALUES
     ('01', 'Donald', 'Duck', 'admin'),

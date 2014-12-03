@@ -1,7 +1,7 @@
 /* CSS definition file containing site stylesheet */
 body {
-    background: url('/data/new-zealand-lord-of-the-rings-edoras-uruk-hai-marching-valley-rohan.jpg') 
-        no-repeat center fixed;
+    //background: url('/data/new-zealand-lord-of-the-rings-edoras-uruk-hai-marching-valley-rohan.jpg') 
+      //  no-repeat center fixed;
 }
 #content {
     width:100%; 
