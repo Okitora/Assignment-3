@@ -49,7 +49,7 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
                 Kawakawa, Paihia etc. Kaikohe Speedway was put on the world map with 
                 the recognition of Florian Habichts movie Kaikohe Demolition.
             </description>
-            <gallery pic1="kkc.JPG" pic2="2" pic3="3">
+            <gallery pic1="kkc.JPG" pic2="kkc-2.JPG" pic3="kkc-3.JPG">
             </gallery>
        </detail>',
 'adult'),
@@ -64,7 +64,7 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
                 into a funky night club attracting some of the best Djs and Artist 
                 in the country.
             </description>
-            <gallery pic1="sb.jpg" pic2="2" pic3="3">
+            <gallery pic1="sb.jpg" pic2="sb-2.JPG" pic3="sb-3.JPG">
             </gallery>
         </detail>',
  'teenager'),
@@ -80,7 +80,7 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
                 environment for business meetings, seminars, conferences and trade 
                 shows, as well as private functions and weddings.
             </description>
-            <gallery pic1="nhs.jpg" pic2="2" pic3="3">
+            <gallery pic1="nhs.jpg" pic2="nhs-2.jpg" pic3="nhs-3.jpg">
             </gallery>
         </detail>',
  'kids'),
@@ -93,7 +93,7 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
                     screen open air cinema in New Zealand at Auckland’s Viaduct Harbour 
                     in January 2004.
                 </description>
-                <gallery pic1="oap.jpg" pic2="2" pic3="3">
+                <gallery pic1="oap.jpg" pic2="oap-2.jpg" pic3="oap-3.jpg">
                 </gallery>
             </detail>',
  'kids'),
@@ -106,7 +106,7 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
                     Harbour. It features selected contemporary sculptures, created by 
                     established and emerging New Zealand artists.
                 </description>
-                <gallery pic1="kcsg.jpg" pic2="2" pic3="3">
+                <gallery pic1="kcsg.jpg" pic2="kcsg-2.jpg" pic3="kcsg-3.jpg">
                 </gallery>
         </detail>',
  'adult'),
@@ -119,7 +119,7 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
                     Birthday. The perfect activity for a Stag or Hen party And just the 
                     thing for a Corporate event!
                 </description>
-                <gallery pic1="cap.jpg" pic2="2" pic3="3">
+                <gallery pic1="cap.jpg" pic2="cap-2.jpg" pic3="cap-3.jpg">
                 </gallery>
         </detail>',
  'teenager'),
@@ -135,7 +135,7 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
                     Mall, it is air-conditioned, has ample free parking and we are open 
                     7 days.
                 </description>
-                <gallery pic1="rosm.jpg" pic2="2" pic3="3"></gallery>
+                <gallery pic1="rosm.jpg" pic2="rosm-2.jpg" pic3="rosm-3.jpg"></gallery>
             </detail>',
  'teenager'),
 
@@ -149,7 +149,7 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
                     world’s leading luxury brands — many of which continue to be our 
                     partners today.
                 </description>
-                <gallery pic1="dfsg.jpg" pic2="2" pic3="3">
+                <gallery pic1="dfsg.jpg" pic2="dfsg-2.jpg" pic3="dfsg-3.jpg">
                 </gallery>
             </detail>',
  'adult'),
@@ -165,7 +165,7 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
                     renovated by CMP Construction Limited, leaders in heritage building 
                     refurbishments.
                 </description>
-                <gallery pic1="vpm.jpg" pic2="2" pic3="3">
+                <gallery pic1="vpm.jpg" pic2="vpm-2.jpg" pic3="vpm-3.jpg">
                 </gallery>
             </detail>'
 'kids'),
@@ -179,7 +179,7 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
                     New Zealand, White Island Tours offers its visitors a 6 hour a
                     dventure to this fascinating island volcano.
                 </description>
-                <gallery pic1="wit.jpg" pic2="2" pic3="3">
+                <gallery pic1="wit.jpg" pic2="wit-2.jpg" pic3="wit-3.jpg">
                 </gallery>
            </detail>',
 'teenager'),
@@ -196,7 +196,7 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
                     while birds (and birding) may be the focus, there is a great deal to 
                     see and experience besides.
                 </description>   
-                <gallery pic1="kwt.jpg" pic2="2" pic3="3">
+                <gallery pic1="kwt.jpg" pic2="kwt-2.jpg" pic3="kwt-3.jpg">
                 </gallery>
             </detail>',
 'kids'),
@@ -210,7 +210,7 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
                     offering an unparalleled sailing adventure, whatever level of 
                     excitement you require.
                 </description>
-                <gallery pic1="tv.jpg" pic2="2" pic3="3">
+                <gallery pic1="tv.jpg" pic2="tv-2.jpg" pic3="tv-3.jpg">
                 </gallery>
             </detail>
     ',
@@ -226,7 +226,7 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
                     sense of adventure and introduces you to the joys of overnight 
                     camping.
                 </description>
-                <gallery pic1="ht.jpg" pic2="2" pic3="3">
+                <gallery pic1="ht.jpg" pic2="ht-2.jpg" pic3="ht-3.jpg">
                 </gallery>
             </detail>',
 'kids'),
@@ -240,7 +240,7 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
                     coastlines. The tracks drop down into secluded bays, such as 
                     Admirals Bay, suitable for swimming and snorkelling.
                 </description>
-                <gallery pic1="wnhwt.jpg" pic2="2" pic3="3">
+                <gallery pic1="wnhwt.jpg" pic2="wnhwt-2.jpg" pic3="wnhwt-3.jpg">
                 </gallery>
             </detail>',
 'adult'),
@@ -252,7 +252,7 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
                     private farmland, stunning ocean and harbour beaches, rural roads, 
                     recreational reserves and existing public walkways.
                 </description>
-                <gallery pic1="bhcw.jpg" pic2="2" pic3="3">
+                <gallery pic1="bhcw.jpg" pic2="bhcw-2.jpg" pic3="bhcw-3.jpg">
                 </gallery>
         </detail>',
 'teenager');
