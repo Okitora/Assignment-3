@@ -33,6 +33,9 @@ if (!defined('APPPATH'))
             </div>           
             <div id="content">
                 <h1>{title}</h1>
+                <div class="{alerting}">
+                    {errormessages}
+                </div>
                 {content}
             </div>
             <div id="footer" class="span11">
