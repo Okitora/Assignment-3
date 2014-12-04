@@ -156,24 +156,36 @@ class Home extends Application {
         
         // we need to construct pretty editing fields using the formfields helper
         $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
-        $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
-        $this->data['fsubmit'] = makeSubmitButton('Ok', 'Do you feel lucky?');
+        $this->data['fmain'] 
+                = makeComboField('Choice', 'choice', $choice, $options, 
+                        "Pick the type to display attractions by.");
+        $this->data['fsubmit'] 
+                = makeSubmitButton('Ok', 'Do you feel lucky?');
         
         //get all the target categories
-        $source = $this->sub->all();
-        
-        $catlist = array();
-        
-        foreach($source as $cat)
-        {
-            $this1 = array(
-                'id'   => $cat->sub_id,
-                'name' => $cat->sub_id,
-                'href' => '/home/subListTarget',
-            );
+        $this1 = array(
+            'id'   => 'f',
+            'name' => 'Adult',
+            'href' => '/home/subListTarget',
             
-            $catlist[] = $this1;
-        }
+        );
+        $this2 = array(
+            'id'   => 's',
+            'name' => 'teenager',
+            'href' => '/home/subListTarget',
+        );
+        
+        $this3 = array(
+            'id'   => 't',
+            'name' => 'kids',
+            'href' => '/home/subListTarget',
+        );
+        
+        
+        $catlist[] = $this1;
+        $catlist[] = $this2;
+        $catlist[] = $this3;
+        
         
         $this->data['places'] = $catlist;
         
@@ -200,8 +212,11 @@ class Home extends Application {
         
         // we need to construct pretty editing fields using the formfields helper
         $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
-        $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
-        $this->data['fsubmit'] = makeSubmitButton('Ok', 'Do you feel lucky?');
+        $this->data['fmain'] 
+                = makeComboField('Choice', 'choice', $choice, $options, 
+                        "Pick the type to display attractions by.");
+        $this->data['fsubmit'] 
+                = makeSubmitButton('Ok', 'Do you feel lucky?');
         
         //bogus data until fix db
         $this1 = array(
@@ -254,6 +269,8 @@ class Home extends Application {
         //get all sub categories within the main category
         //$source = $this->sub->some('main_id' , $code);
         //$name = $this->categories->get($code);
+        
+        //$source = $this->attractions->some('tar_aud', $code);
         $source = $this->attractions->some('main_id', $code);
         $catlist = array();
         
@@ -302,7 +319,7 @@ class Home extends Application {
         //get all sub categories within the main category
         //$source = $this->sub->some('main_id' , $code);
         //$name = $this->categories->get($code);
-        $source = $this->attractions->some('sub_id', $code);
+        $source = $this->attractions->some('main_id', $code);
         $catlist = array();
         
         //retrieve all variables from the view
@@ -345,6 +362,8 @@ class Home extends Application {
         //get all sub categories within the main category
         //$source = $this->sub->some('main_id' , $code);
         //$name = $this->categories->get($code);
+        
+        //need to find how xml grabs the price here.
         $source = $this->attractions->some('price', $code);
         $catlist = array();
         
