@@ -75,7 +75,7 @@ class Authenticate extends Application
         if($password == md5((string)$user->password))
         {
             //keep constants as the user data
-            
+            /*
             if($user->role == 'admin')
             {
                 $role = ADMIN;
@@ -84,7 +84,7 @@ class Authenticate extends Application
             {
                 $role = USER;
             }
-            
+            */
             //set the user and permissions as defined in role
             $this->session->set_userdata('userID', $key);
             $this->session->set_userdata('userName', $user->name);

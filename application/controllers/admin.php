@@ -20,18 +20,6 @@ class Admin extends Application {
 
     function index() {
         $this->data['pagebody'] = 'admin';    // this is the view we want shown
-        
-        //if they are not logged in, they cannot view the page
-        if($this->session->userdata('userRole') == 0)
-        {
-            redirect('/authenticate/noLogin');
-        }
-        
-        //if they are not admin, access denied. Cannot view page
-        if($this->session->userdata('userRole') != ADMIN)
-        {
-            redirect('/authenticate/noAccess');
-        }
        
         // build the list of places, to pass on to our view
         $source = $this->attractions->all();    //get all the attractions from DB

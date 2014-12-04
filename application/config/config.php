@@ -6,17 +6,16 @@ if (!defined('BASEPATH'))
 // the menu basics (text navbar)
 $config['menu_choices'] = array(
     'menudata' => array(
-        array('name' => 'Home',             'link' => '/'),
-        array('name' => 'Attractions',      'link' => '/List'),
-        array('name' => 'Entertainment',    'link' => '/Entertainment'),
-        array('name' => 'Eco Tourism',      'link' => '/Eco'),
-        array('name' => 'FamilyFun',        'link' => '/Family'),
-        array('name' => 'Shopping',         'link' => '/Shopping'),
-        array('name' => 'SightSeeing',      'link' => '/SightSeeing'),
-        array('name' => 'About',            'link' => '/about'),
-        array('name' => 'Admin',            'link' => '/admin'),
-        array('name' => 'Login',            'link' => '/login'),
-        array('name' => 'Logout',           'link' => '/logout'),
+        array('name' => 'Home', 'link' => '/'),
+        array('name' => 'Attractions', 'link' => '/List'),
+        array('name' => 'Entertainment', 'link' => '/Entertainment'),
+        array('name' => 'Eco Tourism', 'link' => '/Eco'),
+        array('name' => 'FamilyFun', 'link' => '/Family'),
+        array('name' => 'Shopping', 'link' => '/Shopping'),
+        array('name' => 'SightSeeing', 'link' => '/SightSeeing'),
+        array('name' => 'About', 'link' => '/about'),
+        array('name' => 'Admin', 'link' => '/admin'),
+        array('name' => 'Login', 'link' => '/login')
         )
     );
 
