@@ -47,6 +47,7 @@ $route['Shopping'] = "home/sublistType/s";
 $route['SightSeeing'] = "home/sublistType/w";
 $route['admin'] = "admin";
 $route['login'] = "authenticate/attempt";
+$route['logout'] = "authenticate/logout";
 $route['404_override'] = '';
 
 
