@@ -29,10 +29,14 @@ class Admin extends Application {
         }
         
         //if they are not admin, access denied. Cannot view page
-        if($this->session->userdata('userRole') != ADMIN)
+        elseif($this->session->userdata('userRole') != ADMIN)
         {
             $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
             redirect('/authenticate/noAccess');
+        }
+        elseif($this->session->userdata('userRole') == ADMIN)
+        {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
         }
        
         // build the list of places, to pass on to our view

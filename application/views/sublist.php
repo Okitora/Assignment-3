@@ -10,7 +10,7 @@
     <h3><a href="{href}/{id}">{name}</a></h3>
     <div class="span5"><img src="/data/{pic}" id="{id}" /></div>
     
-    <div class="span7">
+    <div class="span6">
         <p>{description}</p>
     </div>
     
