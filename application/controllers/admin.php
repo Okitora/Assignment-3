@@ -34,7 +34,6 @@ class Admin extends Application {
             $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
             redirect('/authenticate/noAccess');
         }
-        
        
         // build the list of places, to pass on to our view
         $source = $this->attractions->all();    //get all the attractions from DB
