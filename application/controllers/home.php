@@ -218,6 +218,8 @@ class Home extends Application {
         //get all sub categories within the main category
         //$source = $this->sub->some('main_id' , $code);
         //$name = $this->categories->get($code);
+        
+        //$source = $this->attractions->some('tar_aud', $code);
         $source = $this->attractions->some('main_id', $code);
         $catlist = array();
         
@@ -287,6 +289,8 @@ class Home extends Application {
         //get all sub categories within the main category
         //$source = $this->sub->some('main_id' , $code);
         //$name = $this->categories->get($code);
+        
+        //need to find how xml grabs the price here.
         $source = $this->attractions->some('price', $code);
         $catlist = array();
         
