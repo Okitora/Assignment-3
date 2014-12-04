@@ -22,6 +22,9 @@ class Authenticate extends Application
         $this->data['pagebody'] = 'login';
         $this->data['title'] = 'login';
         
+        $this->data['btn'] = ' ';
+        
+        
         // use “item” as the session key
         // assume no item record in-progress
         $item_record = null;
@@ -102,7 +105,8 @@ class Authenticate extends Application
     function tryagain($which)
     {
         $this->data['pagebody'] = 'login';
-        $this->data['title'] = 'login';
+        $this->data['title'] = 'Login';
+        $this->data['btn'] = ' ';
         
         // use “item” as the session key
         // assume no item record in-progress
@@ -143,6 +147,16 @@ class Authenticate extends Application
     {
         $this->data['pagebody'] = 'success';
         $this->data['title'] = 'Success~';
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+        }
         
         $user = $this->users->get($id);
         
@@ -154,17 +168,42 @@ class Authenticate extends Application
     }
     function logout()
     {
+        $this->data['pagebody'] = 'logout';
+        $this->data['title'] = 'Logout successful';
+        
         //destroys session, logouts out user
         $this->session->sess_destroy();
         $this->load->helper('url');
         
-        redirect('/');
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+        }
+        
+        //redirect('/');
+        $this->render();
     }
     
     function noAccess()
     {
         $this->data['pagebody'] = 'noAccess';
         $this->data['title'] = 'Access Denied';
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+        }
         
         $this->render();
     }
@@ -173,6 +212,16 @@ class Authenticate extends Application
     {
         $this->data['pagebody'] = 'noLogin';
         $this->data['title'] = 'Login to Continue';
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+        }
         
         $this->render();
     }

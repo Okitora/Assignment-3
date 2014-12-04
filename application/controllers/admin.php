@@ -24,14 +24,17 @@ class Admin extends Application {
         //if they are not logged in, they cannot view the page
         if($this->session->userdata('userRole') == 0)
         {
+            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
             redirect('/authenticate/noLogin');
         }
         
         //if they are not admin, access denied. Cannot view page
         if($this->session->userdata('userRole') != ADMIN)
         {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
             redirect('/authenticate/noAccess');
         }
+        
        
         // build the list of places, to pass on to our view
         $source = $this->attractions->all();    //get all the attractions from DB
@@ -65,6 +68,17 @@ class Admin extends Application {
     {
         $this->data['pagebody'] = 'editlist';   
         
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+        }
+        
         //get all attractions
         $source = $this->attractions->all();
         $items = '';
@@ -97,6 +111,17 @@ class Admin extends Application {
     function edit3($which) {
         
         $this->data['pagebody'] = 'edit3';  //this is the view that we want
+        
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+        }
 
         // use “item” as the session key
         // assume no item record in-progress
@@ -350,6 +375,17 @@ class Admin extends Application {
         $this->data['pagebody'] = 'areYouSure';
         $this->data['title'] = 'Are You Sure?';
         
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+        }
+        
         $this->data['id'] = $id;
         
         $this->render();
@@ -363,6 +399,17 @@ class Admin extends Application {
     {
          $this->data['pagebody'] = 'add';
          $this->data['title'] = 'Add an Attraction';
+         
+         //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+        }
          
          // use “item” as the session key
         // assume no item record in-progress

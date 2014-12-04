@@ -1,7 +1,4 @@
 <div class="header">
-    <br />
-    <h2>Select by:</h2>
-    <br />
     <form action="/home/choice/{choice}" method="post">
         {fmain}
         {fsubmit}

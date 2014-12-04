@@ -22,10 +22,21 @@ class Home extends Application {
     function index()
     {
         $this->data['pagebody'] = 'list';
+        $this->data['title'] = 'Select by:';
+        
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+        }
         $choice = '';
         
         // we need to construct pretty editing fields using the formfields helper
-        $this->load->helper('formfields');
         $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
         $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
         $this->data['fsubmit'] = makeSubmitButton('Ok', 'Do you feel lucky?');
@@ -85,8 +96,18 @@ class Home extends Application {
         $this->data['pagebody'] = 'list';
         $choice = '';
         
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+        }
+        
         // we need to construct pretty editing fields using the formfields helper
-        $this->load->helper('formfields');
         $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
         $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
         $this->data['fsubmit'] = makeSubmitButton('Ok', 'Do you feel lucky?');
@@ -122,8 +143,18 @@ class Home extends Application {
         $this->data['pagebody'] = 'list';
         $choice = '';
         
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+        }
+        
         // we need to construct pretty editing fields using the formfields helper
-        $this->load->helper('formfields');
         $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
         $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
         $this->data['fsubmit'] = makeSubmitButton('Ok', 'Do you feel lucky?');
@@ -156,9 +187,18 @@ class Home extends Application {
     {
         $this->data['pagebody'] = 'list';
         $choice = '';
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+        }
         
         // we need to construct pretty editing fields using the formfields helper
-        $this->load->helper('formfields');
         $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
         $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
         $this->data['fsubmit'] = makeSubmitButton('Ok', 'Do you feel lucky?');
@@ -200,6 +240,17 @@ class Home extends Application {
     {
         $this->data['pagebody'] = 'sublist';
         
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+        }
+        
         //get all sub categories within the main category
         //$source = $this->sub->some('main_id' , $code);
         //$name = $this->categories->get($code);
@@ -237,6 +288,17 @@ class Home extends Application {
     {
         $this->data['pagebody'] = 'sublist';
         
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+        }
+        
         //get all sub categories within the main category
         //$source = $this->sub->some('main_id' , $code);
         //$name = $this->categories->get($code);
@@ -268,6 +330,17 @@ class Home extends Application {
     function sublistPriceRange($code)
     {
         $this->data['pagebody'] = 'sublist';
+        
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+        }
         
         //get all sub categories within the main category
         //$source = $this->sub->some('main_id' , $code);
@@ -305,6 +378,17 @@ class Home extends Application {
      */
     function destination($id) {
         $this->data['pagebody'] = 'homepage';    // this is the view we want shown
+        
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+        }
         
         // build the list of places, to pass on to our view
         $record = $this->attractions->get($id);    //get all the attractions from DB

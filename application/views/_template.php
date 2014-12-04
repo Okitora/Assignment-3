@@ -29,8 +29,8 @@ if (!defined('APPPATH'))
         <div class="container">
             <div class="navbar">
                 <div class="navbar-inner">
-                    {menubar} </div>
-            </div>           
+                    {menubar} {btn}</div>
+            </div>
             <div id="content">
                 <h1>{title}</h1>
                 <div class="{alerting}">
