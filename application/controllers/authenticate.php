@@ -30,7 +30,7 @@ class Authenticate extends Application
         $session_record = $this->session->userdata('user');
         if ($session_record !== FALSE) {
             // does its item # match the requested one {
-            if (isset($session_record['userid'])) {
+            if (isset($session_record['id'])) {
                 // use the item record from the session
                 $item_record = $session_record;
             }
@@ -40,7 +40,7 @@ class Authenticate extends Application
         //$this->data = array_merge($this->data, $item_record);
         // we need to construct pretty editing fields using the formfields helper
         $this->load->helper('formfields');
-        $this->data['fusername'] = makeTextField('UserID', 'userid', '', "You must have an userID", 10, 25);
+        $this->data['fusername'] = makeTextField('UserID', 'id', '', "You must have an userID", 10, 25);
         $this->data['fpassword'] = makePasswordField('Password', 'password', '', "Account must have a password");
         
         $this->data['fsubmit'] = makeSubmitButton('Login', 'Do you feel lucky?');
@@ -53,7 +53,7 @@ class Authenticate extends Application
         $fields = $this->input->post(); // gives us an associative array
         
         //error checking
-        if (strlen($fields['userid']) < 1)
+        if (strlen($fields['id']) < 1)
         {
             $this->errors[] = 'The account has to have an id!';
         }
@@ -63,7 +63,7 @@ class Authenticate extends Application
         }
  
         //gets the user and password from post form
-        $key = $fields['userid'];
+        $key = $fields['id'];
         $password = md5($fields['password']);
        
         //gets the user from the model
@@ -75,7 +75,7 @@ class Authenticate extends Application
         if($password == md5((string)$user->password))
         {
             //keep constants as the user data
-            /*
+            
             if($user->role == 'admin')
             {
                 $role = ADMIN;
@@ -84,7 +84,7 @@ class Authenticate extends Application
             {
                 $role = USER;
             }
-            */
+            
             //set the user and permissions as defined in role
             $this->session->set_userdata('userID', $key);
             $this->session->set_userdata('userName', $user->name);
@@ -112,7 +112,7 @@ class Authenticate extends Application
         $session_record = $this->session->userdata('user');
         if ($session_record !== FALSE) {
             // does its item # match the requested one {
-            if (isset($session_record['userid']) && ($session_record['userid'] == $which)) {
+            if (isset($session_record['id']) && ($session_record['id'] == $which)) {
                 // use the item record from the session
                 $item_record = $session_record;
             }
@@ -130,7 +130,7 @@ class Authenticate extends Application
         //        $this->data = array_merge($this->data, $item_record);
         // we need to construct pretty editing fields using the formfields helper
         $this->load->helper('formfields');
-        $this->data['fusername'] = makeTextField('UserID', 'userid', '', "You must have an userID", 10, 25);
+        $this->data['fusername'] = makeTextField('UserID', 'id', '', "You must have an userID", 10, 25);
         $this->data['fpassword'] = makePasswordField('Password', 'password', '', "Account must have a password");
         
         $this->data['fsubmit'] = makeSubmitButton('Login', 'Do you feel lucky?');
@@ -146,7 +146,7 @@ class Authenticate extends Application
         
         $user = $this->users->get($id);
         
-        $this->data['userid'] = $id;
+        $this->data['id'] = $id;
         $this->data['username'] = $user->username;
         $this->data['role'] = $user->role;
         
