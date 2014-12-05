@@ -8,7 +8,7 @@
 {places}
 <div class="row">
     
-    <h3><a href="{href}/{id}">{name}</a></h3>
+    <h3><a href="{href}/{id}">{id}</a></h3>
     
 </div>
 {/places}

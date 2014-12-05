@@ -41,23 +41,31 @@ class Home extends Application {
         $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
         $this->data['fsubmit'] = makeSubmitButton('Ok', 'Do you feel lucky?');
         
-         //get all the main categories
-        $source = $this->categories->all();
+        //get all the main categories
+        $source = $this->attractions->all();
         
         $catlist = array();
+        $templist = array();
         
-        //retrieve all the variables for the view
+        //retrieve all categories from attractions
         foreach($source as $cat)
         {
-            $this1 = array(
-                'id'   => $cat->main_id,
-                'name' => $cat->main_name,
-                'href' => '/home/sublistType',
-            );
-            
-            $catlist[] = $this1;
+            $templist[] = $cat->main_id;
         }
         
+        //remove duplicates
+        $templist = array_unique($templist);
+        
+        //add links to the view
+        foreach($templist as $cat)
+        {
+            $this1 = array(
+                'id' => $cat,
+                'href' => '/home/sublistType'
+                );
+             
+            $catlist[] = $this1;
+        }
         $this->data['places'] = $catlist;
         
         $this->render();
@@ -112,23 +120,31 @@ class Home extends Application {
         $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
         $this->data['fsubmit'] = makeSubmitButton('Ok', 'Do you feel lucky?');
         
-         //get all the main categories
-        $source = $this->categories->all();
+        //get all the main categories
+        $source = $this->attractions->all();
         
         $catlist = array();
+        $templist = array();
         
-        //retrieve all the variables for the view
+        //retrieve all categories from attractions
         foreach($source as $cat)
         {
-            $this1 = array(
-                'id'   => $cat->main_id,
-                'name' => $cat->main_name,
-                'href' => '/home/sublistType',
-            );
-            
-            $catlist[] = $this1;
+            $templist[] = $cat->main_id;
         }
         
+        //remove duplicates
+        $templist = array_unique($templist);
+        
+        //add links to the view
+        foreach($templist as $cat)
+        {
+            $this1 = array(
+                'id' => $cat,
+                'href' => '/home/sublistType'
+                );
+             
+            $catlist[] = $this1;
+        }
         $this->data['places'] = $catlist;
         
         $this->render();
@@ -162,31 +178,32 @@ class Home extends Application {
         $this->data['fsubmit'] 
                 = makeSubmitButton('Ok', 'Do you feel lucky?');
         
-        //get all the target categories
-        $this1 = array(
-            'id'   => 'f',
-            'name' => 'Adult',
-            'href' => '/home/subListTarget',
-            
-        );
-        $this2 = array(
-            'id'   => 's',
-            'name' => 'teenager',
-            'href' => '/home/subListTarget',
-        );
+        //get all the main categories
+        $source = $this->attractions->all();
         
-        $this3 = array(
-            'id'   => 't',
-            'name' => 'kids',
-            'href' => '/home/subListTarget',
-        );
+        $catlist = array();
+        $templist = array();
         
+        //retrieve all categories from attractions
+        foreach($source as $cat)
+        {
+            //$templist[] = $cat->tar_id;
+            $templist[] = $cat->sub_id;
+        }
         
-        $catlist[] = $this1;
-        $catlist[] = $this2;
-        $catlist[] = $this3;
+        //remove duplicates
+        $templist = array_unique($templist);
         
-        
+        //add links to the view
+        foreach($templist as $cat)
+        {
+            $this1 = array(
+                'id' => $cat,
+                'href' => '/home/sublistTarget'
+                );
+             
+            $catlist[] = $this1;
+        }
         $this->data['places'] = $catlist;
         
         $this->render();
@@ -218,29 +235,32 @@ class Home extends Application {
         $this->data['fsubmit'] 
                 = makeSubmitButton('Ok', 'Do you feel lucky?');
         
-        //bogus data until fix db
-        $this1 = array(
-            'id'   => 'c',
-            'name' => 'Cheap',
-            'href' => '/home/sublistPriceRange',
-            
-        );
-        $this2 = array(
-            'id'   => 'm',
-            'name' => 'Moderate',
-            'href' => '/home/sublistPriceRange',
-        );
+        //get all the main categories
+        $source = $this->attractions->all();
         
-        $this3 = array(
-            'id'   => 'e',
-            'name' => 'Expensive',
-            'href' => '/home/sublistPriceRange',
-        );
-        $catlist[] = $this1;
-        $catlist[] = $this2;
-        $catlist[] = $this3;
+        $catlist = array();
+        $templist = array();
         
+        //retrieve all categories from attractions
+        foreach($source as $cat)
+        {
+            //$templist[] = $cat->price_range;
+            $templist[] = $cat->price;
+        }
         
+        //remove duplicates
+        $templist = array_unique($templist);
+        
+        //add links to the view
+        foreach($templist as $cat)
+        {
+            $this1 = array(
+                'id' => $cat,
+                'href' => '/home/sublistPriceRange'
+                );
+             
+            $catlist[] = $this1;
+        }
         $this->data['places'] = $catlist;
         
         $this->render();
@@ -267,10 +287,6 @@ class Home extends Application {
         }
         
         //get all sub categories within the main category
-        //$source = $this->sub->some('main_id' , $code);
-        //$name = $this->categories->get($code);
-        
-        //$source = $this->attractions->some('tar_aud', $code);
         $source = $this->attractions->some('main_id', $code);
         $catlist = array();
         
@@ -317,8 +333,7 @@ class Home extends Application {
         }
         
         //get all sub categories within the main category
-        //$source = $this->sub->some('main_id' , $code);
-        //$name = $this->categories->get($code);
+        //$source = $this->attractions->some('tar_aud', $code);
         $source = $this->attractions->some('main_id', $code);
         $catlist = array();
         
@@ -360,10 +375,7 @@ class Home extends Application {
         }
         
         //get all sub categories within the main category
-        //$source = $this->sub->some('main_id' , $code);
-        //$name = $this->categories->get($code);
-        
-        //need to find how xml grabs the price here.
+        //$source = $this->attractions->some('price_range', $code);
         $source = $this->attractions->some('price', $code);
         $catlist = array();
         
