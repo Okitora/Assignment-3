@@ -18,7 +18,7 @@ Details for the attractions, Fall 2014
 <!-- Details for Attractions -->
 <!ELEMENT list (detail*)>
 
-<!ELEMENT detail (description, gallery)>
+<!ELEMENT detail (description, gallery, specific*)>
 <!ATTLIST detail
     id      CDATA   #REQUIRED
     contact CDATA   #REQUIRED
@@ -33,3 +33,9 @@ Details for the attractions, Fall 2014
     pic1    CDATA   #REQUIRED
     pic2    CDATA   #REQUIRED
     pic3    CDATA   #REQUIRED >
+
+<!ELEMENT specific (#PCDATA)>
+<!ATTLIST specific
+    id      CDATA   #REQUIRED
+    value   CDATA   #REQUIRED >
+

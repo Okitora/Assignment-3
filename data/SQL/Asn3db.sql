@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `Attraction`
 --
-DROP TABLE IF EXISTS `Attraction`;
-CREATE TABLE IF NOT EXISTS `Attraction` (
+DROP TABLE IF EXISTS `attraction`;
+CREATE TABLE IF NOT EXISTS `attraction` (
   `attr_id` varchar(32) NOT NULL,
   `attr_name` varchar(32) NOT NULL,
   `main_id` varchar(1) NOT NULL,
   `price_range` varchar(1) NOT NULL,
-  `xml_desc` varchar(1000) NOT NULL,
+  `xml_desc` varchar(4096) NOT NULL,
   `tar_aud` varchar(32) NOT NULL,
   PRIMARY KEY (`attr_code`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -34,7 +34,8 @@ CREATE TABLE IF NOT EXISTS `Attraction` (
 -- images in /data folder in webapp
 INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_desc`, `tar_aud`) VALUES
 ('01', 'Kaikohe Car Club', 'e', 'e', 
-	'<detail id="01" contact="09 238 4680" price="50" date="1393621846">
+	'<?xml version="1.0" encoding="UTF-8"?>
+        <detail id="01" contact="09 238 4680" price="50" date="1393621846">
             <description>
                 Kaikohe Speedway started in the Kaikohe District in 1974,
                 on a grass track approximately 300 meters along the Ngawha Springs
@@ -51,11 +52,16 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
             </description>
             <gallery pic1="kkc.JPG" pic2="kkc-2.JPG" pic3="kkc-3.JPG">
             </gallery>
+            <specific id="Yearly Fee" value="$100">
+            </specific>
+            <specific id="Seating" value="2,000">
+            </specific>
        </detail>',
 'adult'),
 
 ('02', 'Smartbar', 'e', 'm', 
-	'<detail id="02" contact="09 349 5791" price="30" date="1393125846">
+	'<?xml version="1.0" encoding="UTF-8"?>
+        <detail id="02" contact="09 349 5791" price="30" date="1393125846">
             <description>
                 Our stylish modern bar is a popular local venue for a great 
                 night out. Situated in Pukekohes town centre, Smart bar has a warm, 
@@ -66,11 +72,16 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
             </description>
             <gallery pic1="sb.jpg" pic2="sb-2.JPG" pic3="sb-3.JPG">
             </gallery>
+            <specific id="Entry Fee" value="$39.99">
+            </specific>
+            <specific id="Free Wifi" value="No">
+            </specific>
         </detail>',
  'teenager'),
 
 ('03', 'North Harbour Stadium'	, 'e', 'e', 
-	'<detail id="03" contact="09 450 6802" price="20" date="1244621846">
+	'<?xml version="1.0" encoding="UTF-8"?>
+        <detail id="03" contact="09 450 6802" price="20" date="1244621846">
             <description>
                 Opened in 1997, our architecturally designed, 25-000 
                 capacity Stadium is purpose built for New Zealands favourite 
@@ -82,11 +93,16 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
             </description>
             <gallery pic1="nhs.jpg" pic2="nhs-2.jpg" pic3="nhs-3.jpg">
             </gallery>
+            <specific id="Seating" value="15,000">
+            </specific>
+            <specific id="Alcoholic Beverages" value="Yes">
+            </specific>
         </detail>',
  'kids'),
 
 ('04', , 'Open Air Cinema', 'f', 'c'
-	, '<detail id="04" contact="09 561 7913" price="12.99" date="1393625286">
+	, '<?xml version="1.0" encoding="UTF-8"?>
+            <detail id="04" contact="09 561 7913" price="12.99" date="1393625286">
                 <description>
                     Openair Cinema Ltd. is a New Zealand based company founded 
                     in 2003 – 100% Kiwi owned and operated. It staged the first big 
@@ -99,7 +115,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
  'kids'),
 
 ('05', 'Kaipara Coast Sculpture Gardens', 'f', 'c'
-	, '<detail id="05" contact="09 672 8024" price="9.99" date="1538221846">
+	, '<?xml version="1.0" encoding="UTF-8"?>
+        <detail id="05" contact="09 672 8024" price="9.99" date="1538221846">
                 <description>
                     Kaipara Coast Sculpture Gardens are a tranquil, peaceful 
                     oasis set in gardens on a rural property looking out to the Kaipara 
@@ -112,7 +129,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
  'adult'),
 
 ('06', 'Commando Attack Paintball', 'f', 'm'
-	, '<detail id="06" contact="09 783 9135" price="49.99" date="1392055946">
+	, '<?xml version="1.0" encoding="UTF-8"?>
+        <detail id="06" contact="09 783 9135" price="49.99" date="1392055946">
                 <description>
                     Paintball is an awesome way to anticipate teamwork and bonding. 
                     perfect for sports clubs. also a great idea for a Memorable 
@@ -126,7 +144,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
 
 
 ('07', 'Royal Oak Shopping Mall', 's', 'm'
-	, '<detail id="07" contact="09 894 0246" price="5.99" date="1295811846">
+	, '<?xml version="1.0" encoding="UTF-8"?>
+            <detail id="07" contact="09 894 0246" price="5.99" date="1295811846">
                 <description>
                     There are over 50 shops, many of which are national brands. 
                     We are a friendly community based Shopping Mall, with unique and 
@@ -140,7 +159,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
  'teenager'),
 
 ('08'	, 'dfs galleria', 's', 'e'
-	, '<detail id="08" contact="09 905 1357" price="11.99" date="1393622846">
+	, '<?xml version="1.0" encoding="UTF-8"?>
+            <detail id="08" contact="09 905 1357" price="11.99" date="1393622846">
                 <description>
                     Asia-Pacific was their frontier, and through the years, 
                     DFS expanded quickly. Every store reflected the founders’ passions 
@@ -155,7 +175,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
  'adult'),
 
 ('09'	, 'Victoria Park Market', 's', 'c'
-	, '<detail id="09" contact="09 538 6802" price="5" date="1254079945">
+	, '<?xml version="1.0" encoding="UTF-8"?>
+            <detail id="09" contact="09 538 6802" price="5" date="1254079945">
                 <description>
                     The $20,000,000 refurbishment of Victoria Park Market is 
                     now drawing to an end. With 85% of the revitalised shops now let to 
@@ -171,7 +192,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
 'kids'),
 
 ('10'	, 'White Island Tours'	, 't', 'm'
-	, '<detail id="10" contact="09 448 1802" price="69.99" date="1139583769">
+	, '<?xml version="1.0" encoding="UTF-8"?>
+            <detail id="10" contact="09 448 1802" price="69.99" date="1139583769">
                 <description>
                     White Island Tours offers you the incredible experience of 
                     exploring the inner crater of New Zealand’s only active marine 
@@ -185,7 +207,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
 'teenager'),
 
 ('11'	, 'Kiwi Wildlife Tours'	, 't', 'c'
-	, '<detail id="11" contact="09 539 6832" price="29.99" date="1459222481">
+	, '<?xml version="1.0" encoding="UTF-8"?>
+            <detail id="11" contact="09 539 6832" price="29.99" date="1459222481">
                 <description>
                     Our very experienced leaders have intimate knowledge of the 
                     whole country. We make frequent trips into the field as guides and 
@@ -202,7 +225,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
 'kids'),
 
 ('12'	, 'Te Vaka', 't', 'eco tourism', 'e'
-	, '<detail id="12" contact="09 938 7802" price="10" date="1222621846">
+	, '<?xml version="1.0" encoding="UTF-8"?>
+            <detail id="12" contact="09 938 7802" price="10" date="1222621846">
                 <description>
                     Te Vaka is a modern powerful, sloop rigged, high 
                     performance off shore cruising yacht based in the Bay of Islands. 
@@ -217,7 +241,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
 'adult'),
 
 ('13'	, 'Hillary Trail', 'w', 'c'
-	, '<detail id="13" contact="09 448 7902" price="3" date="1234621846">
+	, '<?xml version="1.0" encoding="UTF-8"?>
+            <detail id="13" contact="09 448 7902" price="3" date="1234621846">
                 <description>
                     The Hillary Trail is a self-guided four day tramp through 
                     77km of native forest and along the wild coast of the Waitakere 
@@ -232,7 +257,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
 'kids'),
 
 ('14'	, 'Whangaruru North Head Walking Tracks', 'w', 'c'
-	, '<detail id="14" contact="09 432 8812" price="2" date="1234521846">
+	, '<?xml version="1.0" encoding="UTF-8"?>
+            <detail id="14" contact="09 432 8812" price="2" date="1234521846">
                 <description>
                     From the popular campsite and amenity area at Puriri Bay 
                     are a series of interlinked walks. They follow through native forest 
@@ -242,11 +268,14 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_
                 </description>
                 <gallery pic1="wnhwt.jpg" pic2="wnhwt-2.jpg" pic3="wnhwt-3.jpg">
                 </gallery>
+                <specific>
+                </specific>
             </detail>',
 'adult'),
 
 ('15'	, 'Bream Head Coast Walks', 'w', 'm'
-	, '<detail id="15" contact="09 437 9803" price="2" date="1393621826">
+	, '<?xml version="1.0" encoding="UTF-8"?>
+            <detail id="15" contact="09 437 9803" price="2" date="1393621826">
                 <description>
                     Situated at Whangarei Heads our boutique walk encompasses 
                     private farmland, stunning ocean and harbour beaches, rural roads, 
