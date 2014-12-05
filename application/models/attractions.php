@@ -157,9 +157,36 @@ class Attractions extends MY_Model {
     }
     
     //some returns 2d array of rows. 
-    public function some_xml()
+    public function some_xml($what, $which)
     {
+        $records = array(array());
+        $records = $this->some($what, $which);
         
+        foreach($records as $xml)
+        {
+            $xml = simplexml_load_string($records['xml_desc']);
+            
+            $records[]['description'] = (string)$xml->description;
+
+            $records[]['id'] = $xml['id'];
+            $records[]['contact'] = $xml['contact'];
+            $records[]['price'] = $xml['price'];
+            $records[]['date'] = $xml['date'];
+
+            $records[]['picture'][] = $xml->gallery['pic1'];
+            $records[]['picture'][] = $xml->gallery['pic2'];
+            $records[]['picture'][] = $xml->gallery['pic3'];
+
+            foreach($xml->specfic as $temp)
+            {
+                $this1 =array(
+                        'id' => $temp['id'],
+                        'value' =>$temp['value']
+                       );
+                $records[]['specific'][] = $this1;
+            }
+        }
+        return $records;
     }
     //update
     //delete
