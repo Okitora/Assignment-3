@@ -16,8 +16,6 @@ Details for the attractions, Fall 2014
 -->
 
 <!-- Details for Attractions -->
-<!ELEMENT list (detail*)>
-
 <!ELEMENT detail (description, gallery, specific*)>
 <!ATTLIST detail
     id      CDATA   #REQUIRED
