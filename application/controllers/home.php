@@ -27,12 +27,12 @@ class Home extends Application {
         //if they are not logged in, have login button show
         if($this->session->userdata('userRole') == 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
         }
         //if they are logged in have logout button show
         elseif($this->session->userdata('userRole') > 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
         }
         $choice = '';
         
@@ -107,12 +107,12 @@ class Home extends Application {
         //if they are not logged in, have login button show
         if($this->session->userdata('userRole') == 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
         }
         //if they are logged in have logout button show
         elseif($this->session->userdata('userRole') > 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
         }
         
         // we need to construct pretty editing fields using the formfields helper
@@ -162,12 +162,12 @@ class Home extends Application {
         //if they are not logged in, have login button show
         if($this->session->userdata('userRole') == 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
         }
         //if they are logged in have logout button show
         elseif($this->session->userdata('userRole') > 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
         }
         
         // we need to construct pretty editing fields using the formfields helper
@@ -219,12 +219,12 @@ class Home extends Application {
         //if they are not logged in, have login button show
         if($this->session->userdata('userRole') == 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
         }
         //if they are logged in have logout button show
         elseif($this->session->userdata('userRole') > 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
         }
         
         // we need to construct pretty editing fields using the formfields helper
@@ -278,12 +278,12 @@ class Home extends Application {
         //if they are not logged in, have login button show
         if($this->session->userdata('userRole') == 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
         }
         //if they are logged in have logout button show
         elseif($this->session->userdata('userRole') > 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
         }
         
         //get all sub categories within the main category
@@ -298,7 +298,7 @@ class Home extends Application {
                 'name' => $cat->attr_name,
                 'pic'  => $cat->image_name,
                 'description' => $cat->description,
-                'href' => '/home/destination',
+                'href' => '/DestinationSpot',
             );
             
             $catlist[] = $this1;
@@ -324,12 +324,12 @@ class Home extends Application {
         //if they are not logged in, have login button show
         if($this->session->userdata('userRole') == 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
         }
         //if they are logged in have logout button show
         elseif($this->session->userdata('userRole') > 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
         }
         
         //get all sub categories within the main category
@@ -345,7 +345,7 @@ class Home extends Application {
                 'name' => $cat->attr_name,
                 'pic'  => $cat->image_name,
                 'description' => $cat->description,
-                'href' => '/home/destination',
+                'href' => '/DestinationSpot',
             );
             
             $catlist[] = $this1;
@@ -366,12 +366,12 @@ class Home extends Application {
         //if they are not logged in, have login button show
         if($this->session->userdata('userRole') == 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
         }
         //if they are logged in have logout button show
         elseif($this->session->userdata('userRole') > 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
         }
         
         //get all sub categories within the main category
@@ -387,7 +387,7 @@ class Home extends Application {
                 'name' => $cat->attr_name,
                 'pic'  => $cat->image_name,
                 'description' => $cat->description,
-                'href' => '/home/destination',
+                'href' => '/DestinationSpot',
             );
             
             $catlist[] = $this1;
@@ -413,26 +413,49 @@ class Home extends Application {
         //if they are not logged in, have login button show
         if($this->session->userdata('userRole') == 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
         }
         //if they are logged in have logout button show
         elseif($this->session->userdata('userRole') > 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
         }
         
         // build the list of places, to pass on to our view
         $record = $this->attractions->get($id);    //get all the attractions from DB
         $places = array();
         
+        //parse xml
+        //$description = $this->attractions->getArray($record['xml_desc']);
+        
         //place every attraction into places array.
        
             $this1 = array(
+                'id'            => $record->attr_id,
                 'name'          => $record->attr_name, 
                 'description'   => $record->description,
-                'price'         => $record->price,
+                'main_id'       => $record->main_id,
+                'price_range'   => $record->price,
+                //'price_range'         => $record->price_range,
                 'target'        => $record->sub_id,
-                'pic'           => $record->image_name
+                //'target'        => $record->tar_aud,
+                'pic'           => $record->image_name,
+                /*
+                 * 'contact'    => $description->contact,
+                 * 'date'       => $description->date,
+                 * 'price'      => $description->price,
+                 * 'description' => $description->description,
+                 * 'pic1'        => $description->pic1,
+                 * 'pic2'        => $description->pic2,
+                 * 'pic3'        => $description->pic3,
+                 */
+                
+                /*
+                 * $this2 = array(
+                 *  'sid' => $specific->id,
+                 *   'svalue => $specific->value,    
+                 * );
+                 */
             );
        
             $places[] = $this1;

@@ -24,12 +24,12 @@ class Main extends Application {
         //if they are not logged in, have login button show
         if($this->session->userdata('userRole') == 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
         }
         //if they are logged in have logout button show
         elseif($this->session->userdata('userRole') > 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
         }
         
         // build the list of places, to pass on to our view

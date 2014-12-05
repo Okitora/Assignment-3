@@ -42,7 +42,6 @@ class Authenticate extends Application
         // merge the view parms with the current item record
         //$this->data = array_merge($this->data, $item_record);
         // we need to construct pretty editing fields using the formfields helper
-        $this->load->helper('formfields');
         $this->data['fusername'] = makeTextField('UserID', 'id', '', "You must have an userID", 10, 25);
         $this->data['fpassword'] = makePasswordField('Password', 'password', '', "Account must have a password");
         
@@ -93,7 +92,7 @@ class Authenticate extends Application
             $this->session->set_userdata('userName', $user->name);
             $this->session->set_userdata('userRole', $role);
             
-            redirect('/authenticate/success/'. $key);
+            redirect('/Success/'. $key);
         }
         else
         {
@@ -132,8 +131,7 @@ class Authenticate extends Application
 
         // merge the view parms with the current item record
         //        $this->data = array_merge($this->data, $item_record);
-        // we need to construct pretty editing fields using the formfields helper
-        $this->load->helper('formfields');
+        // we need to construct pretty editing fields using the formfields helper       
         $this->data['fusername'] = makeTextField('UserID', 'id', '', "You must have an userID", 10, 25);
         $this->data['fpassword'] = makePasswordField('Password', 'password', '', "Account must have a password");
         
@@ -150,12 +148,12 @@ class Authenticate extends Application
         //if they are not logged in, have login button show
         if($this->session->userdata('userRole') == 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
         }
         //if they are logged in have logout button show
         elseif($this->session->userdata('userRole') > 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
         }
         
         $user = $this->users->get($id);
@@ -178,12 +176,12 @@ class Authenticate extends Application
         //if they are not logged in, have login button show
         if($this->session->userdata('userRole') == 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
         }
         //if they are logged in have logout button show
         elseif($this->session->userdata('userRole') > 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
         }
         
         //redirect('/');
@@ -197,12 +195,12 @@ class Authenticate extends Application
         //if they are not logged in, have login button show
         if($this->session->userdata('userRole') == 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
         }
         //if they are logged in have logout button show
         elseif($this->session->userdata('userRole') > 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
         }
         
         $this->render();
@@ -215,12 +213,12 @@ class Authenticate extends Application
         //if they are not logged in, have login button show
         if($this->session->userdata('userRole') == 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/attempt" class="btn btn-success">Login</a>';
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
         }
         //if they are logged in have logout button show
         elseif($this->session->userdata('userRole') > 0)
         {
-            $this->data['btn'] = '<a href="/authenticate/logout" class="btn btn-inverse">Logout</a>';
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
         }
         
         $this->render();

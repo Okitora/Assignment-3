@@ -40,14 +40,16 @@
 
 $route['default_controller'] = "main";
 $route['List'] = "home";
-$route['Entertainment'] = "home/sublistType/e";
-$route['Eco'] = "home/sublistType/t";
-$route['Family'] = "home/sublistType/f";
-$route['Shopping'] = "home/sublistType/s";
-$route['SightSeeing'] = "home/sublistType/w";
-$route['admin'] = "admin";
-$route['login'] = "authenticate/attempt";
-$route['logout'] = "authenticate/logout";
+$route['Entertainment'] = "home/sublistType/Entertainment";
+$route['Eco'] = "home/sublistType/Eco-Tourism";
+$route['Family'] = "home/sublistType/Family-Fun";
+$route['Shopping'] = "home/sublistType/Shopping";
+$route['SightSeeing'] = "home/sublistType/Sight-Seeing";
+$route['Admin'] = "admin";
+$route['Login'] = "authenticate/attempt";
+$route['Logout'] = "authenticate/logout";
+$route['Success/(:num)'] = "authenticate/success/$1";
+$route['DestinationSpot/(:any)'] = "home/destination/$1";
 $route['404_override'] = '';
 
 

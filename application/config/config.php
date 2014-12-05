@@ -13,8 +13,8 @@ $config['menu_choices'] = array(
         array('name' => 'FamilyFun',        'link' => '/Family'),
         array('name' => 'Malls',            'link' => '/Shopping'),
         array('name' => 'SightSeeing',      'link' => '/SightSeeing'),
-        array('name' => 'About',            'link' => '/about'),
-        array('name' => 'Admin',            'link' => '/admin'),
+        array('name' => 'About',            'link' => '/About'),
+        array('name' => 'Admin',            'link' => '/Admin'),
         )
     );
 

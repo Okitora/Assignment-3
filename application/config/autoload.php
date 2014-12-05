@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database', 'parser', 'session');
+$autoload['libraries'] = array('database', 'parser', 'session', 'caboose');
 /*
 | -------------------------------------------------------------------
 |  Auto-load Helper Files
@@ -108,7 +108,7 @@ $autoload['language'] = array();
 */
 
 $autoload['model'] = array('attractions', 'categories', 'sub', 'users');
-
+//$autoload['model'] = array('attractions', 'users');
 
 /* End of file autoload.php */
 /* Location: ./application/config/autoload.php */

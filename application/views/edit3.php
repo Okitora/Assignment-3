@@ -5,9 +5,11 @@
     {fdescription}
     {fmain}
     {fsub}
+    <!--{ftarget}-->
     {fcontact}
     {fdate}
     {fprice}
+    <!--{fprice_range}-->
     {fpicture}
     {fsubmit}
 </form>
