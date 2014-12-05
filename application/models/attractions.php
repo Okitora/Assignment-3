@@ -129,7 +129,7 @@ class Attractions extends MY_Model {
     {
         $records = (array)$this->get($key);
         
-        $xml = simplexml_load_string($records['xml_desc']);
+        $xml = simplexml_load_string($records['detail']);
         
         $records['description'] = (string)$xml->description;
         
@@ -163,7 +163,7 @@ class Attractions extends MY_Model {
         
         foreach($records as $temp)
         {
-            $xml = simplexml_load_string($records['xml_desc']);
+            $xml = simplexml_load_string($records['detail']);
             
             $temp['description'] = (string)$xml->description;
 
@@ -193,7 +193,8 @@ class Attractions extends MY_Model {
     //update
     public function update_xml($record)
     {
-        $temp = $record;
+        $xml = simplexml_load_string($record['detail']);
+        
         
         
     }
@@ -206,7 +207,7 @@ class Attractions extends MY_Model {
     //create
     public function create_xml($record)
     {
-        $xml = simplexml_load_string($record['xml_desc']);
+        $xml = simplexml_load_string($record['detail']);
         
         $xml->addAttribute('id', $record['id']);
         $xml->addAttribute('contact', $record['contact']);
@@ -229,7 +230,7 @@ class Attractions extends MY_Model {
         $newrec['main_id'] = $record['main_id'];
         $newrec['price_range'] = $record['price_range'];
         $newrec['tar_aud'] = $record['tar_aud'];
-        $newrec['xml_desc'] = $xml->asXML();
+        $newrec['detail'] = $xml->asXML();
         
         $this->add($newrec);
         //whoops, not this stuff.

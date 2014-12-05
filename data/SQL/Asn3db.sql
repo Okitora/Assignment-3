@@ -25,14 +25,14 @@ CREATE TABLE IF NOT EXISTS `attraction` (
   `attr_name` varchar(32) NOT NULL,
   `main_id` varchar(1) NOT NULL,
   `price_range` varchar(1) NOT NULL,
-  `xml_desc` varchar(4096) NOT NULL,
+  `detail` varchar(4096) NOT NULL,
   `tar_aud` varchar(32) NOT NULL,
   PRIMARY KEY (`attr_code`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 -- --------------------------------------------------------
 
 -- images in /data folder in webapp
-INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`xml_desc`, `tar_aud`) VALUES
+INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`detail`, `tar_aud`) VALUES
 ('01', 'Kaikohe Car Club', 'e', 'e', 
 	'<?xml version="1.0" encoding="UTF-8"?>
         <detail id="01" contact="09 238 4680" price="50" date="1393621846">

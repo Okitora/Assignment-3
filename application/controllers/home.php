@@ -426,7 +426,7 @@ class Home extends Application {
         $places = array();
         
         //parse xml
-        //$description = $this->attractions->getArray($record['xml_desc']);
+        //$description = $this->attractions->getArray($record['detail']);
         
         //place every attraction into places array.
        
