@@ -138,9 +138,11 @@ class Attractions extends MY_Model {
         $records['price'] = $xml['price'];
         $records['date'] = $xml['date'];
         
-        $records['picture'][] = $xml->gallery['pic1'];
-        $records['picture'][] = $xml->gallery['pic2'];
-        $records['picture'][] = $xml->gallery['pic3'];
+        $records['gallery']= array(
+                                        $xml->gallery['pic1'],
+                                        $xml->gallery['pic2'],
+                                        $xml->gallery['pic3']
+                                    );
         
         foreach($xml->specfic as $temp)
         {
@@ -151,46 +153,48 @@ class Attractions extends MY_Model {
             $records['specific'][] = $this1;
         }
         
-        
-        
         return $records;
     }
     
     //some returns 2d array of rows. 
     public function some_xml($what, $which)
     {
-        $records = array(array());
         $records = $this->some($what, $which);
         
-        foreach($records as $xml)
+        foreach($records as $temp)
         {
             $xml = simplexml_load_string($records['xml_desc']);
             
-            $records[]['description'] = (string)$xml->description;
+            $temp['description'] = (string)$xml->description;
 
-            $records[]['id'] = $xml['id'];
-            $records[]['contact'] = $xml['contact'];
-            $records[]['price'] = $xml['price'];
-            $records[]['date'] = $xml['date'];
+            $temp['id'] = $xml['id'];
+            $temp['contact'] = $xml['contact'];
+            $temp['price'] = $xml['price'];
+            $temp['date'] = $xml['date'];
 
-            $records[]['picture'][] = $xml->gallery['pic1'];
-            $records[]['picture'][] = $xml->gallery['pic2'];
-            $records[]['picture'][] = $xml->gallery['pic3'];
+            $temp['gallery']= array(
+                                        $xml->gallery['pic1'],
+                                        $xml->gallery['pic2'],
+                                        $xml->gallery['pic3']
+                                    );
 
-            foreach($xml->specfic as $temp)
+            foreach($temp->specfic as $spectemp)
             {
                 $this1 =array(
-                        'id' => $temp['id'],
-                        'value' =>$temp['value']
+                        'id' => $spectemp['id'],
+                        'value' =>$spectemp['value']
                        );
-                $records[]['specific'][] = $this1;
+                $temp['specific'] = $this1;
             }
+            $records[/*not sure what goes in here*/][] = $temp;
         }
         return $records;
     }
     //update
     public function update_xml($record)
     {
+        $temp = $record;
+        
         
     }
     //delete
@@ -200,5 +204,38 @@ class Attractions extends MY_Model {
     {
     }
     //create
-   
+    public function create_xml($record)
+    {
+        $xml = simplexml_load_string($record['xml_desc']);
+        
+        $xml->addAttribute('id', $record['id']);
+        $xml->addAttribute('contact', $record['contact']);
+        $xml->addAttribute('price', $record['price']);
+        $xml->addAttribute('date', $record['date']);
+        
+        $xml->description = $record['description'];
+        $xml->gallery = $record['gallery'];
+        $xml->addAttribute('pic1', $record['gallery']['pic1']);
+        $xml->addAttribute('pic2', $record['gallery']['pic2']);
+        $xml->addAttribute('pic3', $record['gallery']['pic3']);
+        
+        //do i need to specify another specific creation because i have 2 in my xml?
+        $xml->specific = $record['specific'];
+        $xml->addAttribute('id', $record['specific']['id']);
+        $xml->addAttribute('value', $record['specific']['value']);
+        
+        $newrec['attr_id'] = $record['attr_id'];
+        $newrec['attr_name'] = $record['attr_name'];
+        $newrec['main_id'] = $record['main_id'];
+        $newrec['price_range'] = $record['price_range'];
+        $newrec['tar_aud'] = $record['tar_aud'];
+        $newrec['xml_desc'] = $xml->asXML();
+        
+        $this->add($newrec);
+        //whoops, not this stuff.
+        /*foreach($record['specific'] as $specattr)
+        {
+            $xml->addAttribute('id', 'value');
+        }*/
+    }
 }
