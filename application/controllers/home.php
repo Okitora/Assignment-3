@@ -426,7 +426,8 @@ class Home extends Application {
         $places = array();
         
         //parse xml
-        //$description = $this->attractions->getArray($record['detail']);
+        //gets the details part in attraction, returns array
+        //$detail = $this->attractions->get_xml($id);
         
         //place every attraction into places array.
        
@@ -441,24 +442,29 @@ class Home extends Application {
                 //'target'        => $record->tar_aud,
                 'pic'           => $record->image_name,
                 /*
-                 * 'contact'    => $description->contact,
-                 * 'date'       => $description->date,
-                 * 'price'      => $description->price,
-                 * 'description' => $description->description,
-                 * 'pic1'        => $description->pic1,
-                 * 'pic2'        => $description->pic2,
-                 * 'pic3'        => $description->pic3,
+                 * 'contact'    => $detail['contact'],
+                 * 'date'       => $detail['date'],
+                 * 'price'      => $detail['price'],
+                 * 'description' => $detail['description'],
+                 * 'pic1'        => $detail->gallery['pic1'],
+                 * 'pic2'        => $detail->gallery['pic2'],
+                 * 'pic3'        => $detail->gallery['pic3'],
                  */
                 
                 /*
-                 * $this2 = array(
-                 *  'sid' => $specific->id,
-                 *   'svalue => $specific->value,    
+                foreach($detail['specific'] as $specific)
+                {
+                 $this2 = array(
+                   'id' => $specific->id,
+                    'value' => $specific->value, 
+                    );
+                }
                  * );
                  */
             );
        
             $places[] = $this1;
+            $places[] = $this2;
             
         //$this1 = $this->parser->parse('item', (array)$this->attractions->getDetails($id), true);
         //send places array to our data
