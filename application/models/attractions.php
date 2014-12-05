@@ -189,7 +189,16 @@ class Attractions extends MY_Model {
         return $records;
     }
     //update
+    public function update_xml($record)
+    {
+        
+    }
     //delete
+    // do we need a delete xml function? wouldnt update with empty 
+    // elements be enough to for deleting a specific xml?
+    public function delete_xml($key)
+    {
+    }
     //create
    
 }
