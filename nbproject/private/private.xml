@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/Assignment-3/application/controllers/home.php</file>
-            <file>file:/C:/xampp/htdocs/Assignment-3/assets/css/style.css</file>
             <file>file:/C:/xampp/htdocs/Assignment-3/data/SQL/Asn3db.sql</file>
-            <file>file:/C:/xampp/htdocs/Assignment-3/data/attractiondetail.dtd</file>
-            <file>file:/C:/xampp/htdocs/Assignment-3/data/attractiondetail.xml</file>
+            <file>file:/C:/xampp/htdocs/Assignment-3/application/views/sublist.php</file>
+            <file>file:/C:/xampp/htdocs/Assignment-3/application/core/MY_Model.php</file>
+            <file>file:/C:/xampp/htdocs/Assignment-3/application/controllers/home.php</file>
+            <file>file:/C:/xampp/htdocs/Assignment-3/application/controllers/authenticate.php</file>
+            <file>file:/C:/xampp/htdocs/Assignment-3/application/controllers/admin.php</file>
         </group>
     </open-files>
 </project-private>
