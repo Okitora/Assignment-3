@@ -334,7 +334,7 @@ class Home extends Application {
         
         //get all sub categories within the main category
         //$source = $this->attractions->some('tar_aud', $code);
-        $source = $this->attractions->some('main_id', $code);
+        $source = $this->attractions->some('sub_id', $code);
         $catlist = array();
         
         //retrieve all variables from the view
