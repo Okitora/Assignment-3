@@ -195,8 +195,19 @@ class Attractions extends MY_Model {
     {
         $xml = simplexml_load_string($record['detail']);
         
+        $xml->description = $record['description'];
+        $xml->gallery = $record['gallery'];
+        //do i need to specify another specific creation because i have 2 in my xml?
+        $xml->specific = $record['specific'];
         
+        $newrec['attr_id'] = $record['attr_id'];
+        $newrec['attr_name'] = $record['attr_name'];
+        $newrec['main_id'] = $record['main_id'];
+        $newrec['price_range'] = $record['price_range'];
+        $newrec['tar_aud'] = $record['tar_aud'];
+        $newrec['detail'] = $xml->asXML();
         
+        $this->update($newrec);
     }
     //delete
     // do we need a delete xml function? wouldnt update with empty 
