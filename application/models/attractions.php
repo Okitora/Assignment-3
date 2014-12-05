@@ -123,5 +123,14 @@ class Attractions extends MY_Model {
         }
         
     }
+    
+    //some returns 2d array of rows. 
+    public function some_xml()
+    {
+        
+    }
+    //update
+    //delete
+    //create
    
 }
