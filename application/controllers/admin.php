@@ -20,6 +20,24 @@ class Admin extends Application {
 
     function index() {
         $this->data['pagebody'] = 'admin';    // this is the view we want shown
+        
+        //if they are not logged in, they cannot view the page
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
+            redirect('/authenticate/noLogin');
+        }
+        
+        //if they are not admin, access denied. Cannot view page
+        elseif($this->session->userdata('userRole') != ADMIN)
+        {
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
+            redirect('/authenticate/noAccess');
+        }
+        elseif($this->session->userdata('userRole') == ADMIN)
+        {
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
+        }
        
         // build the list of places, to pass on to our view
         $source = $this->attractions->all();    //get all the attractions from DB
@@ -35,9 +53,11 @@ class Admin extends Application {
                 'description' => $record->description,
                 'main'        => $record->main_id,
                 'sub'         => $record->sub_id,
+                //'target'      => $record->tar_aud,
                 'contact'     => $record->contact, 
                 'date'        => $record->date,
                 'price'       => $record->price,
+                //'price_range  => $record->price_range,
             );
         
             
@@ -53,6 +73,17 @@ class Admin extends Application {
     {
         $this->data['pagebody'] = 'editlist';   
         
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
+        }
+        
         //get all attractions
         $source = $this->attractions->all();
         $items = '';
@@ -67,9 +98,11 @@ class Admin extends Application {
                 'description' => $record->description,
                 'main'        => $record->main_id,
                 'sub'         => $record->sub_id,
+                //'target'         => $record->tar_aud,
                 'contact'     => $record->contact,
                 'date'        => $record->date,
                 'price'       => $record->price,
+                //'price_range' => $record->price_range,
             );
         
             
@@ -85,6 +118,17 @@ class Admin extends Application {
     function edit3($which) {
         
         $this->data['pagebody'] = 'edit3';  //this is the view that we want
+        
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
+        }
 
         // use “item” as the session key
         // assume no item record in-progress
@@ -113,24 +157,26 @@ class Admin extends Application {
         //$this->data = array_merge($this->data, $item_record);
         
         // we need to construct pretty editing fields using the formfields helper
-        $this->load->helper('formfields');
         $this->data['fid'] = makeTextField('Attraction ID', 'attr_id', $item_record['attr_id'], "item identifier ... cannot be changed", 10, 25, true);
         $this->data['fname'] = makeTextField('Name', 'attr_name', $item_record['attr_name'], "Name your customers are comfortable with");
         $this->data['fdescription'] = makeTextArea('Description', 'description', $item_record['description'], 'This is a long-winded and humorous caption that pops up if the visitor hovers over a menu item picture too long.', 1000);
         
-        $options = array('f' => 'Family Fun', 't' => 'Eco Tourism', 's' => 'Shopping', 'e' => 'Entertainment', 'w' => 'SightSeeing');
+        $options = array('Family-Fun' => 'Family Fun', 'Eco-Tourism' => 'Eco Tourism', 'Shopping' => 'Shopping', 'Entertainment' => 'Entertainment', 'Sight-Seeing' => 'Sight Seeing');
         $this->data['fmain'] = makeComboField('Main category', 'main_id', $item_record['main_id'], $options, "Main category. Used to group similar things by column for ordering");
         
         $options2 = array('ra' => 'Racing', 'nc' => 'Night Club', 'st' => 'Stadium', 
             'mo' => 'Movie', 'ng' => 'Nature Garden', 'tp' => 'Theme Park', 'sm' => 'Shopping Mall',
             'df' => 'Duty Free', 'ts' => 'Tourist Shops', 'vo' => 'volcanos', 'bw' => 'bird watching',
             'yc' => 'Yacht Cruising', 'tr' => 'Trails', 'wt' => 'Walking Tracks', 'cw' => 'Coast Walks');
-        $this->data['fsub'] = makeComboField('Sub category', 'sub_id', $item_record['sub_id'], $options2, "Sub category. Used to group similar things by column for ordering");
+        //$options2 = array('adult' = >'Adult', 'teenager' => 'Teenager', 'kids' => 'Kids');
+        //$this->data['ftarget'] = makeComboField('Target Audience', 'tar_aud', $item_record['tar_aud'], $options2, "Sub category. Used to group similar things by column for ordering");
+        $this->data['fsub'] = makeComboField('Target Audience', 'sub_id', $item_record['sub_id'], $options2, "Sub category. Used to group similar things by column for ordering");
         $this->data['fcontact'] = makeTextField('Contact', 'contact', $item_record['contact'], 'This is the contact info for the attraction');
         $this->data['fdate'] = makeTextArea('Date', 'date', $item_record['date'], 'Time stamp of when the attraction was added');
         
-        $options3 = array('c' => 'Cheap', 'm' => 'Moderate', 'e' => 'Expensive');
-        $this->data['fprice'] = makeComboField('Price', 'price', $item_record['price'], $options3, "Price range for the attraction");
+        $options3 = array('Cheap' => 'Cheap', 'Moderate' => 'Moderate', 'Expensive' => 'Expensive');
+        $this->data['fprice'] = makeComboField('Price Range', 'price', $item_record['price'], $options3, "Price range for the attraction");
+        //$this->data['fprice_range'] = makeComboField('Price Range', 'price_range', $item_record['price_range'], $options3, "Price range for the attraction");
         $this->data['fpicture'] = showImage('Attraction picture shown at ordering time', $item_record['image_name']);
         $this->data['fsubmit'] = makeSubmitButton('Post Changes', 'Do you feel lucky?');
         
@@ -155,17 +201,18 @@ class Admin extends Application {
 
         //has to have a main category
         $cat = $fields['main_id'];
-        if (($cat != 'e') && ($cat != 'f') && ($cat != 'w') && ($cat != 't') && ($cat != 's')) 
+        if (($cat != 'Entertainment') && ($cat != 'Family-Fun') && ($cat != 'Sight-Seeing') && ($cat != 'Eco-Tourism') && ($cat != 'Shopping')) 
         {
-            $this->errors[] = 'Your category has to be one of entertainment, family-fun, eco-tourism, shopping, sightseeing :(';
+            $this->errors[] = 'Your category has to be one of Entertainment, Family-Fun, Eco-Tourism, Shopping, Sight-Seeing :(';
         }
         
         //has to have a sub category
         $cat = $fields['sub_id'];
-        
+        //$cat = $fields['tar_aud'];
         if (($cat != 'ra') && ($cat != 'nc') && ($cat != 'st') && ($cat != 'mo') && ($cat != 'ng')
             && ($cat != 'tp') && ($cat != 'sm') && ($cat != 'df') && ($cat != 'ts') && ($cat != 'vo')
             && ($cat != 'bw') && ($cat != 'yc') && ($cat != 'tr') && ($cat != 'wt') && ($cat != 'cw')) 
+        //if(($cat != 'adult) && ($cat != 'teenager') && ($cat != 'kids'))
         {
             $this->errors[] = 'Your sub-category has to be one of Racing, Night Club, 
                 Stadium, Movies, Nature Garden, Theme Park, Shopping Malls, Duty Free, 
@@ -186,7 +233,8 @@ class Admin extends Application {
         
         //needs to have a price
         $cat = $fields['price'];
-        if (($cat != 'c') && ($cat != 'm') && ($cat != 'e'))
+        //$cat = $fields['price_range'];
+        if (($cat != 'Cheap') && ($cat != 'Moderate') && ($cat != 'Expensive'))
         {
             $this->errors[] = 'Your price range has to be cheap, moderate or expensive...';
         }
@@ -242,17 +290,19 @@ class Admin extends Application {
         }
 
         $cat = $fields['main_id'];
-        if (($cat != 'e') && ($cat != 'f') && ($cat != 'w') && ($cat != 't') && ($cat != 's')) 
+        if (($cat != 'Entertainment') && ($cat != 'Family-Fun') && ($cat != 'Sight-Seeing') && ($cat != 'Eco-Tourism') && ($cat != 'Shopping')) 
         {
-            $this->errors[] = 'Your category has to be one of entertainment, family-fun, eco-tourism, shopping, sightseeing :(';
+            $this->errors[] = 'Your category has to be one of Entertainment, Family-Fun, Eco-Tourism, Shopping, Sight-Seeing :(';
         }
         
         $cat = $fields['sub_id'];
+        //$cat = $fields['tar_aud'];
         if (($cat != 'ra') && ($cat != 'nc') && ($cat != 'st') && ($cat != 'mo') && ($cat != 'ng')
             && ($cat != 'tp') && ($cat != 'sm') && ($cat != 'df') && ($cat != 'ts') && ($cat != 'vo')
             && ($cat != 'bw') && ($cat != 'yc') && ($cat != 'tr') && ($cat != 'wt') && ($cat != 'cw')) 
+        //if(($cat != 'adult) && ($cat != 'teenager') && ($cat != 'kids'))
         {
-            $this->errors[] = 'Your sub-category has to be one of Racing, Night Club, 
+            $this->errors[] = 'Your Target Audience has to be one of Racing, Night Club, 
                 Stadium, Movies, Nature Garden, Theme Park, Shopping Malls, Duty Free, 
                 Tourist Shops, Volcanos, Bird Watching, Yacht Cruising, Trails, Walking Tracks, Coast Walks :(';
         }
@@ -268,7 +318,8 @@ class Admin extends Application {
         }
         //needs to have a price
         $cat = $fields['price'];
-        if (($cat != 'c') && ($cat != 'm') && ($cat != 'e'))
+        //$cat = $fields['price_range'];
+        if (($cat != 'Cheap') && ($cat != 'Moderate') && ($cat != 'Expensive'))
         {
             $this->errors[] = 'Your price range has to be cheap, moderate or expensive...';
         }
@@ -309,9 +360,11 @@ class Admin extends Application {
             $record->description = $fields['description'];
             $record->main_id = $fields['main_id'];
             $record->sub_id = $fields['sub_id'];
+            //$record->tar_aud = $fields['tar_aud'];
             $record->contact = $fields['contact'];
             $record->date = $fields['date'];
             $record->price = $fields['price'];
+            //$record->price_range = $fields['price_range'];
             $record->image_name = 'Larnach-Castle-02_opt.jpg';
             
             $this->attractions->add($record);
@@ -335,6 +388,17 @@ class Admin extends Application {
         $this->data['pagebody'] = 'areYouSure';
         $this->data['title'] = 'Are You Sure?';
         
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
+        }
+        
         $this->data['id'] = $id;
         
         $this->render();
@@ -349,6 +413,20 @@ class Admin extends Application {
          $this->data['pagebody'] = 'add';
          $this->data['title'] = 'Add an Attraction';
          
+<<<<<<< HEAD
+=======
+         //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
+        }
+         
+>>>>>>> origin/master
          // use “item” as the session key
         // assume no item record in-progress
         $item_record = null;
@@ -361,6 +439,7 @@ class Admin extends Application {
                 $item_record = $session_record;
             }   
         }
+<<<<<<< HEAD
 
 
         // merge the view parms with the current item record
@@ -423,8 +502,73 @@ class Admin extends Application {
         
         return $name;
     }
+=======
+>>>>>>> origin/master
 
 
+        // merge the view parms with the current item record
+        //$this->data = array_merge($this->data, $item_record);
+        
+        // we need to construct pretty editing fields using the formfields helper
+        //$item_record['attr_id'] = $this->attractions->many() + 1;
+        $this->data['fid'] = makeTextField('Attraction ID', 'attr_id', $this->attractions->many() + 1, "Item has to have an id", 10, 25, true);
+        $this->data['fname'] = makeTextField('Name', 'attr_name', $item_record['attr_name'], "Name your customers are comfortable with");
+        $this->data['fdescription'] = makeTextArea('Description', 'description', $item_record['description'], 'This is a long-winded and humorous caption that pops up if the visitor hovers over a menu item picture too long.', 1000);
+        
+        $options = array('Family-Fun' => 'Family Fun', 'Eco-Tourism' => 'Eco Tourism', 'Shopping' => 'Shopping', 'Entertainment' => 'Entertainment', 'Sight-Seeing' => 'Sight Seeing');
+        $this->data['fmain'] = makeComboField('Main category', 'main_id', $item_record['main_id'], $options, "Main category. Used to group similar things by column for ordering");
+        
+        $options2 = array('ra' => 'Racing', 'nc' => 'Night Club', 'st' => 'Stadium', 
+            'mo' => 'Movie', 'ng' => 'Nature Garden', 'tp' => 'Theme Park', 'sm' => 'Shopping Mall',
+            'df' => 'Duty Free', 'ts' => 'Tourist Shops', 'vo' => 'volcanos', 'bw' => 'bird watching',
+            'yc' => 'Yacht Cruising', 'tr' => 'Trails', 'wt' => 'Walking Tracks', 'cw' => 'Coast Walks');
+        //$options2 = array('adult' = >'Adult', 'teenager' => 'Teenager', 'kids' => 'Kids');
+        //$this->data['ftarget'] = makeComboField('Target Audience', 'tar_aud', $item_record['tar_aud'], $options2, "Target Audience. Used to group similar things by column for ordering");
+        $this->data['fsub'] = makeComboField('Target Audience', 'sub_id', $item_record['sub_id'], $options2, "Sub category. Used to group similar things by column for ordering");
+        $this->data['fcontact'] = makeTextField('Contact', 'contact', $item_record['contact'], 'This is the contact info for the attraction');
+        $this->data['fdate'] = makeTextArea('Date', 'date', $item_record['date'], 'Time stamp of when the attraction was added');
+        
+        $options3 = array('Cheap' => 'Cheap', 'Moderate' => 'Moderate', 'Expensive' => 'Expensive');
+        $this->data['fprice'] = makeComboField('Price Range', 'price', $item_record['price'], $options3, "Price range for the attraction");
+        //$this->data['fprice_range'] = makeComboField('Price Range', 'price_range', $item_record['price_range'], $options3, "Price range for the attraction");
+        $this->data['fpicture'] = showImage('Default Attraction picture will be shown, want a different picture? TBA', $item_record['image_name']);
+        //$this->data['fpicture'] = makeImageUploader('Picture', $item_record['image_name'], 'Attraction picture uploaded');
+        $this->data['fsubmit'] = makeSubmitButton('Post Changes', 'Do you feel lucky?');
+                
+         $this->render();
+    }
+    
+    /**
+     * Deletes the attraction that was specified
+     * @param type $id
+     */
+    function delete($id)
+    {
+        //gets the record
+        $record = $this->attractions->get($id);
+        
+        //delete record
+        $this->attractions->delete($id);
+        
+        
+        redirect('admin/editlist');
+    }
+    
+//redo
+    function handle_image_upload($record) 
+    {
+        $name = $record['name'];
+        $temp_name = $record['tmp_name'];
+        $size = $record['size'];
+        $member = $_SESSION['member'];
+        
+        $target = $this->config->item('data_folder') . '/members/' . $member->memberID . '/' . $name;
+        $target = str_replace(' ', '_', $target);
+        
+        move_uploaded_file($temp_name, $target);
+        
+        return $name;
+    }
 
 }
 

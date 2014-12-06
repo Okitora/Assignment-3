@@ -1,11 +1,10 @@
 <div class="row">
-    
-    <div class="span13">
-        <br /><br/>
+    <br>
+    <br>
+    <div class="span6">
         <img src="/data/{pic}" title="{name}"/>
-        <br /><br /><br /><br/>
     </div>
-    <div class="span12">
+    <div class="span6">
         <p class="lead">{description}</p>
     </div>
     

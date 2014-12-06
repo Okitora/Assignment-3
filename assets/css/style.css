@@ -1,6 +1,6 @@
 /* CSS definition file containing site stylesheet */
 body {
-    background: url('/data/new-zealand-lord-of-the-rings-edoras-uruk-hai-marching-valley-rohan.jpg') no-repeat center center fixed;
+    background: url('/data/new-zealand-lord-of-the-rings-edoras-uruk-hai-marching-valley-rohan.jpg') no-repeat center fixed;
 }
 #content {
     width:110%; 
@@ -41,10 +41,10 @@ td {
     opacity:.8;
 }
 
-.span12
+.span6
 {
-    text-align: center;
-    background-color: #FFFAF0;
+    text-align: left;
+    background-color: #cce5ff;
      -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     filter: alpha(opacity=80);
     opacity:.8;
@@ -66,9 +66,27 @@ td {
     filter: alpha(opacity=80);
     opacity:.8;
 }
+
+.span12{
+    text-align: left;
+    background-color: #FFFAF0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+    opacity:.8;
+}
 form{
     background-color: #FFFAF0;
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     filter: alpha(opacity=80);
     opacity:.8;
+}
+.contain>div{
+    background-color: #FFFAF0;
+     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+    opacity:.8;
+    padding-left: 10px;
+}
+.ku>p{
+    text-align: right;
 }

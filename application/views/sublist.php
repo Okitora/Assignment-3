@@ -3,12 +3,18 @@
     <h2>Category: {main}</h2>
     <br />
 </div>
+<div class="contain">
 {places}
 <div class="row">
     
-    <h3>{name}</h3>
-    <div class="span5"><a href="{href}/{id}"><img src="/data/{pic}" title="{id}"/></a></div>
-    <br />
+    <h3><a href="{href}/{id}">{name}</a></h3>
+    <div class="span5"><img src="/data/{pic}" id="{id}" /></div>
+    
+    <div class="span6">
+        <p>{description}</p>
+    </div>
+    
     
 </div>
 {/places}
+</div>

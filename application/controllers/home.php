@@ -16,84 +16,460 @@ class Home extends Application {
 
     //-------------------------------------------------------------
     //  The normal pages
-    //-------------------------------------------------------------
-
+    //--------------------------------------------------------------
+    
+    
     function index()
     {
         $this->data['pagebody'] = 'list';
+        $this->data['title'] = 'Select by:';
+        
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
+        }
+        $choice = '';
+        
+        // we need to construct pretty editing fields using the formfields helper
+        $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
+        $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
+        $this->data['fsubmit'] = makeSubmitButton('Ok', 'Do you feel lucky?');
         
         //get all the main categories
-        $source = $this->categories->all();
+        $source = $this->attractions->all();
         
         $catlist = array();
+        $templist = array();
         
-        //retrieve all the variables for the view
+        //retrieve all categories from attractions
         foreach($source as $cat)
         {
-            $this1 = array(
-                'id'   => $cat->main_id,
-                'name' => $cat->main_name,
-                'pic'  => $cat->image_name,
-                'href' => '/home/sublist',
-            );
-            
-            $catlist[] = $this1;
+            $templist[] = $cat->main_id;
         }
         
+        //remove duplicates
+        $templist = array_unique($templist);
+        
+        //add links to the view
+        foreach($templist as $cat)
+        {
+            $this1 = array(
+                'id' => $cat,
+                'href' => '/home/sublistType'
+                );
+             
+            $catlist[] = $this1;
+        }
+        $this->data['places'] = $catlist;
+        
+        $this->render();
+    }
+    function choice($choice)
+    {
+        $fields = $this->input->post();
+       
+        if($fields['choice'] == 1)
+        {
+            $this->listByType();
+        }
+        elseif($fields['choice'] == 2)
+        {
+           $this->listByTarget();
+        }
+        elseif($fields['choice'] == 3)
+        {
+            $this->listByPriceRange();
+        }
+        else
+        {
+           $this->errors[] = 'Did not get your answer';
+            redirect('/List');
+        }   
+       
+     
+    }
+    
+    /** 
+     * List all the main categories
+     *
+     */
+    function listByType()
+    {
+        $this->data['pagebody'] = 'list';
+        $choice = '';
+        
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
+        }
+        
+        // we need to construct pretty editing fields using the formfields helper
+        $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
+        $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
+        $this->data['fsubmit'] = makeSubmitButton('Ok', 'Do you feel lucky?');
+        
+        //get all the main categories
+        $source = $this->attractions->all();
+        
+        $catlist = array();
+        $templist = array();
+        
+        //retrieve all categories from attractions
+        foreach($source as $cat)
+        {
+            $templist[] = $cat->main_id;
+        }
+        
+        //remove duplicates
+        $templist = array_unique($templist);
+        
+        //add links to the view
+        foreach($templist as $cat)
+        {
+            $this1 = array(
+                'id' => $cat,
+                'href' => '/home/sublistType'
+                );
+             
+            $catlist[] = $this1;
+        }
         $this->data['places'] = $catlist;
         
         $this->render();
         
     }
-    function sublist($code)
+    
+    /**
+     * Showing all categories by target Audience
+     */
+    function listByTarget()
+    {
+        $this->data['pagebody'] = 'list';
+        $choice = '';
+        
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
+        }
+        
+        // we need to construct pretty editing fields using the formfields helper
+        $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
+        $this->data['fmain'] 
+                = makeComboField('Choice', 'choice', $choice, $options, 
+                        "Pick the type to display attractions by.");
+        $this->data['fsubmit'] 
+                = makeSubmitButton('Ok', 'Do you feel lucky?');
+        
+        //get all the main categories
+        $source = $this->attractions->all();
+        
+        $catlist = array();
+        $templist = array();
+        
+        //retrieve all categories from attractions
+        foreach($source as $cat)
+        {
+            //$templist[] = $cat->tar_id;
+            $templist[] = $cat->sub_id;
+        }
+        
+        //remove duplicates
+        $templist = array_unique($templist);
+        
+        //add links to the view
+        foreach($templist as $cat)
+        {
+            $this1 = array(
+                'id' => $cat,
+                'href' => '/home/sublistTarget'
+                );
+             
+            $catlist[] = $this1;
+        }
+        $this->data['places'] = $catlist;
+        
+        $this->render();
+    }
+    
+    /**
+     * List all categories by the Price Range
+     */
+    function listByPriceRange()
+    {
+        $this->data['pagebody'] = 'list';
+        $choice = '';
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
+        }
+        
+        // we need to construct pretty editing fields using the formfields helper
+        $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
+        $this->data['fmain'] 
+                = makeComboField('Choice', 'choice', $choice, $options, 
+                        "Pick the type to display attractions by.");
+        $this->data['fsubmit'] 
+                = makeSubmitButton('Ok', 'Do you feel lucky?');
+        
+        //get all the main categories
+        $source = $this->attractions->all();
+        
+        $catlist = array();
+        $templist = array();
+        
+        //retrieve all categories from attractions
+        foreach($source as $cat)
+        {
+            //$templist[] = $cat->price_range;
+            $templist[] = $cat->price;
+        }
+        
+        //remove duplicates
+        $templist = array_unique($templist);
+        
+        //add links to the view
+        foreach($templist as $cat)
+        {
+            $this1 = array(
+                'id' => $cat,
+                'href' => '/home/sublistPriceRange'
+                );
+             
+            $catlist[] = $this1;
+        }
+        $this->data['places'] = $catlist;
+        
+        $this->render();
+    }
+    
+    /**
+     * Showing the Sub list of all attractions within the category type
+     * 
+     * @param type $code the category code
+     */
+    function sublistType($code)
     {
         $this->data['pagebody'] = 'sublist';
         
-        //get all sub categories within the main category
-        $source = $this->sub->some('main_id' , $code);
-        $name = $this->categories->get($code);
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
+        }
         
+        //get all sub categories within the main category
+        $source = $this->attractions->some('main_id', $code);
         $catlist = array();
         
         //retrieve all variables from the view
         foreach($source as $cat)
         {
             $this1 = array(
-                'id'   => $cat->sub_id,
-                'name' => $cat->sub_name,
+                'id'   => $cat->attr_id,
+                'name' => $cat->attr_name,
                 'pic'  => $cat->image_name,
-                'href' => '/home/destination',
+                'description' => $cat->description,
+                'href' => '/DestinationSpot',
             );
             
             $catlist[] = $this1;
         }
         
         $this->data['places'] = $catlist;
-        $this->data['main'] = $name->main_name;
+        $this->data['main'] = $code;
         
         
         $this->render();
     }
+    
+    
+    /**
+     * Showing the sublist of all attractions by Target Audience
+     * 
+     * @param type $code the target audience code
+     */
+    function sublistTarget($code)
+    {
+        $this->data['pagebody'] = 'sublist';
+        
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
+        }
+        
+        //get all sub categories within the main category
+        //$source = $this->attractions->some('tar_aud', $code);
+        $source = $this->attractions->some('sub_id', $code);
+        $catlist = array();
+        
+        //retrieve all variables from the view
+        foreach($source as $cat)
+        {
+            $this1 = array(
+                'id'   => $cat->attr_id,
+                'name' => $cat->attr_name,
+                'pic'  => $cat->image_name,
+                'description' => $cat->description,
+                'href' => '/DestinationSpot',
+            );
+            
+            $catlist[] = $this1;
+        }
+        
+        $this->data['places'] = $catlist;
+        $this->data['main'] = $code;
+        
+        
+        $this->render();
+        
+    }
+    
+    function sublistPriceRange($code)
+    {
+        $this->data['pagebody'] = 'sublist';
+        
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
+        {
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
+        }
+        
+        //get all sub categories within the main category
+        //$source = $this->attractions->some('price_range', $code);
+        $source = $this->attractions->some('price', $code);
+        $catlist = array();
+        
+        //retrieve all variables from the view
+        foreach($source as $cat)
+        {
+            $this1 = array(
+                'id'   => $cat->attr_id,
+                'name' => $cat->attr_name,
+                'pic'  => $cat->image_name,
+                'description' => $cat->description,
+                'href' => '/DestinationSpot',
+            );
+            
+            $catlist[] = $this1;
+        }
+        
+        $this->data['places'] = $catlist;
+        $this->data['main'] = $code;
+        
+        
+        $this->render();
+        
+    }
+    
+    /**
+     * Displays the specific attraction as specified by id
+     * 
+     * @param type $id 
+     * for specific attraction
+     */
     function destination($id) {
         $this->data['pagebody'] = 'homepage';    // this is the view we want shown
         
-        // build the list of places, to pass on to our view
-        $source = $this->attractions->some('sub_id', $id);    //get all the attractions from DB
-        $places = array();
-        
-        //place every attraction into places array.
-        foreach($source as $record)
+        //if they are not logged in, have login button show
+        if($this->session->userdata('userRole') == 0)
         {
-            $this1 = array(
-                'name' => $record->attr_name, 
-                'description' => $record->description,
-                'pic'   => $record->image_name
-            );
-            $places[] = $this1;
+            $this->data['btn'] = '<a href="/Login" class="btn btn-success">Login</a>';
+        }
+        //if they are logged in have logout button show
+        elseif($this->session->userdata('userRole') > 0)
+        {
+            $this->data['btn'] = '<a href="/Logout" class="btn btn-inverse">Logout</a>';
         }
         
+        // build the list of places, to pass on to our view
+        $record = $this->attractions->get($id);    //get all the attractions from DB
+        $places = array();
+        
+        //parse xml
+        //gets the details part in attraction, returns array
+        //$detail = $this->attractions->get_xml($id);
+        
+        //place every attraction into places array.
+       
+            $this1 = array(
+                'id'            => $record->attr_id,
+                'name'          => $record->attr_name, 
+                'description'   => $record->description,
+                'main_id'       => $record->main_id,
+                'price_range'   => $record->price,
+                //'price_range'         => $record->price_range,
+                'target'        => $record->sub_id,
+                //'target'        => $record->tar_aud,
+                'pic'           => $record->image_name,
+                /*
+                 * 'contact'    => $detail['contact'],
+                 * 'date'       => $detail['date'],
+                 * 'price'      => $detail['price'],
+                 * 'description' => $detail['description'],
+                 * 'pic1'        => $detail->gallery['pic1'],
+                 * 'pic2'        => $detail->gallery['pic2'],
+                 * 'pic3'        => $detail->gallery['pic3'],
+                 */
+                
+                /*
+                foreach($detail['specific'] as $specific)
+                {
+                 $this2 = array(
+                   'id' => $specific->id,
+                    'value' => $specific->value, 
+                    );
+                }
+                 * );
+                 */
+            );
+       
+            $places[] = $this1;
+            $places[] = $this2;
+            
+        //$this1 = $this->parser->parse('item', (array)$this->attractions->getDetails($id), true);
         //send places array to our data
         $this->data['places'] = $places;
+        //$this->data['test'] = $this1;
 
         $this->render();
     }

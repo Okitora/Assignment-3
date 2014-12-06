@@ -16,11 +16,24 @@ Details for the attractions, Fall 2014
 -->
 
 <!-- Details for Attractions -->
-<!ELEMENT detail (description, gallery*)>
+<!ELEMENT detail (description, gallery, specific*)>
+<!ATTLIST detail
+    id      CDATA   #REQUIRED
+    contact CDATA   #REQUIRED
+    date    CDATA   #REQUIRED
+    price   CDATA   #REQUIRED >
 
-<!-- Description of the attraction -->
 <!ELEMENT description (#PCDATA)>
 
 <!-- A Gallery holds all the pictures for one attraction,-->
-<!ELEMENT gallery (pic)*>
-<!ELEMENT pic (#PCDATA)>
+<!ELEMENT gallery (#PCDATA)>
+<!ATTLIST gallery
+    pic1    CDATA   #REQUIRED
+    pic2    CDATA   #REQUIRED
+    pic3    CDATA   #REQUIRED >
+
+<!ELEMENT specific (#PCDATA)>
+<!ATTLIST specific
+    id      CDATA   #REQUIRED
+    value   CDATA   #REQUIRED >
+

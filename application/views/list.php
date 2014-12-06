@@ -1,14 +1,15 @@
 <div class="header">
-    <br />
-    <h2>Categories</h2>
-    <br />
+    <form action="/home/choice/{choice}" method="post">
+        {fmain}
+        {fsubmit}
+    </form>
 </div>
+<div class="contain">
 {places}
 <div class="row">
     
-    <h3>{name}</h3>
-    <div class="span5"><a href="{href}/{id}"><img src="/data/{pic}" title="{id}"/></a></div>
-    <br />
+    <h3><a href="{href}/{id}">{id}</a></h3>
     
 </div>
 {/places}
+</div>

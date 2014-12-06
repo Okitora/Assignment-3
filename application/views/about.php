@@ -1,7 +1,7 @@
 <div class="row">
     
     <div class="span12">
-       <h3>Christopher Lee and Sharon Wright Assignment 1</h3>
+       <h3>Christopher Lee and Sharon Wright Assignment 3</h3>
        <p class="lead">
            The design decision we decided to go with was to have a very clean look. 
            The background image is scenery in New Zealand; this was chosen,
