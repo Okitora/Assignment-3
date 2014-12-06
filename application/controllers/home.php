@@ -436,22 +436,18 @@ class Home extends Application {
                 'name'          => $record->attr_name, 
                 'description'   => $record->description,
                 'main_id'       => $record->main_id,
-                'price_range'   => $record->price,
-                //'price_range'         => $record->price_range,
-                'target'        => $record->sub_id,
-                //'target'        => $record->tar_aud,
-                'pic'           => $record->image_name,
-                /*
-                 * 'contact'    => $detail['contact'],
-                 * 'date'       => $detail['date'],
-                 * 'price'      => $detail['price'],
-                 * 'description' => $detail['description'],
-                 * 'pic1'        => $detail->gallery['pic1'],
-                 * 'pic2'        => $detail->gallery['pic2'],
-                 * 'pic3'        => $detail->gallery['pic3'],
-                 */
+                'price_range'   => $record->price_range,
+                'target'        => $record->tar_aud,
+                'contact'    => $detail['contact'],
+                'date'       => $detail['date'],
+                'price'      => $detail['price'],
+                'description' => $detail['description'],
+                'pic1'        => $detail->gallery['pic1'],
+                'pic2'        => $detail->gallery['pic2'],
+                'pic3'        => $detail->gallery['pic3'],
                 
-                /*
+                
+                );
                 foreach($detail['specific'] as $specific)
                 {
                  $this2 = array(
@@ -459,9 +455,7 @@ class Home extends Application {
                     'value' => $specific->value, 
                     );
                 }
-                 * );
-                 */
-            );
+                 
        
             $places[] = $this1;
             $places[] = $this2;
