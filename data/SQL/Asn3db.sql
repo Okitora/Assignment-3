@@ -109,15 +109,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                 environment for business meetings, seminars, conferences and trade 
                 shows, as well as private functions and weddings.
             </description>
-            <gallery pic1="nhs.jpg" pic2="nhs-2.jpg" pic3="nhs-3.jpg">
+            <gallery>
                 <picture>
-                    kkc.JPG
+                    nhs.JPG
                 </picture>
                 <picture>
-                    kkc-2.JPG
+                    nhs-2.JPG
                 </picture>
                 <picture>
-                    kkc-3.JPG
+                   nhs-3.JPG
                 </picture>
             </gallery>
             <specific id="Seating" value="15,000">
@@ -136,15 +136,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     screen open air cinema in New Zealand at Auckland’s Viaduct Harbour 
                     in January 2004.
                 </description>
-                <gallery pic1="oap.jpg" pic2="oap-2.jpg" pic3="oap-3.jpg">
+                <gallery>
                     <picture>
-                        kkc.JPG
+                        oap.JPG
                     </picture>
                     <picture>
-                        kkc-2.JPG
+                        oap-2.JPG
                     </picture>
                     <picture>
-                        kkc-3.JPG
+                        oap-3.JPG
                     </picture>
                 </gallery>
             </detail>',
@@ -159,15 +159,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     Harbour. It features selected contemporary sculptures, created by 
                     established and emerging New Zealand artists.
                 </description>
-                <gallery pic1="kcsg.jpg" pic2="kcsg-2.jpg" pic3="kcsg-3.jpg">
+                <gallery>
                     <picture>
-                        kkc.JPG
+                        kcsg.JPG
                     </picture>
                     <picture>
-                        kkc-2.JPG
+                        kcsg-2.JPG
                     </picture>
                     <picture>
-                        kkc-3.JPG
+                        kcsg-3.JPG
                     </picture>
                 </gallery>
         </detail>',
@@ -182,15 +182,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     Birthday. The perfect activity for a Stag or Hen party And just the 
                     thing for a Corporate event!
                 </description>
-                <gallery pic1="cap.jpg" pic2="cap-2.jpg" pic3="cap-3.jpg">
+                <gallery>
                     <picture>
-                        kkc.JPG
+                        cap.JPG
                     </picture>
                     <picture>
-                        kkc-2.JPG
+                        cap-2.JPG
                     </picture>
                     <picture>
-                        kkc-3.JPG
+                        cap-3.JPG
                     </picture>
                 </gallery>
         </detail>',
@@ -208,15 +208,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     Mall, it is air-conditioned, has ample free parking and we are open 
                     7 days.
                 </description>
-                <gallery pic1="rosm.jpg" pic2="rosm-2.jpg" pic3="rosm-3.jpg">
+                <gallery>
                     <picture>
-                        kkc.JPG
+                        rosm.JPG
                     </picture>
                     <picture>
-                        kkc-2.JPG
+                        rosm-2.JPG
                     </picture>
                     <picture>
-                        kkc-3.JPG
+                        rosm-3.JPG
                     </picture>
                 </gallery>
             </detail>',
@@ -233,15 +233,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     world’s leading luxury brands — many of which continue to be our 
                     partners today.
                 </description>
-                <gallery pic1="dfsg.jpg" pic2="dfsg-2.jpg" pic3="dfsg-3.jpg">
+                <gallery>
                     <picture>
-                        kkc.JPG
+                        dfsg.JPG
                     </picture>
                     <picture>
-                        kkc-2.JPG
+                        dfsg-2.JPG
                     </picture>
                     <picture>
-                        kkc-3.JPG
+                        dfsg-3.JPG
                     </picture>
                 </gallery>
             </detail>',
@@ -259,15 +259,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     renovated by CMP Construction Limited, leaders in heritage building 
                     refurbishments.
                 </description>
-                <gallery pic1="vpm.jpg" pic2="vpm-2.jpg" pic3="vpm-3.jpg">
+                <gallery>
                     <picture>
-                        kkc.JPG
+                        vpm.JPG
                     </picture>
                     <picture>
-                        kkc-2.JPG
+                        vpm-2.JPG
                     </picture>
                     <picture>
-                        kkc-3.JPG
+                        vpm-3.JPG
                     </picture>
                 </gallery>
             </detail>',
@@ -283,15 +283,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     New Zealand, White Island Tours offers its visitors a 6 hour a
                     dventure to this fascinating island volcano.
                 </description>
-                <gallery pic1="wit.jpg" pic2="wit-2.jpg" pic3="wit-3.jpg">
+                <gallery>
                     <picture>
-                        kkc.JPG
+                        wit.JPG
                     </picture>
                     <picture>
-                        kkc-2.JPG
+                        wit-2.JPG
                     </picture>
                     <picture>
-                        kkc-3.JPG
+                        wit-3.JPG
                     </picture>
                 </gallery>
            </detail>',
@@ -310,15 +310,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     while birds (and birding) may be the focus, there is a great deal to 
                     see and experience besides.
                 </description>   
-                <gallery pic1="kwt.jpg" pic2="kwt-2.jpg" pic3="kwt-3.jpg">
+                <gallery>
                     <picture>
-                        kkc.JPG
+                        kwt.JPG
                     </picture>
                     <picture>
-                        kkc-2.JPG
+                        kwt-2.JPG
                     </picture>
                     <picture>
-                        kkc-3.JPG
+                        kwt-3.JPG
                     </picture>
                 </gallery>
             </detail>',
@@ -334,15 +334,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     offering an unparalleled sailing adventure, whatever level of 
                     excitement you require.
                 </description>
-                <gallery pic1="tv.jpg" pic2="tv-2.jpg" pic3="tv-3.jpg">
+                <gallery>
                     <picture>
-                        kkc.JPG
+                        tv.JPG
                     </picture>
                     <picture>
-                        kkc-2.JPG
+                        tv-2.JPG
                     </picture>
                     <picture>
-                        kkc-3.JPG
+                        tv-3.JPG
                     </picture>
                 </gallery>
             </detail>',
@@ -359,15 +359,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     sense of adventure and introduces you to the joys of overnight 
                     camping.
                 </description>
-                <gallery pic1="ht.jpg" pic2="ht-2.jpg" pic3="ht-3.jpg">
+                <gallery>
                     <picture>
-                        kkc.JPG
+                        ht.JPG
                     </picture>
                     <picture>
-                        kkc-2.JPG
+                        ht-2.JPG
                     </picture>
                     <picture>
-                        kkc-3.JPG
+                        ht-3.JPG
                     </picture>
                 </gallery>
             </detail>',
@@ -383,15 +383,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     coastlines. The tracks drop down into secluded bays, such as 
                     Admirals Bay, suitable for swimming and snorkelling.
                 </description>
-                <gallery pic1="wnhwt.jpg" pic2="wnhwt-2.jpg" pic3="wnhwt-3.jpg">
+                <gallery>
                     <picture>
-                        kkc.JPG
+                        wnhwt.JPG
                     </picture>
                     <picture>
-                        kkc-2.JPG
+                        wnhwt-2.JPG
                     </picture>
                     <picture>
-                        kkc-3.JPG
+                        wnhwt-3.JPG
                     </picture>
                 </gallery>
                 <specific>
@@ -407,15 +407,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     private farmland, stunning ocean and harbour beaches, rural roads, 
                     recreational reserves and existing public walkways.
                 </description>
-                <gallery pic1="bhcw.jpg" pic2="bhcw-2.jpg" pic3="bhcw-3.jpg">
+                <gallery>
                     <picture>
-                        kkc.JPG
+                        bhcw.JPG
                     </picture>
                     <picture>
-                        kkc-2.JPG
+                        bhcw-2.JPG
                     </picture>
                     <picture>
-                        kkc-3.JPG
+                        bhcw-3.JPG
                     </picture>
                 </gallery>
         </detail>',
