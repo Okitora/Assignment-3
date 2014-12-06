@@ -131,10 +131,11 @@ class Attractions extends MY_Model {
         $CI = & get_instance();
         
         $records = $CI->attractions->get($key);
+        $specific = array();
         
         $xml = simplexml_load_string($records->detail);
-        
-        $record['description'] = $xml->description;
+        $record = array();
+        $record['description'] = $xml['description'];
         
         $record['id'] = $xml['id'];
         $record['contact'] = $xml['contact'];
@@ -148,7 +149,8 @@ class Attractions extends MY_Model {
                                     );
         
         //this needs to be fixed
-        foreach($xml->specific as $temp)
+        $specific = $xml['specific'];
+        foreach($specific as $temp)
         {
             $this1 = array(
                     'id'    => $temp['id'],

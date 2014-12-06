@@ -291,11 +291,16 @@ class Home extends Application {
         //retrieve all variables from the view
         foreach($source as $cat)
         {
+            $id = $cat->attr_id;
+            
+            //gets the details part in attraction, returns array
+            $detail = $this->attractions->get_xml($id);
+            
             $this1 = array(
                 'id'   => $cat->attr_id,
                 'name' => $cat->attr_name,
-                //'pic1'  => $cat->image_name,
-                'description' => $cat->description,
+                'pic'  => $detail['gallery']['pic1'],
+                'description' => $detail['description'],
                 'href' => '/DestinationSpot',
             );
             
@@ -335,14 +340,21 @@ class Home extends Application {
         $source = $this->attractions->some('tar_aud', $code);
         $catlist = array();
         
+        
         //retrieve all variables from the view
         foreach($source as $cat)
         {
+            $id = $cat->attr_id;
+            
+            //gets the details part in attraction, returns array
+            $detail = $this->attractions->get_xml($id);
+            
+            
             $this1 = array(
                 'id'   => $cat->attr_id,
                 'name' => $cat->attr_name,
-                //'pic'  => $cat->image_name,
-                'description' => $cat->description,
+                'pic'  => $detail['gallery']['pic1'],
+                'description' => $detail['description'],
                 'href' => '/DestinationSpot',
             );
             
@@ -380,11 +392,16 @@ class Home extends Application {
         //retrieve all variables from the view
         foreach($source as $cat)
         {
+            $id = $cat->attr_id;
+            echo $id;
+            //gets the details part in attraction, returns array
+            $detail = $this->attractions->get_xml($id);
+            
             $this1 = array(
                 'id'   => $cat->attr_id,
                 'name' => $cat->attr_name,
-                //'pic'  => $cat->image_name,
-                'description' => $cat->description,
+                'pic'  => $detail['gallery']['pic1'],
+                'description' => $detail['description'],
                 'href' => '/DestinationSpot',
             );
             
@@ -422,6 +439,8 @@ class Home extends Application {
         // build the list of places, to pass on to our view
         $record = $this->attractions->get($id);    //get all the attractions from DB
         $places = array();
+        $specifics = array();
+        $list = array();
         
         //parse xml
         //gets the details part in attraction, returns array
@@ -432,13 +451,9 @@ class Home extends Application {
             $this1 = array(
                 'id'            => $record->attr_id,
                 'name'          => $record->attr_name, 
-                //'description'   => $record->description,
                 'main_id'       => $record->main_id,
-                //'price_range'   => $record->price,
                 'price_range'   => $record->price_range,
-                //'target'        => $record->sub_id,
                 'target'        => $record->tar_aud,
-                //'pic'           => $record->image_name,
                 'contact'       => $detail['contact'],
                 'date'          => $detail['date'],
                 'price'         => $detail['price'],
@@ -448,12 +463,12 @@ class Home extends Application {
                 'pic3'          => $detail['gallery']['pic3'],
                 
             );    
-                
-                foreach($detail['specific'] as $specific)
+                $list = $detail['specific'];
+                foreach($list as $specific)
                 {
                     $this2 = array(
-                        'sid' => $specific['id'],
-                        'svalue' => $specific['value'], 
+                        'sid' => $specific->id,
+                        'svalue' => $specific->value, 
                     );
                     
                     //place specific details in specifics array
