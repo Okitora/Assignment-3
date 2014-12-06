@@ -50,7 +50,16 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                 Kawakawa, Paihia etc. Kaikohe Speedway was put on the world map with 
                 the recognition of Florian Habichts movie Kaikohe Demolition.
             </description>
-            <gallery pic1="kkc.JPG" pic2="kkc-2.JPG" pic3="kkc-3.JPG">
+            <gallery>
+                <picture>
+                    kkc.JPG
+                </picture>
+                <picture>
+                    kkc-2.JPG
+                </picture>
+                <picture>
+                    kkc-3.JPG
+                </picture>
             </gallery>
             <specific id="Yearly Fee" value="$100">
             </specific>
@@ -70,7 +79,16 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                 into a funky night club attracting some of the best Djs and Artist 
                 in the country.
             </description>
-            <gallery pic1="sb.jpg" pic2="sb-2.JPG" pic3="sb-3.JPG">
+            <gallery>
+                <picture>
+                    sb.JPG
+                </picture>
+                <picture>
+                    sb-2.JPG
+                </picture>
+                <picture>
+                    sb-3.JPG
+                </picture>
             </gallery>
             <specific id="Entry Fee" value="$39.99">
             </specific>
@@ -92,6 +110,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                 shows, as well as private functions and weddings.
             </description>
             <gallery pic1="nhs.jpg" pic2="nhs-2.jpg" pic3="nhs-3.jpg">
+                <picture>
+                    kkc.JPG
+                </picture>
+                <picture>
+                    kkc-2.JPG
+                </picture>
+                <picture>
+                    kkc-3.JPG
+                </picture>
             </gallery>
             <specific id="Seating" value="15,000">
             </specific>
@@ -110,6 +137,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     in January 2004.
                 </description>
                 <gallery pic1="oap.jpg" pic2="oap-2.jpg" pic3="oap-3.jpg">
+                    <picture>
+                        kkc.JPG
+                    </picture>
+                    <picture>
+                        kkc-2.JPG
+                    </picture>
+                    <picture>
+                        kkc-3.JPG
+                    </picture>
                 </gallery>
             </detail>',
  'kids'),
@@ -124,6 +160,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     established and emerging New Zealand artists.
                 </description>
                 <gallery pic1="kcsg.jpg" pic2="kcsg-2.jpg" pic3="kcsg-3.jpg">
+                    <picture>
+                        kkc.JPG
+                    </picture>
+                    <picture>
+                        kkc-2.JPG
+                    </picture>
+                    <picture>
+                        kkc-3.JPG
+                    </picture>
                 </gallery>
         </detail>',
  'adult'),
@@ -138,6 +183,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     thing for a Corporate event!
                 </description>
                 <gallery pic1="cap.jpg" pic2="cap-2.jpg" pic3="cap-3.jpg">
+                    <picture>
+                        kkc.JPG
+                    </picture>
+                    <picture>
+                        kkc-2.JPG
+                    </picture>
+                    <picture>
+                        kkc-3.JPG
+                    </picture>
                 </gallery>
         </detail>',
  'teenager'),
@@ -154,7 +208,17 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     Mall, it is air-conditioned, has ample free parking and we are open 
                     7 days.
                 </description>
-                <gallery pic1="rosm.jpg" pic2="rosm-2.jpg" pic3="rosm-3.jpg"></gallery>
+                <gallery pic1="rosm.jpg" pic2="rosm-2.jpg" pic3="rosm-3.jpg">
+                    <picture>
+                        kkc.JPG
+                    </picture>
+                    <picture>
+                        kkc-2.JPG
+                    </picture>
+                    <picture>
+                        kkc-3.JPG
+                    </picture>
+                </gallery>
             </detail>',
  'teenager'),
 
@@ -170,6 +234,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     partners today.
                 </description>
                 <gallery pic1="dfsg.jpg" pic2="dfsg-2.jpg" pic3="dfsg-3.jpg">
+                    <picture>
+                        kkc.JPG
+                    </picture>
+                    <picture>
+                        kkc-2.JPG
+                    </picture>
+                    <picture>
+                        kkc-3.JPG
+                    </picture>
                 </gallery>
             </detail>',
  'adult'),
@@ -187,6 +260,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     refurbishments.
                 </description>
                 <gallery pic1="vpm.jpg" pic2="vpm-2.jpg" pic3="vpm-3.jpg">
+                    <picture>
+                        kkc.JPG
+                    </picture>
+                    <picture>
+                        kkc-2.JPG
+                    </picture>
+                    <picture>
+                        kkc-3.JPG
+                    </picture>
                 </gallery>
             </detail>'
 'kids'),
@@ -202,6 +284,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     dventure to this fascinating island volcano.
                 </description>
                 <gallery pic1="wit.jpg" pic2="wit-2.jpg" pic3="wit-3.jpg">
+                    <picture>
+                        kkc.JPG
+                    </picture>
+                    <picture>
+                        kkc-2.JPG
+                    </picture>
+                    <picture>
+                        kkc-3.JPG
+                    </picture>
                 </gallery>
            </detail>',
 'teenager'),
@@ -220,6 +311,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     see and experience besides.
                 </description>   
                 <gallery pic1="kwt.jpg" pic2="kwt-2.jpg" pic3="kwt-3.jpg">
+                    <picture>
+                        kkc.JPG
+                    </picture>
+                    <picture>
+                        kkc-2.JPG
+                    </picture>
+                    <picture>
+                        kkc-3.JPG
+                    </picture>
                 </gallery>
             </detail>',
 'kids'),
@@ -235,6 +335,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     excitement you require.
                 </description>
                 <gallery pic1="tv.jpg" pic2="tv-2.jpg" pic3="tv-3.jpg">
+                    <picture>
+                        kkc.JPG
+                    </picture>
+                    <picture>
+                        kkc-2.JPG
+                    </picture>
+                    <picture>
+                        kkc-3.JPG
+                    </picture>
                 </gallery>
             </detail>
     ',
@@ -252,6 +361,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     camping.
                 </description>
                 <gallery pic1="ht.jpg" pic2="ht-2.jpg" pic3="ht-3.jpg">
+                    <picture>
+                        kkc.JPG
+                    </picture>
+                    <picture>
+                        kkc-2.JPG
+                    </picture>
+                    <picture>
+                        kkc-3.JPG
+                    </picture>
                 </gallery>
             </detail>',
 'kids'),
@@ -267,6 +385,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     Admirals Bay, suitable for swimming and snorkelling.
                 </description>
                 <gallery pic1="wnhwt.jpg" pic2="wnhwt-2.jpg" pic3="wnhwt-3.jpg">
+                    <picture>
+                        kkc.JPG
+                    </picture>
+                    <picture>
+                        kkc-2.JPG
+                    </picture>
+                    <picture>
+                        kkc-3.JPG
+                    </picture>
                 </gallery>
                 <specific>
                 </specific>
@@ -282,6 +409,15 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     recreational reserves and existing public walkways.
                 </description>
                 <gallery pic1="bhcw.jpg" pic2="bhcw-2.jpg" pic3="bhcw-3.jpg">
+                    <picture>
+                        kkc.JPG
+                    </picture>
+                    <picture>
+                        kkc-2.JPG
+                    </picture>
+                    <picture>
+                        kkc-3.JPG
+                    </picture>
                 </gallery>
         </detail>',
 'teenager');
