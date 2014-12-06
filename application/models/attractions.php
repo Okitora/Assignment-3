@@ -242,24 +242,24 @@ class Attractions extends MY_Model {
         switch($record['main_id'])
         {
             case 'Entertainment':
-                $xml->specific->addChild('fee', $record['specific'][fee]);
-                $xml->specific->addChild('seating', $record['specific'][seating]);
+                $xml->specific->addChild('fee', $record['specific']['fee']);
+                $xml->specific->addChild('seating', $record['specific']['seating']);
                 break;
             case 'Family-Fun':
-                $xml->specific->addChild('', $record['specific'][]);
-                $xml->specific->addChild('', $record['specific'][]);
+                $xml->specific->addChild('food', $record['specific']['food']);
+                $xml->specific->addChild('wifi', $record['specific']['wifi']);
                 break;
             case 'Shopping':
-                $xml->specific->addChild('', $record['specific'][]);
-                $xml->specific->addChild('', $record['specific'][]);
+                $xml->specific->addChild('cafe', $record['specific']['cafe']);
+                $xml->specific->addChild('venue', $record['specific']['venue']);
                 break;
             case 'Eco-Tourism':
-                $xml->specific->addChild('', $record['specific'][]);
-                $xml->specific->addChild('', $record['specific'][]);
+                $xml->specific->addChild('', $record['specific']['']);
+                $xml->specific->addChild('', $record['specific']['']);
                 break;
             case 'Sight-Seeing':
-                $xml->specific->addChild('', $record['specific'][]);
-                $xml->specific->addChild('', $record['specific'][]);
+                $xml->specific->addChild('', $record['specific']['']);
+                $xml->specific->addChild('', $record['specific']['']);
                 break;
         }
         //do i need to specify another specific creation because i have 2 in my xml?

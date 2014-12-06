@@ -94,9 +94,13 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     sb-3.JPG
                 </picture>
             </gallery>
-            <specific id="Entry Fee" value="$39.99">
-            </specific>
-            <specific id="Free Wifi" value="No">
+            <specific>
+                <fee>
+                    39.99
+                </fee>
+                <admittance>
+                    200
+                </admittance>
             </specific>
         </detail>',
  'teenager'),
@@ -124,9 +128,13 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                    nhs-3.JPG
                 </picture>
             </gallery>
-            <specific id="Seating" value="15,000">
-            </specific>
-            <specific id="Alcoholic Beverages" value="Yes">
+            <specific>
+                <fee>
+                    0
+                </fee>
+                <admittance>
+                    15000
+                </admittance>
             </specific>
         </detail>',
  'kids'),
@@ -151,6 +159,14 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                         oap-3.JPG
                     </picture>
                 </gallery>
+                <specific>
+                    <food>
+                        yes
+                    </food>
+                    <wifi>
+                        yes
+                    </wifi>
+                </specific>
             </detail>',
  'kids'),
 
@@ -174,6 +190,14 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                         kcsg-3.JPG
                     </picture>
                 </gallery>
+                <specific>
+                    <food>
+                        yes
+                    </food>
+                    <wifi>
+                        no
+                    </wifi>
+                </specific>
         </detail>',
  'adult'),
 
@@ -197,6 +221,14 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                         cap-3.JPG
                     </picture>
                 </gallery>
+                <specific>
+                    <food>
+                        no
+                    </food>
+                    <wifi>
+                        yes
+                    </wifi>
+                </specific>
         </detail>',
  'teenager'),
 
@@ -223,6 +255,14 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                         rosm-3.JPG
                     </picture>
                 </gallery>
+                <specific>
+                    <cafe>
+                        yes
+                    </cafe>
+                    <venue>
+                        inside
+                    </venue>
+                </specific>
             </detail>',
  'teenager'),
 
@@ -248,6 +288,14 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                         dfsg-3.JPG
                     </picture>
                 </gallery>
+                <specific>
+                    <cafe>
+                        no
+                    </cafe>
+                    <venue>
+                        inside
+                    </venue>
+                </specific>
             </detail>',
  'adult'),
 
@@ -274,6 +322,14 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                         vpm-3.JPG
                     </picture>
                 </gallery>
+                <specific>
+                    <cafe>
+                        yes
+                    </cafe>
+                    <venue>
+                        outside
+                    </venue>
+                </specific>
             </detail>',
 'kids'),
 
@@ -298,6 +354,14 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                         wit-3.JPG
                     </picture>
                 </gallery>
+                <specific>
+                    <food>
+                        yes
+                    </food>
+                    <wifi>
+                        no
+                    </wifi>
+                </specific>
            </detail>',
 'teenager'),
 
@@ -325,6 +389,14 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                         kwt-3.JPG
                     </picture>
                 </gallery>
+                <specific>
+                    <food>
+                        yes
+                    </food>
+                    <wifi>
+                        no
+                    </wifi>
+                </specific>
             </detail>',
 'kids'),
 
@@ -349,6 +421,14 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                         tv-3.JPG
                     </picture>
                 </gallery>
+                <specific>
+                    <food>
+                        yes
+                    </food>
+                    <wifi>
+                        no
+                    </wifi>
+                </specific>
             </detail>',
 'adult'),
 
