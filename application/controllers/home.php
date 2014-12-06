@@ -474,6 +474,7 @@ class Home extends Application {
                 }*/
                 
             //places major details in places array
+
             $places[] = $this1;
             
         //send places array to our data
