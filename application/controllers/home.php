@@ -299,7 +299,7 @@ class Home extends Application {
             $this1 = array(
                 'id'   => $cat->attr_id,
                 'name' => $cat->attr_name,
-                'pic'  => $detail['gallery']['pic1'],
+                'pic1'  => $detail['gallery']['pic1'],
                 'description' => $detail['description'],
                 'href' => '/DestinationSpot',
             );
@@ -353,7 +353,7 @@ class Home extends Application {
             $this1 = array(
                 'id'   => $cat->attr_id,
                 'name' => $cat->attr_name,
-                'pic'  => $detail['gallery']['pic1'],
+                'pic1'  => $detail['gallery']['pic1'],
                 'description' => $detail['description'],
                 'href' => '/DestinationSpot',
             );
@@ -393,16 +393,16 @@ class Home extends Application {
         foreach($source as $cat)
         {
             $id = $cat->attr_id;
-            echo $id;
+            
             //gets the details part in attraction, returns array
             $detail = $this->attractions->get_xml($id);
-            
+           
             $this1 = array(
-                'id'   => $cat->attr_id,
-                'name' => $cat->attr_name,
-                'pic'  => $detail['gallery']['pic1'],
-                'description' => $detail['description'],
-                'href' => '/DestinationSpot',
+                'id'            => $cat->attr_id,
+                'name'          => $cat->attr_name,
+                'pic1'          => $detail['gallery']['pic1'],
+                'description'   => $detail['description'],
+                'href'          => '/DestinationSpot',
             );
             
             $catlist[] = $this1;
@@ -439,15 +439,12 @@ class Home extends Application {
         // build the list of places, to pass on to our view
         $record = $this->attractions->get($id);    //get all the attractions from DB
         $places = array();
-        $specifics = array();
-        $list = array();
         
         //parse xml
         //gets the details part in attraction, returns array
         $detail = $this->attractions->get_xml($id);
         
         //place every attraction into places array.
-       
             $this1 = array(
                 'id'            => $record->attr_id,
                 'name'          => $record->attr_name, 
@@ -462,7 +459,8 @@ class Home extends Application {
                 'pic2'          => $detail['gallery']['pic2'],
                 'pic3'          => $detail['gallery']['pic3'],
                 
-            );    
+            );   
+            /*
                 $list = $detail['specific'];
                 foreach($list as $specific)
                 {
@@ -473,14 +471,14 @@ class Home extends Application {
                     
                     //place specific details in specifics array
                     $specifics[] = $this2;
-                }
+                }*/
                 
             //places major details in places array
             $places[] = $this1;
             
         //send places array to our data
         $this->data['places'] = $places;
-        $this->data['specific'] = $specifics;
+        //$this->data['specific'] = $specifics;
         //$this->data['test'] = $this1;
 
         $this->render();

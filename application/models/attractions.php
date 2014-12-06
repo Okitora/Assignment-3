@@ -135,7 +135,7 @@ class Attractions extends MY_Model {
         
         $xml = simplexml_load_string($records->detail);
         $record = array();
-        $record['description'] = $xml['description'];
+        $record['description'] = (string)$xml->description;
         
         $record['id'] = $xml['id'];
         $record['contact'] = $xml['contact'];
@@ -149,6 +149,7 @@ class Attractions extends MY_Model {
                                     );
         
         //this needs to be fixed
+        /*
         $specific = $xml['specific'];
         foreach($specific as $temp)
         {
@@ -158,7 +159,7 @@ class Attractions extends MY_Model {
                    );
             $record['specific'][] = $this1;
         }
-        
+        */
         return $record;
     }
     
