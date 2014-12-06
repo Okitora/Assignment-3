@@ -172,23 +172,21 @@ class Home extends Application {
         
         // we need to construct pretty editing fields using the formfields helper
         $options = array('1' => 'Type', '2' => 'Target-Audience', '3' => 'Price Range');
-        $this->data['fmain'] 
-                = makeComboField('Choice', 'choice', $choice, $options, 
-                        "Pick the type to display attractions by.");
-        $this->data['fsubmit'] 
-                = makeSubmitButton('Ok', 'Do you feel lucky?');
+        $this->data['fmain'] = makeComboField('Choice', 'choice', $choice, $options, "Pick the type to display attractions by.");
+        $this->data['fsubmit'] = makeSubmitButton('Ok', 'Do you feel lucky?');
         
         //get all the main categories
         $source = $this->attractions->all();
         
+        //temp arrays to filter
         $catlist = array();
         $templist = array();
         
         //retrieve all categories from attractions
         foreach($source as $cat)
         {
-            //$templist[] = $cat->tar_id;
-            $templist[] = $cat->sub_id;
+            $templist[] = $cat->tar_aud;
+            //$templist[] = $cat->sub_aud;
         }
         
         //remove duplicates
@@ -245,7 +243,7 @@ class Home extends Application {
         foreach($source as $cat)
         {
             //$templist[] = $cat->price_range;
-            $templist[] = $cat->price;
+            $templist[] = $cat->price_range;
         }
         
         //remove duplicates
@@ -293,11 +291,16 @@ class Home extends Application {
         //retrieve all variables from the view
         foreach($source as $cat)
         {
+            $id = $cat->attr_id;
+            
+            //gets the details part in attraction, returns array
+            $detail = $this->attractions->get_xml($id);
+            
             $this1 = array(
                 'id'   => $cat->attr_id,
                 'name' => $cat->attr_name,
-                'pic'  => $cat->image_name,
-                'description' => $cat->description,
+                'pic1'  => $detail['gallery']['pic1'],
+                'description' => $detail['description'],
                 'href' => '/DestinationSpot',
             );
             
@@ -334,17 +337,24 @@ class Home extends Application {
         
         //get all sub categories within the main category
         //$source = $this->attractions->some('tar_aud', $code);
-        $source = $this->attractions->some('sub_id', $code);
+        $source = $this->attractions->some('tar_aud', $code);
         $catlist = array();
+        
         
         //retrieve all variables from the view
         foreach($source as $cat)
         {
+            $id = $cat->attr_id;
+            
+            //gets the details part in attraction, returns array
+            $detail = $this->attractions->get_xml($id);
+            
+            
             $this1 = array(
                 'id'   => $cat->attr_id,
                 'name' => $cat->attr_name,
-                'pic'  => $cat->image_name,
-                'description' => $cat->description,
+                'pic1'  => $detail['gallery']['pic1'],
+                'description' => $detail['description'],
                 'href' => '/DestinationSpot',
             );
             
@@ -376,18 +386,23 @@ class Home extends Application {
         
         //get all sub categories within the main category
         //$source = $this->attractions->some('price_range', $code);
-        $source = $this->attractions->some('price', $code);
+        $source = $this->attractions->some('price_range', $code);
         $catlist = array();
         
         //retrieve all variables from the view
         foreach($source as $cat)
         {
+            $id = $cat->attr_id;
+            
+            //gets the details part in attraction, returns array
+            $detail = $this->attractions->get_xml($id);
+           
             $this1 = array(
-                'id'   => $cat->attr_id,
-                'name' => $cat->attr_name,
-                'pic'  => $cat->image_name,
-                'description' => $cat->description,
-                'href' => '/DestinationSpot',
+                'id'            => $cat->attr_id,
+                'name'          => $cat->attr_name,
+                'pic1'          => $detail['gallery']['pic1'],
+                'description'   => $detail['description'],
+                'href'          => '/DestinationSpot',
             );
             
             $catlist[] = $this1;
@@ -427,42 +442,44 @@ class Home extends Application {
         
         //parse xml
         //gets the details part in attraction, returns array
-        //$detail = $this->attractions->get_xml($id);
+        $detail = $this->attractions->get_xml($id);
         
         //place every attraction into places array.
-       
             $this1 = array(
                 'id'            => $record->attr_id,
                 'name'          => $record->attr_name, 
-                'description'   => $record->description,
                 'main_id'       => $record->main_id,
                 'price_range'   => $record->price_range,
                 'target'        => $record->tar_aud,
-                'contact'    => $detail['contact'],
-                'date'       => $detail['date'],
-                'price'      => $detail['price'],
-                'description' => $detail['description'],
-                'pic1'        => $detail->gallery['pic1'],
-                'pic2'        => $detail->gallery['pic2'],
-                'pic3'        => $detail->gallery['pic3'],
+                'contact'       => $detail['contact'],
+                'date'          => $detail['date'],
+                'price'         => $detail['price'],
+                'description'   => $detail['description'],
+                'pic1'          => $detail['gallery']['pic1'],
+                'pic2'          => $detail['gallery']['pic2'],
+                'pic3'          => $detail['gallery']['pic3'],
                 
-                
-                );
-                foreach($detail['specific'] as $specific)
+            );   
+            /*
+                $list = $detail['specific'];
+                foreach($list as $specific)
                 {
-                 $this2 = array(
-                   'id' => $specific->id,
-                    'value' => $specific->value, 
+                    $this2 = array(
+                        'sid' => $specific->id,
+                        'svalue' => $specific->value, 
                     );
-                }
-                 
-       
+                    
+                    //place specific details in specifics array
+                    $specifics[] = $this2;
+                }*/
+                
+            //places major details in places array
+
             $places[] = $this1;
-            $places[] = $this2;
             
-        //$this1 = $this->parser->parse('item', (array)$this->attractions->getDetails($id), true);
         //send places array to our data
         $this->data['places'] = $places;
+        //$this->data['specific'] = $specifics;
         //$this->data['test'] = $this1;
 
         $this->render();

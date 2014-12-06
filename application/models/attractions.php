@@ -127,33 +127,39 @@ class Attractions extends MY_Model {
     
     public function convertToObject($key)
     {
-        $records = (array)$this->get($key);
+        $CI = & get_instance();
         
-        $xml = simplexml_load_string($records['detail']);
+        $records = $CI->attractions->get($key);
+        $specific = array();
         
-        $records['description'] = (string)$xml->description;
+        $xml = simplexml_load_string($records->detail);
+        $record = array();
+        $record['description'] = (string)$xml->description;
         
-        $records['id'] = $xml['id'];
-        $records['contact'] = $xml['contact'];
-        $records['price'] = $xml['price'];
-        $records['date'] = $xml['date'];
+        $record['id'] = $xml['id'];
+        $record['contact'] = $xml['contact'];
+        $record['price'] = $xml['price'];
+        $record['date'] = $xml['date'];
         
-        $records['gallery']= array(
-                                        $xml->gallery['pic1'],
-                                        $xml->gallery['pic2'],
-                                        $xml->gallery['pic3']
+        $record['gallery']= array(
+            'pic1' => $xml['gallery']['pic1'],
+            'pic2' => $xml['gallery']['pic2'],
+            'pic3' => $xml['gallery']['pic3']
                                     );
         
-        foreach($xml->specfic as $temp)
+        //this needs to be fixed
+        /*
+        $specific = $xml['specific'];
+        foreach($specific as $temp)
         {
-            $this1 =array(
-                    'id' => $temp['id'],
-                    'value' =>$temp['value']
+            $this1 = array(
+                    'id'    => $temp['id'],
+                    'value' => $temp['value']
                    );
-            $records['specific'][] = $this1;
+            $record['specific'][] = $this1;
         }
-        
-        return $records;
+        */
+        return $record;
     }
     
     //some returns 2d array of rows. 

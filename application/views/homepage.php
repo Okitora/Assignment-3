@@ -3,8 +3,8 @@
     <div class="span11">
         <h2>{name}</h2>
     </div>
-    <a href="/data/{pic}" title="{id}"><img class="span5" src="/data/{pic}" alt="" /></a>
     
+    <a href="/data/{pic1}" title="{id}"><img class="span5" src="/data/{pic1}" alt="" /></a>   
     <a href="/data/{pic2}" title="{pic2}"><img class="span5" src="/data/{pic2}" alt="" /></a>
     <a href="/data/{pic3}" title="{pic3}"><img class="span5" src="/data/{pic3}" alt="" /></a>
     

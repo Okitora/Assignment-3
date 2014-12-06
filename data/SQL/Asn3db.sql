@@ -23,17 +23,17 @@ DROP TABLE IF EXISTS `attraction`;
 CREATE TABLE IF NOT EXISTS `attraction` (
   `attr_id` varchar(32) NOT NULL,
   `attr_name` varchar(32) NOT NULL,
-  `main_id` varchar(1) NOT NULL,
-  `price_range` varchar(1) NOT NULL,
+  `main_id` varchar(32) NOT NULL,
+  `price_range` varchar(32) NOT NULL,
   `detail` varchar(4096) NOT NULL,
   `tar_aud` varchar(32) NOT NULL,
-  PRIMARY KEY (`attr_code`)
+  PRIMARY KEY (`attr_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 -- --------------------------------------------------------
 
 -- images in /data folder in webapp
 INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`detail`, `tar_aud`) VALUES
-('01', 'Kaikohe Car Club', 'e', 'e', 
+('01', 'Kaikohe Car Club', 'Entertainment', 'Expensive', 
 	'<?xml version="1.0" encoding="UTF-8"?>
         <detail id="01" contact="09 238 4680" price="50" date="1393621846">
             <description>
@@ -68,7 +68,7 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
        </detail>',
 'adult'),
 
-('02', 'Smartbar', 'e', 'm', 
+('02', 'Smartbar', 'Entertainment', 'Moderate', 
 	'<?xml version="1.0" encoding="UTF-8"?>
         <detail id="02" contact="09 349 5791" price="30" date="1393125846">
             <description>
@@ -97,7 +97,7 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
         </detail>',
  'teenager'),
 
-('03', 'North Harbour Stadium'	, 'e', 'e', 
+('03', 'North Harbour Stadium'	, 'Entertainment', 'Expensive', 
 	'<?xml version="1.0" encoding="UTF-8"?>
         <detail id="03" contact="09 450 6802" price="20" date="1244621846">
             <description>
@@ -127,8 +127,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
         </detail>',
  'kids'),
 
-('04', , 'Open Air Cinema', 'f', 'c'
-	, '<?xml version="1.0" encoding="UTF-8"?>
+('04','Open Air Cinema', 'Family-Fun', 'Cheap',
+        '<?xml version="1.0" encoding="UTF-8"?>
             <detail id="04" contact="09 561 7913" price="12.99" date="1393625286">
                 <description>
                     Openair Cinema Ltd. is a New Zealand based company founded 
@@ -150,8 +150,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
             </detail>',
  'kids'),
 
-('05', 'Kaipara Coast Sculpture Gardens', 'f', 'c'
-	, '<?xml version="1.0" encoding="UTF-8"?>
+('05', 'Kaipara Coast Sculpture Gardens', 'Family-Fun', 'Cheap',
+        '<?xml version="1.0" encoding="UTF-8"?>
         <detail id="05" contact="09 672 8024" price="9.99" date="1538221846">
                 <description>
                     Kaipara Coast Sculpture Gardens are a tranquil, peaceful 
@@ -173,8 +173,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
         </detail>',
  'adult'),
 
-('06', 'Commando Attack Paintball', 'f', 'm'
-	, '<?xml version="1.0" encoding="UTF-8"?>
+('06', 'Commando Attack Paintball', 'Family-Fun', 'Moderate', 
+        '<?xml version="1.0" encoding="UTF-8"?>
         <detail id="06" contact="09 783 9135" price="49.99" date="1392055946">
                 <description>
                     Paintball is an awesome way to anticipate teamwork and bonding. 
@@ -197,8 +197,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
  'teenager'),
 
 
-('07', 'Royal Oak Shopping Mall', 's', 'm'
-	, '<?xml version="1.0" encoding="UTF-8"?>
+('07', 'Royal Oak Shopping Mall', 'Shopping', 'Moderate', 
+        '<?xml version="1.0" encoding="UTF-8"?>
             <detail id="07" contact="09 894 0246" price="5.99" date="1295811846">
                 <description>
                     There are over 50 shops, many of which are national brands. 
@@ -222,8 +222,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
             </detail>',
  'teenager'),
 
-('08'	, 'dfs galleria', 's', 'e'
-	, '<?xml version="1.0" encoding="UTF-8"?>
+('08', 'dfs Galleria', 'Shopping', 'Expensive', 
+        '<?xml version="1.0" encoding="UTF-8"?>
             <detail id="08" contact="09 905 1357" price="11.99" date="1393622846">
                 <description>
                     Asia-Pacific was their frontier, and through the years, 
@@ -247,8 +247,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
             </detail>',
  'adult'),
 
-('09'	, 'Victoria Park Market', 's', 'c'
-	, '<?xml version="1.0" encoding="UTF-8"?>
+('09', 'Victoria Park Market', 'Shopping', 'Cheap', 
+        '<?xml version="1.0" encoding="UTF-8"?>
             <detail id="09" contact="09 538 6802" price="5" date="1254079945">
                 <description>
                     The $20,000,000 refurbishment of Victoria Park Market is 
@@ -270,11 +270,11 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                         kkc-3.JPG
                     </picture>
                 </gallery>
-            </detail>'
+            </detail>',
 'kids'),
 
-('10'	, 'White Island Tours'	, 't', 'm'
-	, '<?xml version="1.0" encoding="UTF-8"?>
+('10', 'White Island Tours', 'Eco-Tourism', 'Moderate',
+        '<?xml version="1.0" encoding="UTF-8"?>
             <detail id="10" contact="09 448 1802" price="69.99" date="1139583769">
                 <description>
                     White Island Tours offers you the incredible experience of 
@@ -297,8 +297,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
            </detail>',
 'teenager'),
 
-('11'	, 'Kiwi Wildlife Tours'	, 't', 'c'
-	, '<?xml version="1.0" encoding="UTF-8"?>
+('11', 'Kiwi Wildlife Tours', 'Eco-Tourism', 'Cheap', 
+        '<?xml version="1.0" encoding="UTF-8"?>
             <detail id="11" contact="09 539 6832" price="29.99" date="1459222481">
                 <description>
                     Our very experienced leaders have intimate knowledge of the 
@@ -324,8 +324,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
             </detail>',
 'kids'),
 
-('12'	, 'Te Vaka', 't', 'eco tourism', 'e'
-	, '<?xml version="1.0" encoding="UTF-8"?>
+('12', 'Te Vaka', 'Eco-Tourism', 'Expensive', 
+        '<?xml version="1.0" encoding="UTF-8"?>
             <detail id="12" contact="09 938 7802" price="10" date="1222621846">
                 <description>
                     Te Vaka is a modern powerful, sloop rigged, high 
@@ -345,12 +345,11 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                         kkc-3.JPG
                     </picture>
                 </gallery>
-            </detail>
-    ',
+            </detail>',
 'adult'),
 
-('13'	, 'Hillary Trail', 'w', 'c'
-	, '<?xml version="1.0" encoding="UTF-8"?>
+('13', 'Hillary Trail', 'Sight-Seeing', 'Cheap', 
+        '<?xml version="1.0" encoding="UTF-8"?>
             <detail id="13" contact="09 448 7902" price="3" date="1234621846">
                 <description>
                     The Hillary Trail is a self-guided four day tramp through 
@@ -374,8 +373,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
             </detail>',
 'kids'),
 
-('14'	, 'Whangaruru North Head Walking Tracks', 'w', 'c'
-	, '<?xml version="1.0" encoding="UTF-8"?>
+('14', 'Whangaruru North Head Walking Tracks', 'Sight-Seeing', 'Cheap', 
+        '<?xml version="1.0" encoding="UTF-8"?>
             <detail id="14" contact="09 432 8812" price="2" date="1234521846">
                 <description>
                     From the popular campsite and amenity area at Puriri Bay 
@@ -400,8 +399,8 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
             </detail>',
 'adult'),
 
-('15'	, 'Bream Head Coast Walks', 'w', 'm'
-	, '<?xml version="1.0" encoding="UTF-8"?>
+('15', 'Bream Head Coast Walks', 'Sight-Seeing', 'Moderate', 
+        '<?xml version="1.0" encoding="UTF-8"?>
             <detail id="15" contact="09 437 9803" price="2" date="1393621826">
                 <description>
                     Situated at Whangarei Heads our boutique walk encompasses 
