@@ -355,12 +355,12 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     </picture>
                 </gallery>
                 <specific>
-                    <food>
+                    <guide>
                         yes
-                    </food>
-                    <wifi>
+                    </guide>
+                    <shop>
                         no
-                    </wifi>
+                    </shop>
                 </specific>
            </detail>',
 'teenager'),
@@ -390,12 +390,12 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     </picture>
                 </gallery>
                 <specific>
-                    <food>
-                        yes
-                    </food>
-                    <wifi>
+                    <guide>
                         no
-                    </wifi>
+                    </guide>
+                    <shop>
+                        yes
+                    </shop>
                 </specific>
             </detail>',
 'kids'),
@@ -422,12 +422,12 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     </picture>
                 </gallery>
                 <specific>
-                    <food>
+                    <guide>
                         yes
-                    </food>
-                    <wifi>
+                    </guide>
+                    <shop>
                         no
-                    </wifi>
+                    </shop>
                 </specific>
             </detail>',
 'adult'),
@@ -454,6 +454,14 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                         ht-3.JPG
                     </picture>
                 </gallery>
+                <specific>
+                    <partysize>
+                        10
+                    </partysize>
+                    <gear>
+                        boots
+                    </gear>
+                </specific>
             </detail>',
 'kids'),
 
@@ -479,6 +487,12 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     </picture>
                 </gallery>
                 <specific>
+                    <partysize>
+                        yes
+                    </partysize>
+                    <gear>
+                        boots
+                    </gear>
                 </specific>
             </detail>',
 'adult'),
@@ -502,6 +516,14 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                         bhcw-3.JPG
                     </picture>
                 </gallery>
+                <specific>
+                    <partysize>
+                        yes
+                    </partysize>
+                    <gear>
+                        shoes
+                    </gear>
+                </specific>
         </detail>',
 'teenager');
 

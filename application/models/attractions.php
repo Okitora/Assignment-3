@@ -130,7 +130,7 @@ class Attractions extends MY_Model {
         $CI = & get_instance();
         
         $records = $CI->attractions->get($key);
-        $specific = array();
+        //$specific = array();
         
         $xml = simplexml_load_string($records->detail);
         $record = array();
@@ -141,11 +141,12 @@ class Attractions extends MY_Model {
         $record['price'] = $xml['price'];
         $record['date'] = $xml['date'];
         
-        $record['gallery']= array(
+        $record['gallery']= array
+        (
             'pic1' => $xml['gallery']['pic1'],
             'pic2' => $xml['gallery']['pic2'],
             'pic3' => $xml['gallery']['pic3']
-                                    );
+        );
         
         //this needs to be fixed
         /*
@@ -254,18 +255,14 @@ class Attractions extends MY_Model {
                 $xml->specific->addChild('venue', $record['specific']['venue']);
                 break;
             case 'Eco-Tourism':
-                $xml->specific->addChild('', $record['specific']['']);
-                $xml->specific->addChild('', $record['specific']['']);
+                $xml->specific->addChild('guide', $record['specific']['guide']);
+                $xml->specific->addChild('shop', $record['specific']['shop']);
                 break;
             case 'Sight-Seeing':
-                $xml->specific->addChild('', $record['specific']['']);
-                $xml->specific->addChild('', $record['specific']['']);
+                $xml->specific->addChild('partysize', $record['specific']['partysize']);
+                $xml->specific->addChild('gear', $record['specific']['gear']);
                 break;
         }
-        //do i need to specify another specific creation because i have 2 in my xml?
-//        $xml->specific = $record['specific'];
-//        $xml->addAttribute('id', $record['specific']['id']);
-//        $xml->addAttribute('value', $record['specific']['value']);
         
         $newrec['attr_id'] = $record['attr_id'];
         $newrec['attr_name'] = $record['attr_name'];
@@ -275,10 +272,5 @@ class Attractions extends MY_Model {
         $newrec['detail'] = $xml->asXML();
         
         $this->add($newrec);
-        //whoops, not this stuff.
-        /*foreach($record['specific'] as $specattr)
-        {
-            $xml->addAttribute('id', 'value');
-        }*/
     }
 }
