@@ -233,14 +233,39 @@ class Attractions extends MY_Model {
         
         $xml->description = $record['description'];
         $xml->gallery = $record['gallery'];
-        $xml->addAttribute('pic1', $record['gallery']['pic1']);
-        $xml->addAttribute('pic2', $record['gallery']['pic2']);
-        $xml->addAttribute('pic3', $record['gallery']['pic3']);
+        foreach($record['picture'] as $temp)
+        {
+            $xml->gallery->addChild('picture', $record['picture']);
+        }
         
-        //do i need to specify another specific creation because i have 2 in my xml?
         $xml->specific = $record['specific'];
-        $xml->addAttribute('id', $record['specific']['id']);
-        $xml->addAttribute('value', $record['specific']['value']);
+        switch($record['main_id'])
+        {
+            case 'Entertainment':
+                $xml->specific->addChild('fee', $record['specific'][fee]);
+                $xml->specific->addChild('seating', $record['specific'][seating]);
+                break;
+            case 'Family-Fun':
+                $xml->specific->addChild('', $record['specific'][]);
+                $xml->specific->addChild('', $record['specific'][]);
+                break;
+            case 'Shopping':
+                $xml->specific->addChild('', $record['specific'][]);
+                $xml->specific->addChild('', $record['specific'][]);
+                break;
+            case 'Eco-Tourism':
+                $xml->specific->addChild('', $record['specific'][]);
+                $xml->specific->addChild('', $record['specific'][]);
+                break;
+            case 'Sight-Seeing':
+                $xml->specific->addChild('', $record['specific'][]);
+                $xml->specific->addChild('', $record['specific'][]);
+                break;
+        }
+        //do i need to specify another specific creation because i have 2 in my xml?
+//        $xml->specific = $record['specific'];
+//        $xml->addAttribute('id', $record['specific']['id']);
+//        $xml->addAttribute('value', $record['specific']['value']);
         
         $newrec['attr_id'] = $record['attr_id'];
         $newrec['attr_name'] = $record['attr_name'];

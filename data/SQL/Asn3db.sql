@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `attraction` (
   `attr_name` varchar(32) NOT NULL,
   `main_id` varchar(32) NOT NULL,
   `price_range` varchar(32) NOT NULL,
-  `detail` varchar(4096) NOT NULL,
+  `detail` TEXT NOT NULL,
   `tar_aud` varchar(32) NOT NULL,
   PRIMARY KEY (`attr_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -61,9 +61,13 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     kkc-3.JPG
                 </picture>
             </gallery>
-            <specific id="Yearly Fee" value="$100">
-            </specific>
-            <specific id="Seating" value="2,000">
+            <specific>
+                <fee>
+                    $100
+                </fee>
+                <admittance>
+                    2000
+                </admittance>
             </specific>
        </detail>',
 'adult'),
