@@ -15,7 +15,8 @@ class Attractions extends MY_Model {
     public function __construct() {
         parent::__construct('attraction', 'attr_id');
         //load xml file
-        $this->xml = simplexml_load_file("data/attractiondetail.xml");
+        //cant use this file, not supposed to have this
+        //$this->xml = simplexml_load_file("data/attractiondetail.xml");
     }
 
 
@@ -127,33 +128,36 @@ class Attractions extends MY_Model {
     
     public function get_xml($key)
     {
-        $records = (array)$this->get($key);
+        $CI = & get_instance();
         
-        $xml = simplexml_load_string($records['detail']);
+        $records = $CI->attractions->get($key);
         
-        $records['description'] = (string)$xml->description;
+        $xml = simplexml_load_string($records->detail);
         
-        $records['id'] = $xml['id'];
-        $records['contact'] = $xml['contact'];
-        $records['price'] = $xml['price'];
-        $records['date'] = $xml['date'];
+        $record['description'] = $xml->description;
         
-        $records['gallery']= array(
-                                        $xml->gallery['pic1'],
-                                        $xml->gallery['pic2'],
-                                        $xml->gallery['pic3']
+        $record['id'] = $xml['id'];
+        $record['contact'] = $xml['contact'];
+        $record['price'] = $xml['price'];
+        $record['date'] = $xml['date'];
+        
+        $record['gallery']= array(
+            'pic1' => $xml['gallery']['pic1'],
+            'pic2' => $xml['gallery']['pic2'],
+            'pic3' => $xml['gallery']['pic3']
                                     );
         
-        foreach($xml->specfic as $temp)
+        //this needs to be fixed
+        foreach($xml->specific as $temp)
         {
-            $this1 =array(
-                    'id' => $temp['id'],
-                    'value' =>$temp['value']
+            $this1 = array(
+                    'id'    => $temp['id'],
+                    'value' => $temp['value']
                    );
-            $records['specific'][] = $this1;
+            $record['specific'][] = $this1;
         }
         
-        return $records;
+        return $record;
     }
     
     //some returns 2d array of rows. 
