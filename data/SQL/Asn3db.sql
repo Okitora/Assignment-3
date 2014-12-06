@@ -62,10 +62,10 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                 </picture>
             </gallery>
             <specific>
-                <first id="fee">
+                <first specid="fee">
                     $100
                 </first>
-                <second id="admittance">
+                <second specid="admittance">
                     2000
                 </second>
             </specific>
@@ -95,10 +95,10 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                 </picture>
             </gallery>
             <specific>
-                <first id="fee">
+                <first specid="fee">
                     39.99
                 </first>
-                <second id="admittance">
+                <second specid="admittance">
                     200
                 </second>
             </specific>
@@ -129,10 +129,10 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                 </picture>
             </gallery>
             <specific>
-                <first id="fee">
+                <first specid="fee">
                     0
                 </first>
-                <second id="admittance">
+                <second specid="admittance">
                     15000
                 </second>
             </specific>
@@ -160,10 +160,10 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     </picture>
                 </gallery>
                 <specific>
-                    <first id="food">
+                    <first specid="food">
                         yes
                     </first>
-                    <second id="wifi">
+                    <second specid="wifi">
                         yes
                     </second>
                 </specific>
@@ -191,10 +191,10 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     </picture>
                 </gallery>
                 <specific>
-                    <first id="food">
+                    <first specid="food">
                         yes
                     </first>
-                    <second id="wifi">
+                    <second specid="wifi">
                         no
                     </second>
                 </specific>
@@ -222,10 +222,10 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     </picture>
                 </gallery>
                 <specific>
-                    <first id="food">
+                    <first specid="food">
                         no
                     </first>
-                    <second id="wifi">
+                    <second specid="wifi">
                         yes
                     </second>
                 </specific>
@@ -256,10 +256,10 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     </picture>
                 </gallery>
                 <specific>
-                    <first id="cafe">
+                    <first specid="cafe">
                         yes
                     </first>
-                    <second id="venue">
+                    <second specid="venue">
                         inside
                     </second>
                 </specific>
@@ -289,10 +289,10 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     </picture>
                 </gallery>
                 <specific>
-                    <first id="cafe">
+                    <first specid="cafe">
                         no
                     </first>
-                    <second id="venue">
+                    <second specid="venue">
                         inside
                     </second>
                 </specific>
@@ -323,10 +323,10 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     </picture>
                 </gallery>
                 <specific>
-                    <first id="cafe">
+                    <first specid="cafe">
                         yes
                     </first>
-                    <second id="venue">
+                    <second specid="venue">
                         outside
                     </second>
                 </specific>
@@ -355,10 +355,10 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     </picture>
                 </gallery>
                 <specific>
-                    <first id="guide">
+                    <first specid="guide">
                         yes
                     </first>
-                    <second id="shop">
+                    <second specid="shop">
                         no
                     </second>
                 </specific>
@@ -390,10 +390,10 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     </picture>
                 </gallery>
                 <specific>
-                    <first id="guide">
+                    <first specid="guide">
                         no
                     </first>
-                    <second id="shop">
+                    <second specid="shop">
                         yes
                     </second>
                 </specific>
@@ -422,10 +422,10 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     </picture>
                 </gallery>
                 <specific>
-                    <first id="guide">
+                    <first specid="guide">
                         yes
                     </first>
-                    <second id="shop">
+                    <second specid="shop">
                         no
                     </second>
                 </specific>
@@ -455,10 +455,10 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     </picture>
                 </gallery>
                 <specific>
-                    <first id="partysize">
+                    <first specid="partysize">
                         10
                     </first>
-                    <second id="gear">
+                    <second specid="gear">
                         boots
                     </second>
                 </specific>
@@ -487,10 +487,10 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     </picture>
                 </gallery>
                 <specific>
-                    <first id="partysize">
+                    <first specid="partysize">
                         5
                     </first>
-                    <second id="gear">
+                    <second specid="gear">
                         boots
                     </second>
                 </specific>
@@ -517,10 +517,10 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     </picture>
                 </gallery>
                 <specific>
-                    <first id="partysize">
+                    <first specid="partysize">
                         5
                     </first>
-                    <second id="gear">
+                    <second specid="gear">
                         boots
                     </second>
                 </specific>

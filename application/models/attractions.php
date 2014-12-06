@@ -7,9 +7,6 @@
  * @author Sharon
  */
 class Attractions extends MY_Model {
-
-    //xml doc to be loaded
-    //private $xml;
     
     // Constructor
     public function __construct() {
@@ -18,27 +15,6 @@ class Attractions extends MY_Model {
         //$this->xml = simplexml_load_file("data/attractiondetail.xml");
     }
 
-
-    // retrieve the first attraction
-    //public function first() {
-//        return $this->data['kkc'];
-//    }
-//
-//    // retrieve the last attraction
-//    public function last() {
-//        $CI = & get_instance();
-//        
-//        $index = count($CI->attractions) - 1;
-//        return $CI->attractions[$index];
-//    }
-//    
-//    //number of attractions
-//    public function many()
-//    {
-//        $CI = & get_instance();
-//        return count($CI->attractions->all());
-//    }
-//    
     //retrieve newest attraction
     public function newest()
     {
@@ -67,73 +43,15 @@ class Attractions extends MY_Model {
         return $new;
     }
     
-    //retrieve oldest attraction
-//    public function oldest()
-//    {
-//        $CI = & get_instance();
-//        
-//        //variable determining if it has the oldest date
-//        $oldest = 0;
-//        $old = 0;
-//        
-//        $source = $CI->attractions->all();
-//        
-//        foreach($source as $record)
-//        {
-//            $date = $record->date;
-//            
-//            if($date < $oldest)
-//            {
-//                $oldest = $date;
-//                $old = $record;
-//            }
-//        }
-//        
-//        return $old;
-//    }
-    
-    
-    /**
-     * Returns all the details for specific attraction from the xml file
-     * @return the specified detail
-     */
-    
-//    function getDetails($id) 
-//    {
-//        $details = array();
-//        
-//        foreach($this->xml->children() as $detail) 
-//        {
-//            
-//            if($id == (string)$detail['id'])
-//            {
-//                $details = array(
-//                    'id'            => $detail['id'],
-//                    'contact'       => $detail['contact'],
-//                    'date'          => $detail['date'],
-//                    'price'         => $detail['price'],
-//                    'description'   => $detail->description->__toString(),
-//                    'pic1'          => $detail->gallery['pic1'],
-//                    'pic2'          => $detail->gallery['pic2'],
-//                    'pic3'          => $detail->gallery['pic3'],
-//                );
-//                
-//                return $details;
-//            }
-//        }
-//        
-//    }
-    
-    
     public function convertToObject($key)
     {
         $CI = & get_instance();
         
-        $records = $CI->attractions->get($key);
+        $record = $CI->attractions->get($key);
         //$specific = array();
         
-        $xml = simplexml_load_string($records->detail);
-        $record = array();
+        $xml = simplexml_load_string((string)$record->detail);
+        //$record = array();
         $record['description'] = (string)$xml->description;
         
         $record['id'] = $xml['id'];
@@ -143,85 +61,29 @@ class Attractions extends MY_Model {
         
         $record['gallery']= array
         (
-            'pic1' => $xml['gallery']['pic1'],
-            'pic2' => $xml['gallery']['pic2'],
-            'pic3' => $xml['gallery']['pic3']
+            'picture1' => $xml['gallery']->picture,
+            'picture' => $xml['gallery']->picture,
+            'picture' => $xml['gallery']->picture
         );
-        
-        //this needs to be fixed
-        /*
-        $specific = $xml['specific'];
-        foreach($specific as $temp)
-        {
-            $this1 = array(
-                    'id'    => $temp['id'],
-                    'value' => $temp['value']
-                   );
-            $record['specific'][] = $this1;
-        }
-        */
+        //[specific] = [[first],[second]]
+        //[first and second] = [id, value]    
+        $record['specific']=array
+        (
+            'first'=>
+                array
+                (
+                    'id' => $xml['specific']['first'],
+                    'value' => (string)$xml['specific']->first
+                ),
+            'second'=>
+                array
+                (
+                    'id' => $xml['specific']['second'],
+                    'value' => (string)$xml['specific']->second
+                ),
+        );
         return $record;
     }
-    
-    //some returns 2d array of rows. 
-//    public function some_xml($what, $which)
-//    {
-//        $records = $this->some($what, $which);
-//        
-//        foreach($records as $temp)
-//        {
-//            $xml = simplexml_load_string($records['detail']);
-//            
-//            $temp['description'] = (string)$xml->description;
-//
-//            $temp['id'] = $xml['id'];
-//            $temp['contact'] = $xml['contact'];
-//            $temp['price'] = $xml['price'];
-//            $temp['date'] = $xml['date'];
-//
-//            $temp['gallery']= array(
-//                                        $xml->gallery['pic1'],
-//                                        $xml->gallery['pic2'],
-//                                        $xml->gallery['pic3']
-//                                    );
-//
-//            foreach($temp->specfic as $spectemp)
-//            {
-//                $this1 =array(
-//                        'id' => $spectemp['id'],
-//                        'value' =>$spectemp['value']
-//                       );
-//                $temp['specific'] = $this1;
-//            }
-//            $records[/*not sure what goes in here*/][] = $temp;
-//        }
-//        return $records;
-//    }
-    //update
-//    public function update_xml($record)
-//    {
-//        $xml = simplexml_load_string($record['detail']);
-//        
-//        $xml->description = $record['description'];
-//        $xml->gallery = $record['gallery'];
-//        //do i need to specify another specific creation because i have 2 in my xml?
-//        $xml->specific = $record['specific'];
-//        
-//        $newrec['attr_id'] = $record['attr_id'];
-//        $newrec['attr_name'] = $record['attr_name'];
-//        $newrec['main_id'] = $record['main_id'];
-//        $newrec['price_range'] = $record['price_range'];
-//        $newrec['tar_aud'] = $record['tar_aud'];
-//        $newrec['detail'] = $xml->asXML();
-//        
-//        $this->update($newrec);
-//    }
-//    //delete
-//    // do we need a delete xml function? wouldnt update with empty 
-//    // elements be enough to for deleting a specific xml?
-//    public function delete_xml($key)
-//    {
-//    }
     //create
     public function convertToDBRecord($record)
     {
@@ -233,36 +95,17 @@ class Attractions extends MY_Model {
         $xml->addAttribute('date', $record['date']);
         
         $xml->description = $record['description'];
-        $xml->gallery = $record['gallery'];
-        foreach($record['picture'] as $temp)
+        //$xml->gallery = $record['gallery'];
+        foreach($record->gallery as $temp)
         {
-            $xml->gallery->addChild('picture', $record['picture']);
+            $temp->gallery->addChild('picture', (string)$temp->picture);
         }
         
-        $xml->specific = $record['specific'];
-        switch($record['main_id'])
-        {
-            case 'Entertainment':
-                $xml->specific->addChild('fee', $record['specific']['fee']);
-                $xml->specific->addChild('seating', $record['specific']['seating']);
-                break;
-            case 'Family-Fun':
-                $xml->specific->addChild('food', $record['specific']['food']);
-                $xml->specific->addChild('wifi', $record['specific']['wifi']);
-                break;
-            case 'Shopping':
-                $xml->specific->addChild('cafe', $record['specific']['cafe']);
-                $xml->specific->addChild('venue', $record['specific']['venue']);
-                break;
-            case 'Eco-Tourism':
-                $xml->specific->addChild('guide', $record['specific']['guide']);
-                $xml->specific->addChild('shop', $record['specific']['shop']);
-                break;
-            case 'Sight-Seeing':
-                $xml->specific->addChild('partysize', $record['specific']['partysize']);
-                $xml->specific->addChild('gear', $record['specific']['gear']);
-                break;
-        }
+        //$xml->specific = $record['specific'];
+        $xml->specific->addChild('first', (string)$record->specific->first);
+        $xml->specific->first->addAttribute('specid',$record['specific']['first']);
+        $xml->specific->addChild('second', (string)$record->specific->second);
+        $xml->specific->second->addAttribute('specid',$record['specific']['second']);
         
         $newrec['attr_id'] = $record['attr_id'];
         $newrec['attr_name'] = $record['attr_name'];
@@ -273,4 +116,9 @@ class Attractions extends MY_Model {
         
         $this->add($newrec);
     }
+//    public function get($key)
+//    {
+//        return converToObject(parent::get($key));
+//    }
+    
 }
