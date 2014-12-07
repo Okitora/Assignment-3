@@ -51,15 +51,9 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                 the recognition of Florian Habichts movie Kaikohe Demolition.
             </description>
             <gallery>
-                <picture>
-                    kkc.JPG
-                </picture>
-                <picture>
-                    kkc-2.JPG
-                </picture>
-                <picture>
-                    kkc-3.JPG
-                </picture>
+                <pic1>kkc.JPG</pic1>
+                <pic2>kkc-2.JPG</pic2>
+                <pic3>kkc-3.JPG</pic3>
             </gallery>
             <specific>
                 <first specid="fee">
@@ -84,15 +78,9 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                 in the country.
             </description>
             <gallery>
-                <picture>
-                    sb.JPG
-                </picture>
-                <picture>
-                    sb-2.JPG
-                </picture>
-                <picture>
-                    sb-3.JPG
-                </picture>
+                <pic1>sb.JPG</pic1>
+                <pic2>sb-2.JPG</pic2>
+                <pic3>sb-3.JPG</pic3>
             </gallery>
             <specific>
                 <first specid="fee">
@@ -118,15 +106,9 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                 shows, as well as private functions and weddings.
             </description>
             <gallery>
-                <picture>
-                    nhs.JPG
-                </picture>
-                <picture>
-                    nhs-2.JPG
-                </picture>
-                <picture>
-                   nhs-3.JPG
-                </picture>
+                <pic1>nhs.JPG</pic1>
+                <pic2>nhs-2.JPG</pic2>
+                <pic3>nhs-3.JPG</pic3>
             </gallery>
             <specific>
                 <first specid="fee">
@@ -149,15 +131,9 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     in January 2004.
                 </description>
                 <gallery>
-                    <picture>
-                        oap.JPG
-                    </picture>
-                    <picture>
-                        oap-2.JPG
-                    </picture>
-                    <picture>
-                        oap-3.JPG
-                    </picture>
+                    <pic1>oap.JPG</pic1>
+                    <pic2>oac-2.JPG</pic2>
+                    <pic3>oac-3.JPG</pic3>
                 </gallery>
                 <specific>
                     <first specid="food">
@@ -180,15 +156,9 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     established and emerging New Zealand artists.
                 </description>
                 <gallery>
-                    <picture>
-                        kcsg.JPG
-                    </picture>
-                    <picture>
-                        kcsg-2.JPG
-                    </picture>
-                    <picture>
-                        kcsg-3.JPG
-                    </picture>
+                    <pic1>kcsg.JPG</pic1>
+                    <pic2>kcsg-2.JPG</pic2>
+                    <pic3>kcsg-3.JPG</pic3>
                 </gallery>
                 <specific>
                     <first specid="food">
@@ -211,15 +181,9 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     thing for a Corporate event!
                 </description>
                 <gallery>
-                    <picture>
-                        cap.JPG
-                    </picture>
-                    <picture>
-                        cap-2.JPG
-                    </picture>
-                    <picture>
-                        cap-3.JPG
-                    </picture>
+                    <pic1>cap.JPG</pic1>
+                    <pic2>cap-2.JPG</pic2>
+                    <pic3>cap-3.JPG</pic3>
                 </gallery>
                 <specific>
                     <first specid="food">
@@ -245,15 +209,9 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     7 days.
                 </description>
                 <gallery>
-                    <picture>
-                        rosm.JPG
-                    </picture>
-                    <picture>
-                        rosm-2.JPG
-                    </picture>
-                    <picture>
-                        rosm-3.JPG
-                    </picture>
+                    <pic1>rosm.JPG</pic1>
+                    <pic2>rosc-2.JPG</pic2>
+                    <pic3>rosc-3.JPG</pic3>
                 </gallery>
                 <specific>
                     <first specid="cafe">
@@ -278,15 +236,9 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     partners today.
                 </description>
                 <gallery>
-                    <picture>
-                        dfsg.JPG
-                    </picture>
-                    <picture>
-                        dfsg-2.JPG
-                    </picture>
-                    <picture>
-                        dfsg-3.JPG
-                    </picture>
+                    <pic1>dfsg.JPG</pic1>
+                    <pic2>dfsg-2.JPG</pic2>
+                    <pic3>dfsg-3.JPG</pic3>
                 </gallery>
                 <specific>
                     <first specid="cafe">
@@ -312,15 +264,9 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     refurbishments.
                 </description>
                 <gallery>
-                    <picture>
-                        vpm.JPG
-                    </picture>
-                    <picture>
-                        vpm-2.JPG
-                    </picture>
-                    <picture>
-                        vpm-3.JPG
-                    </picture>
+                    <pic1>vpm.JPG</pic1>
+                    <pic2>vpm-2.JPG</pic2>
+                    <pic3>vpm-3.JPG</pic3>
                 </gallery>
                 <specific>
                     <first specid="cafe">
@@ -344,15 +290,9 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     dventure to this fascinating island volcano.
                 </description>
                 <gallery>
-                    <picture>
-                        wit.JPG
-                    </picture>
-                    <picture>
-                        wit-2.JPG
-                    </picture>
-                    <picture>
-                        wit-3.JPG
-                    </picture>
+                    <pic1>wit.JPG</pic1>
+                    <pic2>wit-2.JPG</pic2>
+                    <pic3>wit-3.JPG</pic3>
                 </gallery>
                 <specific>
                     <first specid="guide">
@@ -379,15 +319,9 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     see and experience besides.
                 </description>   
                 <gallery>
-                    <picture>
-                        kwt.JPG
-                    </picture>
-                    <picture>
-                        kwt-2.JPG
-                    </picture>
-                    <picture>
-                        kwt-3.JPG
-                    </picture>
+                    <pic1>kwt.JPG</pic1>
+                    <pic2>kwt-2.JPG</pic2>
+                    <pic3>kwt-3.JPG</pic3>
                 </gallery>
                 <specific>
                     <first specid="guide">
@@ -411,15 +345,9 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     excitement you require.
                 </description>
                 <gallery>
-                    <picture>
-                        tv.JPG
-                    </picture>
-                    <picture>
-                        tv-2.JPG
-                    </picture>
-                    <picture>
-                        tv-3.JPG
-                    </picture>
+                    <pic1>tv.JPG</pic1>
+                    <pic2>tv-2.JPG</pic2>
+                    <pic3>tv-3.JPG</pic3>
                 </gallery>
                 <specific>
                     <first specid="guide">
@@ -444,15 +372,9 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     camping.
                 </description>
                 <gallery>
-                    <picture>
-                        ht.JPG
-                    </picture>
-                    <picture>
-                        ht-2.JPG
-                    </picture>
-                    <picture>
-                        ht-3.JPG
-                    </picture>
+                    <pic1>ht.JPG</pic1>
+                    <pic2>ht-2.JPG</pic2>
+                    <pic3>ht-3.JPG</pic3>
                 </gallery>
                 <specific>
                     <first specid="partysize">
@@ -476,15 +398,9 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     Admirals Bay, suitable for swimming and snorkelling.
                 </description>
                 <gallery>
-                    <picture>
-                        wnhwt.JPG
-                    </picture>
-                    <picture>
-                        wnhwt-2.JPG
-                    </picture>
-                    <picture>
-                        wnhwt-3.JPG
-                    </picture>
+                    <pic1>wnhwt.JPG</pic1>
+                    <pic2>wnhwt-2.JPG</pic2>
+                    <pic3>wnhwt-3.JPG</pic3>
                 </gallery>
                 <specific>
                     <first specid="partysize">
@@ -506,15 +422,9 @@ INSERT INTO `attraction` (`attr_id`, `attr_name`, `main_id`, `price_range`,`deta
                     recreational reserves and existing public walkways.
                 </description>
                 <gallery>
-                    <picture>
-                        bhcw.JPG
-                    </picture>
-                    <picture>
-                        bhcw-2.JPG
-                    </picture>
-                    <picture>
-                        bhcw-3.JPG
-                    </picture>
+                    <pic1>bhcw.JPG</pic1>
+                    <pic2>bhcw-2.JPG</pic2>
+                    <pic3>bhcw-3.JPG</pic3>
                 </gallery>
                 <specific>
                     <first specid="partysize">

@@ -26,14 +26,19 @@ Details for the attractions, Fall 2014
 <!ELEMENT description (#PCDATA)>
 
 <!-- A Gallery holds all the pictures for one attraction,-->
-<!ELEMENT gallery (#PCDATA)>
-<!ATTLIST gallery
-    pic1    CDATA   #REQUIRED
-    pic2    CDATA   #REQUIRED
-    pic3    CDATA   #REQUIRED >
+<!ELEMENT gallery (pic1, pic2, pic3)>
+<!ELEMENT pic1 (#PCDATA)>
+<!ELEMENT pic2 (#PCDATA)>
+<!ELEMENT pic3 (#PCDATA)>
 
-<!ELEMENT specific (#PCDATA)>
-<!ATTLIST specific
-    id      CDATA   #REQUIRED
-    value   CDATA   #REQUIRED >
+<!-- Holds the specific details for the attraction -->
+<!ELEMENT specific (first, second)>
+
+<!ELEMENT first (#PCDATA)>
+<!ATTLIST first
+    specid  CDATA   #REQUIRED >
+
+<!ELEMENT second (#PCDATA)>
+<!ATTLIST second
+    specid  CDATA   #REQUIRED >
 

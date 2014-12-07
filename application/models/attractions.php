@@ -16,6 +16,7 @@ class Attractions extends MY_Model {
     }
 
     //retrieve newest attraction
+    //must be fixed....will fix after sublist/individual attraction pages are functional
     public function newest()
     {
         $CI = & get_instance();
@@ -47,10 +48,10 @@ class Attractions extends MY_Model {
     {
         $CI = & get_instance();
         
-        $record = $CI->attractions->get($key);
+        $recordTyp = $CI->attractions->get($key);
         //$specific = array();
         
-        $xml = simplexml_load_string((string)$record->detail);
+        $xml = simplexml_load_string((string)$recordTyp->detail);
         //$record = array();
         $record['description'] = (string)$xml->description;
         
@@ -59,12 +60,12 @@ class Attractions extends MY_Model {
         $record['price'] = $xml['price'];
         $record['date'] = $xml['date'];
         
-        $record['gallery']= array
-        (
-            'picture1' => $xml['gallery']->picture,
-            'picture' => $xml['gallery']->picture,
-            'picture' => $xml['gallery']->picture
-        );
+        $record['gallery'] = array(
+            'pic1' => (string)$xml->gallery->pic1,
+            'pic2' => (string)$xml->gallery->pic2,
+            'pic3' => (string)$xml->gallery->pic3,
+            );
+        
         //[specific] = [[first],[second]]
         //[first and second] = [id, value]    
         $record['specific']=array
@@ -72,14 +73,15 @@ class Attractions extends MY_Model {
             'first'=>
                 array
                 (
-                    'id' => $xml['specific']['first'],
-                    'value' => (string)$xml['specific']->first
+                    'id' => $xml->specific->first['specid'],
+                    'value' => (string)$xml->specific->first
                 ),
+            
             'second'=>
                 array
                 (
-                    'id' => $xml['specific']['second'],
-                    'value' => (string)$xml['specific']->second
+                    'id' => $xml->specific->second['specid'],
+                    'value' => (string)$xml->specific->second
                 ),
         );
         return $record;
@@ -96,10 +98,10 @@ class Attractions extends MY_Model {
         
         $xml->description = $record['description'];
         //$xml->gallery = $record['gallery'];
-        foreach($record->gallery as $temp)
-        {
-            $temp->gallery->addChild('picture', (string)$temp->picture);
-        }
+        $record->gallery->addChild('pic1', (string)$temp->pic1);
+        $record->gallery->addChild('pic2', (string)$temp->pic2);
+        $record->gallery->addChild('pic3', (string)$temp->pic3);
+        
         
         //$xml->specific = $record['specific'];
         $xml->specific->addChild('first', (string)$record->specific->first);

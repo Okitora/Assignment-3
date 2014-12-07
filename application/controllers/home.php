@@ -294,7 +294,7 @@ class Home extends Application {
             $id = $cat->attr_id;
             
             //gets the details part in attraction, returns array
-            $detail = $this->attractions->get_xml($id);
+            $detail = $this->attractions->convertToObject($id);
             
             $this1 = array(
                 'id'   => $cat->attr_id,
@@ -309,7 +309,6 @@ class Home extends Application {
         
         $this->data['places'] = $catlist;
         $this->data['main'] = $code;
-        
         
         $this->render();
     }
@@ -347,7 +346,7 @@ class Home extends Application {
             $id = $cat->attr_id;
             
             //gets the details part in attraction, returns array
-            $detail = $this->attractions->get_xml($id);
+            $detail = $this->attractions->convertToObject($id);
             
             
             $this1 = array(
@@ -395,7 +394,7 @@ class Home extends Application {
             $id = $cat->attr_id;
             
             //gets the details part in attraction, returns array
-            $detail = $this->attractions->get_xml($id);
+            $detail = $this->attractions->convertToObject($id);
            
             $this1 = array(
                 'id'            => $cat->attr_id,
@@ -439,10 +438,11 @@ class Home extends Application {
         // build the list of places, to pass on to our view
         $record = $this->attractions->get($id);    //get all the attractions from DB
         $places = array();
+        $specifics = array();
         
         //parse xml
         //gets the details part in attraction, returns array
-        $detail = $this->attractions->get_xml($id);
+        $detail = $this->attractions->convertToObject($id);
         
         //place every attraction into places array.
             $this1 = array(
@@ -460,26 +460,24 @@ class Home extends Application {
                 'pic3'          => $detail['gallery']['pic3'],
                 
             );   
-            /*
-                $list = $detail['specific'];
-                foreach($list as $specific)
-                {
-                    $this2 = array(
-                        'sid' => $specific->id,
-                        'svalue' => $specific->value, 
-                    );
-                    
-                    //place specific details in specifics array
-                    $specifics[] = $this2;
-                }*/
+            
+                $this2 = array(
+                    'firstName' => $detail['specific']['first']['id'],
+                    'firstVal' => $detail['specific']['first']['value'],
+                    'secondName' => $detail['specific']['second']['id'],
+                    'secondVal' => $detail['specific']['second']['value'],
+                );
                 
+                $specifics[] = $this2;
+            
+              
             //places major details in places array
 
             $places[] = $this1;
             
         //send places array to our data
         $this->data['places'] = $places;
-        //$this->data['specific'] = $specifics;
+        $this->data['specifics'] = $specifics;
         //$this->data['test'] = $this1;
 
         $this->render();
