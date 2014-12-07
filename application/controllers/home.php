@@ -461,12 +461,12 @@ class Home extends Application {
                 
             );   
             
-                $this2 = array(
-                    'firstName' => $detail['specific']['first']['id'],
-                    'firstVal' => $detail['specific']['first']['value'],
-                    'secondName' => $detail['specific']['second']['id'],
-                    'secondVal' => $detail['specific']['second']['value'],
-                );
+            $this2 = array(
+                'firstName' => $detail['specific']['first']['id'],
+                'firstVal' => $detail['specific']['first']['value'],
+                'secondName' => $detail['specific']['second']['id'],
+                'secondVal' => $detail['specific']['second']['value'],
+            );
                 
                 $specifics[] = $this2;
             

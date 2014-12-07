@@ -22,7 +22,7 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `attraction`;
 CREATE TABLE IF NOT EXISTS `attraction` (
   `attr_id` varchar(32) NOT NULL,
-  `attr_name` varchar(32) NOT NULL,
+  `attr_name` TEXT NOT NULL,
   `main_id` varchar(32) NOT NULL,
   `price_range` varchar(32) NOT NULL,
   `detail` TEXT NOT NULL,

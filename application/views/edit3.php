@@ -4,12 +4,13 @@
     {fname}
     {fdescription}
     {fmain}
-    {fsub}
-    <!--{ftarget}-->
+    {ftarget}
     {fcontact}
     {fdate}
+    {fprice_range}
     {fprice}
-    <!--{fprice_range}-->
-    {fpicture}
+    {fpic1}
+    {fpic2}
+    {fpic3}
     {fsubmit}
 </form>

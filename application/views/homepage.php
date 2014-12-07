@@ -29,16 +29,16 @@
                 <td>{price}</td>
                 <td>{date}</td>    
             </tr>
-            <br>
-            <br>
+        </table>
+        <table>
             {specifics}
             <tr>
-                <td><h5>{firstName}</h5></td>
-                <td><h5>{secondName}</h5></td>
+                <td><h5>{firstName}:</h5></td>
+                <td>{firstVal}</td>
             </tr>
             <tr>
-                <td>first:{firstVal}</td>
-                <td>second:{secondVal}</td>
+                <td><h5>{secondName}:</h5></td>
+                <td>{secondVal}</td>
             </tr>
             {/specifics}
         </table>

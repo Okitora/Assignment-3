@@ -45,21 +45,25 @@ class Admin extends Application {
         
         //place every attraction into places array.
         foreach ($source as $record) {
-           //
+           
+           //gets the details part in attraction, returns array
+            $detail = $this->attractions->convertToObject($record->attr_id); 
+            
             $places[] = array(
                 'id'          => $record->attr_id,
                 'name'        => $record->attr_name, 
-                'pic'         => $record->image_name, 
-                'description' => $record->description,
                 'main'        => $record->main_id,
-                'sub'         => $record->sub_id,
-                //'target'      => $record->tar_aud,
-                'contact'     => $record->contact, 
-                'date'        => $record->date,
-                'price'       => $record->price,
-                //'price_range  => $record->price_range,
+                'target'      => $record->tar_aud,
+                'price_range' => $record->price_range,
+                'pic1'        => $detail['gallery']['pic1'],
+                'pic2'        => $detail['gallery']['pic2'],
+                'pic3'        => $detail['gallery']['pic3'],
+           
+                'firstName' => $detail['specific']['first']['id'],
+                'firstVal' => $detail['specific']['first']['value'],
+                'secondName' => $detail['specific']['second']['id'],
+                'secondVal' => $detail['specific']['second']['value'],
             );
-        
             
         }
         
@@ -87,25 +91,31 @@ class Admin extends Application {
         //get all attractions
         $source = $this->attractions->all();
         $items = '';
+        $specifics = array();
         
         //place every attraction into places array.
         foreach ($source as $record) {
-           //array to display to view
+            
+            //gets the details part in attraction, returns array
+            $detail = $this->attractions->convertToObject($record->attr_id);
+           
+            //array to display to view
             $places[] = array(
                 'id'          => $record->attr_id,
-                'name'        => $record->attr_name, 
-                'pic'         => $record->image_name, 
-                'description' => $record->description,
+                'name'        => $record->attr_name,
                 'main'        => $record->main_id,
-                'sub'         => $record->sub_id,
-                //'target'         => $record->tar_aud,
-                'contact'     => $record->contact,
-                'date'        => $record->date,
-                'price'       => $record->price,
-                //'price_range' => $record->price_range,
-            );
-        
+                'target'      => $record->tar_aud,
+                'price_range' => $record->price_range,
+                'pic1'        => $detail['gallery']['pic1'],
+                'pic2'        => $detail['gallery']['pic2'],
+                'pic3'        => $detail['gallery']['pic3'],
             
+                'firstName' => $detail['specific']['first']['id'],
+                'firstVal' => $detail['specific']['first']['value'],
+                'secondName' => $detail['specific']['second']['id'],
+                'secondVal' => $detail['specific']['second']['value'],
+            );
+       
         }
         
         //send places array to our data
@@ -156,28 +166,29 @@ class Admin extends Application {
         // merge the view parms with the current item record
         //$this->data = array_merge($this->data, $item_record);
         
+        //gets the details part in attraction, returns array
+        $detail = $this->attractions->convertToObject($item_record['attr_id']);
+        
         // we need to construct pretty editing fields using the formfields helper
         $this->data['fid'] = makeTextField('Attraction ID', 'attr_id', $item_record['attr_id'], "item identifier ... cannot be changed", 10, 25, true);
         $this->data['fname'] = makeTextField('Name', 'attr_name', $item_record['attr_name'], "Name your customers are comfortable with");
-        $this->data['fdescription'] = makeTextArea('Description', 'description', $item_record['description'], 'This is a long-winded and humorous caption that pops up if the visitor hovers over a menu item picture too long.', 1000);
+        $this->data['fdescription'] = makeTextArea('Description', 'description', $detail['description'], 'This is a long-winded and humorous caption that pops up if the visitor hovers over a menu item picture too long.', 1000);
         
         $options = array('Family-Fun' => 'Family Fun', 'Eco-Tourism' => 'Eco Tourism', 'Shopping' => 'Shopping', 'Entertainment' => 'Entertainment', 'Sight-Seeing' => 'Sight Seeing');
         $this->data['fmain'] = makeComboField('Main category', 'main_id', $item_record['main_id'], $options, "Main category. Used to group similar things by column for ordering");
         
-        //$options2 = array('ra' => 'Racing', 'nc' => 'Night Club', 'st' => 'Stadium', 
-            //'mo' => 'Movie', 'ng' => 'Nature Garden', 'tp' => 'Theme Park', 'sm' => 'Shopping Mall',
-            //'df' => 'Duty Free', 'ts' => 'Tourist Shops', 'vo' => 'volcanos', 'bw' => 'bird watching',
-            //'yc' => 'Yacht Cruising', 'tr' => 'Trails', 'wt' => 'Walking Tracks', 'cw' => 'Coast Walks');
         $options2 = array('adult' =>'Adult', 'teenager' => 'Teenager', 'kids' => 'Kids');
-        $this->data['ftarget'] = makeComboField('Target Audience', 'tar_aud', $item_record['tar_aud'], $options2, "Sub category. Used to group similar things by column for ordering");
-        //$this->data['fsub'] = makeComboField('Target Audience', 'sub_id', $item_record['sub_id'], $options2, "Sub category. Used to group similar things by column for ordering");
-        $this->data['fcontact'] = makeTextField('Contact', 'contact', $item_record['contact'], 'This is the contact info for the attraction');
-        $this->data['fdate'] = makeTextArea('Date', 'date', $item_record['date'], 'Time stamp of when the attraction was added');
+        $this->data['ftarget'] = makeComboField('Target Audience', 'tar_aud', $item_record['tar_aud'], $options2, "Target Audience. Used to group similar things by column for ordering");
+        $this->data['fcontact'] = makeTextField('Contact', 'contact', $detail['contact'], 'This is the contact info for the attraction');
+        $this->data['fdate'] = makeTextArea('Date', 'date', $detail['date'], 'Time stamp of when the attraction was added');
         
         $options3 = array('Cheap' => 'Cheap', 'Moderate' => 'Moderate', 'Expensive' => 'Expensive');
-        $this->data['fprice'] = makeComboField('Price Range', 'price', $item_record['price'], $options3, "Price range for the attraction");
-        //$this->data['fprice_range'] = makeComboField('Price Range', 'price_range', $item_record['price_range'], $options3, "Price range for the attraction");
-        $this->data['fpicture'] = showImage('Attraction picture shown at ordering time', $item_record['image_name']);
+        $this->data['fprice_range'] = makeComboField('Price Range', 'price_range', $item_record['price_range'], $options3, "Price range for the attraction");
+        $this->data['fprice'] = makeTextField('Price', 'price', $detail['price'], "This is the price for the attraction");
+        //$this->data['fspecific']
+        $this->data['fpic1'] = showImage('Attraction picture shown at ordering time', $detail['gallery']['pic1']);
+        $this->data['fpic2'] = showImage('Attraction picture shown at ordering time', $detail['gallery']['pic2']);
+        $this->data['fpic3'] = showImage('Attraction picture shown at ordering time', $detail['gallery']['pic3']);
         $this->data['fsubmit'] = makeSubmitButton('Post Changes', 'Do you feel lucky?');
         
         $this->render();
@@ -207,16 +218,10 @@ class Admin extends Application {
         }
         
         //has to have a sub category
-        $cat = $fields['sub_id'];
-        //$cat = $fields['tar_aud'];
-        if (($cat != 'ra') && ($cat != 'nc') && ($cat != 'st') && ($cat != 'mo') && ($cat != 'ng')
-            && ($cat != 'tp') && ($cat != 'sm') && ($cat != 'df') && ($cat != 'ts') && ($cat != 'vo')
-            && ($cat != 'bw') && ($cat != 'yc') && ($cat != 'tr') && ($cat != 'wt') && ($cat != 'cw')) 
-        //if(($cat != 'adult) && ($cat != 'teenager') && ($cat != 'kids'))
+        $cat = $fields['tar_aud'];
+        if(($cat != 'adult') && ($cat != 'teenager') && ($cat != 'kids'))
         {
-            $this->errors[] = 'Your sub-category has to be one of Racing, Night Club, 
-                Stadium, Movies, Nature Garden, Theme Park, Shopping Malls, Duty Free, 
-                Tourist Shops, Volcanos, Bird Watching, Yacht Cruising, Trails, Walking Tracks, Coast Walks :(';
+            $this->errors[] = 'Your Target Audience has to be Kids, Teenagers or Adults :(';
         }
         
         //needs to have a contact
@@ -232,11 +237,15 @@ class Admin extends Application {
         }
         
         //needs to have a price
-        $cat = $fields['price'];
-        //$cat = $fields['price_range'];
+        $cat = $fields['price_range'];
         if (($cat != 'Cheap') && ($cat != 'Moderate') && ($cat != 'Expensive'))
         {
             $this->errors[] = 'Your price range has to be cheap, moderate or expensive...';
+        }
+        
+        if(strlen($fields['price']) < 1)
+        {
+            $this->errors[] = 'An attraction has to have a price! If it\'s free just put 0';
         }
         
 
@@ -295,11 +304,8 @@ class Admin extends Application {
             $this->errors[] = 'Your category has to be one of Entertainment, Family-Fun, Eco-Tourism, Shopping, Sight-Seeing :(';
         }
         
-        $cat = $fields['sub_id'];
         $cat = $fields['tar_aud'];
-        //if (($cat != 'ra') && ($cat != 'nc') && ($cat != 'st') && ($cat != 'mo') && ($cat != 'ng')
-          //  && ($cat != 'tp') && ($cat != 'sm') && ($cat != 'df') && ($cat != 'ts') && ($cat != 'vo')
-            //&& ($cat != 'bw') && ($cat != 'yc') && ($cat != 'tr') && ($cat != 'wt') && ($cat != 'cw')) 
+         
         if(($cat != 'adult') && ($cat != 'teenager') && ($cat != 'kids'))
         {
             $this->errors[] = 'Your Target Audience has to be either Kids, Teenager, Adults :(';
@@ -315,7 +321,6 @@ class Admin extends Application {
             $this->errors[] = 'An attraction has to have a date!';
         }
         //needs to have a price
-        //$cat = $fields['price'];
         $cat = $fields['price_range'];
         if (($cat != 'Cheap') && ($cat != 'Moderate') && ($cat != 'Expensive'))
         {
@@ -357,13 +362,11 @@ class Admin extends Application {
             $record->attr_name = $fields['attr_name'];
             $record->description = $fields['description'];
             $record->main_id = $fields['main_id'];
-            $record->sub_id = $fields['sub_id'];
-            //$record->tar_aud = $fields['tar_aud'];
+            $record->tar_aud = $fields['tar_aud'];
             $record->contact = $fields['contact'];
             $record->date = $fields['date'];
-            $record->price = $fields['price'];
-            //$record->price_range = $fields['price_range'];
-            $record->image_name = 'Larnach-Castle-02_opt.jpg';
+            $record->price_range = $fields['price_range'];
+            $record->pic1 = 'Larnach-Castle-02_opt.jpg';
             
             $this->attractions->add($record);
             
@@ -449,19 +452,13 @@ class Admin extends Application {
         $options = array('Family-Fun' => 'Family Fun', 'Eco-Tourism' => 'Eco Tourism', 'Shopping' => 'Shopping', 'Entertainment' => 'Entertainment', 'Sight-Seeing' => 'Sight Seeing');
         $this->data['fmain'] = makeComboField('Main category', 'main_id', $item_record['main_id'], $options, "Main category. Used to group similar things by column for ordering");
         
-        $options2 = array('ra' => 'Racing', 'nc' => 'Night Club', 'st' => 'Stadium', 
-            'mo' => 'Movie', 'ng' => 'Nature Garden', 'tp' => 'Theme Park', 'sm' => 'Shopping Mall',
-            'df' => 'Duty Free', 'ts' => 'Tourist Shops', 'vo' => 'volcanos', 'bw' => 'bird watching',
-            'yc' => 'Yacht Cruising', 'tr' => 'Trails', 'wt' => 'Walking Tracks', 'cw' => 'Coast Walks');
-        //$options2 = array('adult' = >'Adult', 'teenager' => 'Teenager', 'kids' => 'Kids');
-        //$this->data['ftarget'] = makeComboField('Target Audience', 'tar_aud', $item_record['tar_aud'], $options2, "Target Audience. Used to group similar things by column for ordering");
-        $this->data['fsub'] = makeComboField('Target Audience', 'sub_id', $item_record['sub_id'], $options2, "Sub category. Used to group similar things by column for ordering");
+        $options2 = array('adult' => 'Adult', 'teenager' => 'Teenager', 'kids' => 'Kids');
+        $this->data['ftarget'] = makeComboField('Target Audience', 'tar_aud', $item_record['tar_aud'], $options2, "Target Audience. Used to group similar things by column for ordering");
         $this->data['fcontact'] = makeTextField('Contact', 'contact', $item_record['contact'], 'This is the contact info for the attraction');
         $this->data['fdate'] = makeTextArea('Date', 'date', $item_record['date'], 'Time stamp of when the attraction was added');
         
         $options3 = array('Cheap' => 'Cheap', 'Moderate' => 'Moderate', 'Expensive' => 'Expensive');
-        $this->data['fprice'] = makeComboField('Price Range', 'price', $item_record['price'], $options3, "Price range for the attraction");
-        //$this->data['fprice_range'] = makeComboField('Price Range', 'price_range', $item_record['price_range'], $options3, "Price range for the attraction");
+        $this->data['fprice_range'] = makeComboField('Price Range', 'price_range', $item_record['price_range'], $options3, "Price range for the attraction");
         $this->data['fpicture'] = showImage('Default Attraction picture will be shown, want a different picture? TBA', $item_record['image_name']);
         //$this->data['fpicture'] = makeImageUploader('Picture', $item_record['image_name'], 'Attraction picture uploaded');
         $this->data['fsubmit'] = makeSubmitButton('Post Changes', 'Do you feel lucky?');

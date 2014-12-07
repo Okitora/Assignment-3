@@ -2,15 +2,12 @@
 <tr>
         <td>{id}</td>
         <td>{name}</td>
-        <td class="span3">{description}</td>
         <td>{main}</td>
-        <td>{sub}</td>
-        <!--<td>{target}</td>-->
-        <td>{contact}</td>
-        <td>{date}</td>
-        <td>{price}</td>
-        <!--<td>{price_range}</td>-->
-        <td><img src="/data/{pic}" title="{id}"/></td>
+        <td>{target}</td>
+        <td>{price_range}</td>
+        <td><img src="/data/{pic1}" title="{id}_{pic1}"/></td>
+        <td><img src="/data/{pic2}" title="{id}_{pic2}"/></td>
+        <td><img src="/data/{pic3}" title="{id}_{pic3}"/></td>
         <td class="span1"><a href="/admin/edit3/{id}">Edit</a></td>
     
 </tr>
