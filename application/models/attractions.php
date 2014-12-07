@@ -100,12 +100,12 @@ class Attractions extends MY_Model {
     {
         $CI = & get_instance();
         
-        $xml = simplexml_load_string($record['detail']); 
+        $xml = simplexml_load_string($record['detail']);
         
-        $xml->addAttribute('id', $record['attr_id']);
-        $xml->addAttribute('contact', $record['contact']);
-        $xml->addAttribute('price', $record['price']);
-        $xml->addAttribute('date', $record['date']);
+//        $xml->addAttribute('id', $record['attr_id']);
+//        $xml->addAttribute('contact', $record['contact']);
+//        $xml->addAttribute('price', $record['price']);
+//        $xml->addAttribute('date', $record['date']);
         
         $xml->description = $record['description'];
         //$xml->gallery = $record['gallery'];
@@ -127,7 +127,7 @@ class Attractions extends MY_Model {
         $newrec['tar_aud'] = $record['tar_aud'];
         $newrec['detail'] = $xml->asXML();
         
-        $CI->attractions->add($newrec);
+        $CI->attractions->update($newrec);
     }
 //    public function get($key)
 //    {
