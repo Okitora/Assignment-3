@@ -4,10 +4,10 @@
         <h2>{name}</h2>
     </div>
     
-    <a href="/data/{pic1}" title="{id}_{pic1}"><img class="span5" src="/data/{pic1}" alt="" /></a>   
-    <a href="/data/{pic2}" title="{id}_{pic2}"><img class="span5" src="/data/{pic2}" alt="" /></a>
-    <a href="/data/{pic3}" title="{id}_{pic3}"><img class="span5" src="/data/{pic3}" alt="" /></a>
-    
+    <tr>
+    <a href="/data/{pic1}" title="{id}_{pic1}"><img class="span5" src="/data/{pic1}" alt="" /></a>
+    </tr>
+    <tr>
     <div class="span7">
         <p>
             {description}
@@ -42,9 +42,12 @@
             </tr>
             {/specifics}
         </table>
+        <br>
+        <a href="/data/{pic2}" title="{id}_{pic2}"><img class="span5" src="/data/{pic2}" alt="" /></a>
+    <a href="/data/{pic3}" title="{id}_{pic3}"><img class="span5" src="/data/{pic3}" alt="" /></a>
         <br/>
     </div>
- 
+    </tr>
 </div>
 {/places}
 
