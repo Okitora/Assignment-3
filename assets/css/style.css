@@ -52,7 +52,9 @@ td {
 
 .span7
 {
-    text-align: center;
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
     background-color: #cce5ff;
      -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     filter: alpha(opacity=80);
@@ -79,6 +81,8 @@ form{
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     filter: alpha(opacity=80);
     opacity:.8;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .contain>div{
     background-color: #FFFAF0;
