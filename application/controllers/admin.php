@@ -386,9 +386,9 @@ class Admin extends Application {
             $record->specific->first->value = $fields['first'];
             $record->specific->second->id = $detail['specific']['second']['id'];
             $record->specific->second->value = $fields['second'];
-            $record->gallery->pic1 = 'Larnach-Castle-02_opt.jpg';
-            $record->gallery->pic2 = 'Larnach-Castle-02_opt.jpg';
-            $record->gallery->pic3 = 'Larnach-Castle-02_opt.jpg';
+            $record->pic1 = 'Larnach-Castle-02_opt.jpg';
+            $record->pic2 = 'Larnach-Castle-02_opt.jpg';
+            $record->pic3 = 'Larnach-Castle-02_opt.jpg';
             
             $this->attractions->convertToDBRecord($record);
             

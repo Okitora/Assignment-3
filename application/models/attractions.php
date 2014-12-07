@@ -109,9 +109,9 @@ class Attractions extends MY_Model {
         
         $xml->description = $record['description'];
         //$xml->gallery = $record['gallery'];
-        $record->gallery->addChild('pic1', (string)$temp->pic1);
-        $record->gallery->addChild('pic2', (string)$temp->pic2);
-        $record->gallery->addChild('pic3', (string)$temp->pic3);
+        $record->gallery->addChild('pic1', (string)$record->pic1);
+        $record->gallery->addChild('pic2', (string)$record->pic2);
+        $record->gallery->addChild('pic3', (string)$record->pic3);
         
         
         //$xml->specific = $record['specific'];
