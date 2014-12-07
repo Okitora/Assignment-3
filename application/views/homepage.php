@@ -44,7 +44,7 @@
         </table>
         <br>
         <a href="/data/{pic2}" title="{id}_{pic2}"><img class="span5" src="/data/{pic2}" alt="" /></a>
-    <a href="/data/{pic3}" title="{id}_{pic3}"><img class="span5" src="/data/{pic3}" alt="" /></a>
+        <a href="/data/{pic3}" title="{id}_{pic3}"><img class="span5" src="/data/{pic3}" alt="" /></a>
         <br/>
     </div>
     </tr>
