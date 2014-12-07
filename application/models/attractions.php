@@ -44,6 +44,13 @@ class Attractions extends MY_Model {
         return $new;
     }
     
+    //number of attractions
+    public function many()
+    {
+        $CI = & get_instance();
+        return count($CI->attractions->all());
+    }
+    
     public function convertToObject($key)
     {
         $CI = & get_instance();

@@ -9,6 +9,8 @@
     {fdate}
     {fprice_range}
     {fprice}
+    {ffirst}
+    {fsecond}
     {fpic1}
     {fpic2}
     {fpic3}

@@ -4,10 +4,13 @@
     {fname}
     {fdescription}
     {fmain}
-    {fsub}
+    {ftarget}
+    {fprice_range}
     {fcontact}
     {fdate}
     {fprice}
-    {fpicture}
+    {fpic1}
+    {fpic2}
+    {fpic3}
     {fsubmit}
 </form>

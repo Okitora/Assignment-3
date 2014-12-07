@@ -180,12 +180,13 @@ class Admin extends Application {
         $options2 = array('adult' =>'Adult', 'teenager' => 'Teenager', 'kids' => 'Kids');
         $this->data['ftarget'] = makeComboField('Target Audience', 'tar_aud', $item_record['tar_aud'], $options2, "Target Audience. Used to group similar things by column for ordering");
         $this->data['fcontact'] = makeTextField('Contact', 'contact', $detail['contact'], 'This is the contact info for the attraction');
-        $this->data['fdate'] = makeTextArea('Date', 'date', $detail['date'], 'Time stamp of when the attraction was added');
+        $this->data['fdate'] = makeTextField('Date', 'date', $detail['date'], 'Time stamp of when the attraction was added');
         
         $options3 = array('Cheap' => 'Cheap', 'Moderate' => 'Moderate', 'Expensive' => 'Expensive');
         $this->data['fprice_range'] = makeComboField('Price Range', 'price_range', $item_record['price_range'], $options3, "Price range for the attraction");
         $this->data['fprice'] = makeTextField('Price', 'price', $detail['price'], "This is the price for the attraction");
-        //$this->data['fspecific']
+        $this->data['ffirst'] = makeTextField($detail['specific']['first']['id'], 'firstVal', $detail['specific']['first']['value'], "Specific Details for the attraction");
+        $this->data['fsecond'] = makeTextField($detail['specific']['second']['id'], 'secondVal', $detail['specific']['second']['value'], "More Specific Details for the attraction");
         $this->data['fpic1'] = showImage('Attraction picture shown at ordering time', $detail['gallery']['pic1']);
         $this->data['fpic2'] = showImage('Attraction picture shown at ordering time', $detail['gallery']['pic2']);
         $this->data['fpic3'] = showImage('Attraction picture shown at ordering time', $detail['gallery']['pic3']);
@@ -326,6 +327,10 @@ class Admin extends Application {
         {
             $this->errors[] = 'Your price range has to be cheap, moderate or expensive...';
         }
+        if(strlen($fields['price']) < 1)
+        {
+            $this->errors[] = 'An attraction has to have a price!';
+        }
         
         //redo/fix later
         // handle any file(s) uploaded
@@ -360,15 +365,19 @@ class Admin extends Application {
             
             $record->attr_id = $fields['attr_id'];
             $record->attr_name = $fields['attr_name'];
-            $record->description = $fields['description'];
+            
             $record->main_id = $fields['main_id'];
             $record->tar_aud = $fields['tar_aud'];
-            $record->contact = $fields['contact'];
-            $record->date = $fields['date'];
             $record->price_range = $fields['price_range'];
-            $record->pic1 = 'Larnach-Castle-02_opt.jpg';
+            $record['detail']['description'] = $fields['description'];
+            $record['detail']['contact'] = $fields['contact'];
+            $record['detail']['date'] = $fields['date'];
+            $record['detail']['price'] = $fields['price'];
+            $record['gallery']['pic1'] = 'Larnach-Castle-02_opt.jpg';
+            $record['gallery']['pic2'] = 'Larnach-Castle-02_opt.jpg';
+            $record['gallery']['pic3'] = 'Larnach-Castle-02_opt.jpg';
             
-            $this->attractions->add($record);
+            $this->attractions->convertToDBRecord($record);
             
             // remove the item record from the session container
             $this->session->unset_userdata('item');
@@ -439,6 +448,8 @@ class Admin extends Application {
             }   
         }
 
+        //gets the details part in attraction, returns array
+        //$detail = $this->attractions->convertToObject($item_record['attr_id']);
 
         // merge the view parms with the current item record
         //$this->data = array_merge($this->data, $item_record);
@@ -459,7 +470,10 @@ class Admin extends Application {
         
         $options3 = array('Cheap' => 'Cheap', 'Moderate' => 'Moderate', 'Expensive' => 'Expensive');
         $this->data['fprice_range'] = makeComboField('Price Range', 'price_range', $item_record['price_range'], $options3, "Price range for the attraction");
-        $this->data['fpicture'] = showImage('Default Attraction picture will be shown, want a different picture? TBA', $item_record['image_name']);
+        $this->data['fprice'] = makeTextField('Price', 'price', $item_record['price'], "This is the price for the attraction");
+        $this->data['fpic1'] = showImage('Attraction picture shown at ordering time', $item_record['pic1']);
+        $this->data['fpic2'] = showImage('Attraction picture shown at ordering time', $item_record['gallery']['pic2']);
+        $this->data['fpic3'] = showImage('Attraction picture shown at ordering time', $item_record['gallery']['pic3']);
         //$this->data['fpicture'] = makeImageUploader('Picture', $item_record['image_name'], 'Attraction picture uploaded');
         $this->data['fsubmit'] = makeSubmitButton('Post Changes', 'Do you feel lucky?');
                 

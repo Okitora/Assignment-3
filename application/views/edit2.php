@@ -5,6 +5,9 @@
         <td>{main}</td>
         <td>{target}</td>
         <td>{price_range}</td>
+        <td>{firstName}: {firstVal}<br>
+            {secondName}: {secondVal}
+        </td>
         <td><img src="/data/{pic1}" title="{id}_{pic1}"/></td>
         <td><img src="/data/{pic2}" title="{id}_{pic2}"/></td>
         <td><img src="/data/{pic3}" title="{id}_{pic3}"/></td>
