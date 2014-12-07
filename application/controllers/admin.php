@@ -378,17 +378,17 @@ class Admin extends Application {
             $record->main_id = $fields['main_id'];
             $record->tar_aud = $fields['tar_aud'];
             $record->price_range = $fields['price_range'];
-            $record['detail']['description'] = $fields['description'];
-            $record['detail']['contact'] = $fields['contact'];
-            $record['detail']['date'] = $fields['date'];
-            $record['detail']['price'] = $fields['price'];
-            $record['specific']['first']['id'] = $detail['specific']['first']['id'];
-            $record['specific']['first']['value'] = $fields['first'];
-            $record['specific']['second']['id'] = $detail['specific']['second']['id'];
-            $record['specific']['second']['value'] = $fields['second'];
-            $record['gallery']['pic1'] = 'Larnach-Castle-02_opt.jpg';
-            $record['gallery']['pic2'] = 'Larnach-Castle-02_opt.jpg';
-            $record['gallery']['pic3'] = 'Larnach-Castle-02_opt.jpg';
+            $record->detail->description = $fields['description'];
+            $record->detail->contact = $fields['contact'];
+            $record->detail->date = $fields['date'];
+            $record->detail->price = $fields['price'];
+            $record->specific->first->id = $detail['specific']['first']['id'];
+            $record->specific->first->value = $fields['first'];
+            $record->specific->second->id = $detail['specific']['second']['id'];
+            $record->specific->second->value = $fields['second'];
+            $record->gallery->pic1 = 'Larnach-Castle-02_opt.jpg';
+            $record->gallery->pic2 = 'Larnach-Castle-02_opt.jpg';
+            $record->gallery->pic3 = 'Larnach-Castle-02_opt.jpg';
             
             $this->attractions->convertToDBRecord($record);
             
