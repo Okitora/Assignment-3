@@ -103,6 +103,9 @@ class Attractions extends MY_Model {
         $xml = simplexml_load_string($record['detail']);
         
 //        $xml->addAttribute('id', $record['attr_id']);
+        $xml->attributes()->contact = (string)$record['contact'];
+        $xml->attributes()->price = (string)$record['price'];
+        $xml->attributes()->date = (string)$record['date'];
 //        $xml->addAttribute('contact', $record['contact']);
 //        $xml->addAttribute('price', $record['price']);
 //        $xml->addAttribute('date', $record['date']);
@@ -116,7 +119,8 @@ class Attractions extends MY_Model {
         
         //$xml->specific = $record['specific'];
         $xml->specific->addChild('first', (string)$record->specific->first);
-        $xml->specific->first->addAttribute('specid',$record['specific']['first']);
+        //$xml->specific->first->addAttribute('specid',$record['specific']['first']);
+        $xml->specific->first->attributes()->specid = $record['first'];
         $xml->specific->addChild('second', (string)$record->specific->second);
         $xml->specific->second->addAttribute('specid',$record['specific']['second']);
         
