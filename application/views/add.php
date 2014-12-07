@@ -9,6 +9,10 @@
     {fcontact}
     {fdate}
     {fprice}
+    {ffirstName}
+    {ffirstValue}
+    {fsecondName}
+    {fsecondValue}
     {fpic1}
     {fpic2}
     {fpic3}
