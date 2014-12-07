@@ -105,7 +105,12 @@ class Attractions extends MY_Model {
         );
         return $record;
     }
-    //create
+    /**
+     * update record already in database
+     * takes in array and converts all a db record
+     * takes in the minor/specific details and converts into xml
+     */
+    
     public function convertToDBRecord($record)
     {
         $CI = & get_instance();
@@ -126,9 +131,10 @@ class Attractions extends MY_Model {
         //$xml->specific = $record['specific'];
         //$xml->specific->addChild('first', (string)$record->specific->first);
         //$xml->specific->first->addAttribute('specid',$record['specific']['first']);
-        //$xml->specific->first->attributes()->specid = $record['first'];
+        $xml->specific->first->attributes()->specid = $record['firstName'];
         $xml->specific->first = (string)$record['first'];
         $xml->specific->second = (string)$record['second'];
+        $xml->specific->second->attributes()->specid = $record['secondName'];
         //$xml->specific->addChild('second', (string)$record->specific->second);
         //$xml->specific->second->addAttribute('specid',$record['second']);
         
@@ -145,5 +151,48 @@ class Attractions extends MY_Model {
 //    {
 //        return converToObject(parent::get($key));
 //    }
+    
+    /**
+     * adds record
+     * takes in array and converts all a db record
+     * takes in the minor/specific details and converts into xml
+     */
+    
+    public function convertToDBRecordAdd($record)
+    {
+        $CI = & get_instance();
+        $standard = $CI->attractions->newest();
+        $xml = simplexml_load_string($standard->detail);
+        
+        $xml->attributes()->id = (string)$record['attr_id'];
+        $xml->attributes()->contact = (string)$record['contact'];
+        $xml->attributes()->price = (string)$record['price'];
+        $xml->attributes()->date = (string)$record['date'];
+        
+        $xml->description = $record['description'];
+        $xml->gallery->addChild('pic1', (string)$record->pic1);
+        $xml->gallery->addChild('pic2', (string)$record->pic2);
+        $xml->gallery->addChild('pic3', (string)$record->pic3);
+        
+        
+        //$xml->specific = $record['specific'];
+        //$xml->specific->addChild('first', (string)$record->specific->first);
+        //$xml->specific->first->addAttribute('specid',$record['specific']['first']);
+        $xml->specific->first->attributes()->specid = $record['firstName'];
+        $xml->specific->first = (string)$record['first'];
+        $xml->specific->second = (string)$record['second'];
+        $xml->specific->second->attributes()->specid = $record['secondName'];
+        //$xml->specific->addChild('second', (string)$record->specific->second);
+        //$xml->specific->second->addAttribute('specid',$record['second']);
+        
+        $newrec['attr_id'] = $record['attr_id'];
+        $newrec['attr_name'] = $record['attr_name'];
+        $newrec['main_id'] = $record['main_id'];
+        $newrec['price_range'] = $record['price_range'];
+        $newrec['tar_aud'] = $record['tar_aud'];
+        $newrec['detail'] = $xml->asXML();
+        
+        $CI->attractions->add($newrec);
+    }
     
 }

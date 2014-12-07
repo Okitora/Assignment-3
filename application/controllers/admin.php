@@ -185,8 +185,14 @@ class Admin extends Application {
         $options3 = array('Cheap' => 'Cheap', 'Moderate' => 'Moderate', 'Expensive' => 'Expensive');
         $this->data['fprice_range'] = makeComboField('Price Range', 'price_range', $item_record['price_range'], $options3, "Price range for the attraction");
         $this->data['fprice'] = makeTextField('Price', 'price', $detail['price'], "This is the price for the attraction");
-        $this->data['ffirst'] = makeTextField($detail['specific']['first']['id'], 'first', $detail['specific']['first']['value'], "Specific Details for the attraction");
-        $this->data['fsecond'] = makeTextField($detail['specific']['second']['id'], 'second', $detail['specific']['second']['value'], "More Specific Details for the attraction");
+        
+        $options4 = array('fee' => 'Fee', 'food' => 'Food', 'cafe' => 'Cafe', 'guide' => 'Guide', 'partysize' => 'Party Size');
+        $this->data['ffirstName'] = makeComboField('Specific Detail', 'firstName', $detail['specific']['first']['id'], $options4, "");
+        $this->data['ffirst'] = makeTextField('', 'first', $detail['specific']['first']['value'], "Specific Details for the attraction");
+        
+        $options5 = array('admittance' => 'Admittance', 'wifi' => 'Wifi', 'venue' => 'Venue', 'shop' => 'Shop', 'gear' => 'Gear');
+        $this->data['fsecondName'] = makeComboField('Specific Detail', 'secondName', $detail['specific']['second']['id'], $options5, "");
+        $this->data['fsecond'] = makeTextField('', 'second', $detail['specific']['second']['value'], "More Specific Details for the attraction");
         $this->data['fpic1'] = showImage('Attraction picture shown at ordering time', $detail['gallery']['pic1']);
         $this->data['fpic2'] = showImage('Attraction picture shown at ordering time', $detail['gallery']['pic2']);
         $this->data['fpic3'] = showImage('Attraction picture shown at ordering time', $detail['gallery']['pic3']);
@@ -340,9 +346,9 @@ class Admin extends Application {
         }
         
         //first specific detail
-        $cat = $fields['firstName'];
-         
-        if(($cat != 'fee') && ($cat != 'food') &&($cat != 'cafe') && ($cat != 'guide') && ($cat != 'partysize'))
+        $cat4 = $fields['firstName'];
+         //echo $fields['firstName'];
+        if(($cat4 != 'fee') && ($cat4 != 'food') &&($cat4 != 'cafe') && ($cat4 != 'guide') && ($cat4 != 'partysize'))
         {
             $this->errors[] = 'Your Specific Detail has to be either Fees, Food, Cafe, Guide or Party Size :(';
         }
@@ -352,8 +358,9 @@ class Admin extends Application {
         }
         
         //second specific detail
-        $cat = $fields['secondName'];
-        if(($cat != 'admittance') && ($cat != 'wifi') && ($cat != 'gear') && ($cat != 'venue') && ($cat != 'shop'))
+        $cat5 = $fields['secondName'];
+        //echo $fields['secondName'];
+        if(($cat5 != 'admittance') && ($cat5 != 'wifi') && ($cat5 != 'gear') && ($cat5 != 'venue') && ($cat5 != 'shop'))
         {
             $this->errors[] = 'Your Specific Detail has to be either admittance, wifi, gear, venue or shop :(';
         }
@@ -376,6 +383,7 @@ class Admin extends Application {
         */
 
         // get the session item record
+        $record = array();
         $record = $this->session->userdata('item');
         
         // merge the session record into the model item record, over-riding any edited fields
@@ -385,7 +393,7 @@ class Admin extends Application {
         $this->session->set_userdata('item', $record);
         
         //gets the details part in attraction, returns array
-        $detail = $this->attractions->convertToObject($fields['attr_id']);
+        //$detail = $this->attractions->convertToObject($fields['attr_id']);
         
         // update if ok
         if (count($this->errors) < 1) 
@@ -394,27 +402,29 @@ class Admin extends Application {
             /* uncomment next line when there is db in localhost/phpmyadmin
             right now no update takes place */
             //create attraction
-            $record = $this->attractions->create();
+            $dbrecord = $this->attractions->create();
+            //echo $record['attr_id'];
             
-            $record->attr_id = $fields['attr_id'];
-            $record->attr_name = $fields['attr_name'];
+            $record['attr_id'] = $fields['attr_id'];
+            $record['attr_name'] = $fields['attr_name'];
+            $record['main_id'] = $fields['main_id'];
+            $record['tar_aud'] = $fields['tar_aud'];
+            $record['price_range'] = $fields['price_range'];
+            $record['description'] = $fields['description'];
+            $record['contact'] = $fields['contact'];
+            $record['date'] = $fields['date'];
+            $record['price'] = $fields['price'];
+            $record['firstName'] = (string)$fields['firstName'];
+            $record['first'] = $fields['first'];
+            $record['secondName'] = (string)$fields['secondName'];
+            $record['second'] = $fields['second'];
             
-            $record->main_id = $fields['main_id'];
-            $record->tar_aud = $fields['tar_aud'];
-            $record->price_range = $fields['price_range'];
-            $record->description = $fields['description'];
-            $record->contact = $fields['contact'];
-            $record->date = $fields['date'];
-            $record->price = $fields['price'];
-            $record->specific->first->id = $fields['firstName'];
-            $record->specific->first->value = $fields['first'];
-            $record->specific->second->id = $fields['secondName'];
-            $record->specific->second->value = $fields['second'];
-            $record->pic1 = 'Larnach-Castle-02_opt.jpg';
-            $record->pic2 = 'Larnach-Castle-02_opt.jpg';
-            $record->pic3 = 'Larnach-Castle-02_opt.jpg';
+            $record['pic1'] = 'Larnach-Castle-02_opt.jpg';
+            $record['pic2'] = 'Larnach-Castle-02_opt.jpg';
+            $record['pic3'] = 'Larnach-Castle-02_opt.jpg';
+            $dbrecord = $record;
             
-            $this->attractions->convertToDBRecord($record);
+            $this->attractions->convertToDBRecordAdd($record);
             
             // remove the item record from the session container
             $this->session->unset_userdata('item');
@@ -550,7 +560,7 @@ class Admin extends Application {
         $size = $record['size'];
         $member = $_SESSION['member'];
         
-        $target = $this->config->item('data_folder') . '/members/' . $member->memberID . '/' . $name;
+        $target = $this->config->item('data_folder') . '/data/' . $member->memberID . '/' . $name;
         $target = str_replace(' ', '_', $target);
         
         move_uploaded_file($temp_name, $target);
