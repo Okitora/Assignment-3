@@ -50,7 +50,17 @@ class Attractions extends MY_Model {
     public function many()
     {
         $CI = & get_instance();
-        return count($CI->attractions->all());
+        $all = $CI->attractions->all();
+        $id = 0;
+        
+        foreach($all as $record)
+        {
+            if($record->attr_id > $id)
+            {
+                $id = $record->attr_id;
+            }
+        }
+        return $id;
     }
     
     public function convertToObject($key)
