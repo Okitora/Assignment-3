@@ -96,6 +96,8 @@ class Attractions extends MY_Model {
     //create
     public function convertToDBRecord($record)
     {
+        $CI = & get_instance();
+        
         $xml = simplexml_load_string($record['detail']);
         
         $xml->addAttribute('id', $record['id']);
@@ -123,7 +125,7 @@ class Attractions extends MY_Model {
         $newrec['tar_aud'] = $record['tar_aud'];
         $newrec['detail'] = $xml->asXML();
         
-        $this->add($newrec);
+        $CI->attractions->add($newrec);
     }
 //    public function get($key)
 //    {
