@@ -378,10 +378,10 @@ class Admin extends Application {
             $record->main_id = $fields['main_id'];
             $record->tar_aud = $fields['tar_aud'];
             $record->price_range = $fields['price_range'];
-            $record->detail->description = $fields['description'];
-            $record->detail->contact = $fields['contact'];
-            $record->detail->date = $fields['date'];
-            $record->detail->price = $fields['price'];
+            $record->description = $fields['description'];
+            $record->contact = $fields['contact'];
+            $record->date = $fields['date'];
+            $record->price = $fields['price'];
             $record->specific->first->id = $detail['specific']['first']['id'];
             $record->specific->first->value = $fields['first'];
             $record->specific->second->id = $detail['specific']['second']['id'];
