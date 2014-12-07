@@ -34,11 +34,12 @@ class Main extends Application {
         
         // build the list of places, to pass on to our view
         $source = $this->attractions->newest();
+        $detail = $this->attractions->convertToObject($source->attr_id);
         
         //send the attributes to our newest view
         $this->data['name'] = $source->attr_name;
-        $this->data['pic'] = $source->image_name;
-        $this->data['description'] = $source->description;
+        $this->data['pic'] = $detail['gallery']['pic1'];
+        $this->data['description'] = $detail['description'];
 
         $this->render();
     }

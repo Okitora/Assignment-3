@@ -28,9 +28,11 @@ class Attractions extends MY_Model {
         
         $source = $CI->attractions->all();
         
-        foreach ($source as $record) {
-            
-            $date = $record->date;
+        foreach ($source as $record)
+        {   
+            //convert xml to an array to find the date
+            $detail = $CI->attractions->convertToObject($record->attr_id);
+            $date = (int)$detail['date'];
             
             //if it is the newest date make the newest attraction
             if($date > $newest)
