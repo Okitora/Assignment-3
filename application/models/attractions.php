@@ -120,7 +120,8 @@ class Attractions extends MY_Model {
         //$xml->specific = $record['specific'];
         $xml->specific->addChild('first', (string)$record->specific->first);
         //$xml->specific->first->addAttribute('specid',$record['specific']['first']);
-        $xml->specific->first->attributes()->specid = $record['first'];
+        //$xml->specific->first->attributes()->specid = $record['first'];
+        $xml->specific->first = (string)$record['first'];
         $xml->specific->addChild('second', (string)$record->specific->second);
         $xml->specific->second->addAttribute('specid',$record['specific']['second']);
         
