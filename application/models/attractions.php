@@ -102,16 +102,12 @@ class Attractions extends MY_Model {
         
         $xml = simplexml_load_string($record['detail']);
         
-//        $xml->addAttribute('id', $record['attr_id']);
+        $xml->attributes()->id = (string)$record['id'];
         $xml->attributes()->contact = (string)$record['contact'];
         $xml->attributes()->price = (string)$record['price'];
         $xml->attributes()->date = (string)$record['date'];
-//        $xml->addAttribute('contact', $record['contact']);
-//        $xml->addAttribute('price', $record['price']);
-//        $xml->addAttribute('date', $record['date']);
         
         $xml->description = $record['description'];
-        //$xml->gallery = $record['gallery'];
         $xml->gallery->addChild('pic1', (string)$record->pic1);
         $xml->gallery->addChild('pic2', (string)$record->pic2);
         $xml->gallery->addChild('pic3', (string)$record->pic3);
