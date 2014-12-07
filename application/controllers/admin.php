@@ -336,6 +336,30 @@ class Admin extends Application {
         if(strlen($fields['price']) < 1)
         {
             $this->errors[] = 'An attraction has to have a price!';
+        
+        }
+        
+        //first specific detail
+        $cat = $fields['firstName'];
+         
+        if(($cat != 'fee') && ($cat != 'food') &&($cat != 'cafe') && ($cat != 'guide') && ($cat != 'partysize'))
+        {
+            $this->errors[] = 'Your Specific Detail has to be either Fees, Food, Cafe, Guide or Party Size :(';
+        }
+        if(strlen($fields['first']) < 1)
+        {
+            $this->errors[] = 'Your Specific Detail has to have a value!';
+        }
+        
+        //second specific detail
+        $cat = $fields['secondName'];
+        if(($cat != 'admittance') && ($cat != 'wifi') && ($cat != 'gear') && ($cat != 'venue') && ($cat != 'shop'))
+        {
+            $this->errors[] = 'Your Specific Detail has to be either admittance, wifi, gear, venue or shop :(';
+        }
+        if(strlen($fields['second']) < 1)
+        {
+            $this->errors[] = 'Your Specific Detail has to have a value!';
         }
         
         //redo/fix later
@@ -355,7 +379,7 @@ class Admin extends Application {
         $record = $this->session->userdata('item');
         
         // merge the session record into the model item record, over-riding any edited fields
-        $record = array_merge($record, $fields);
+        //$record = array_merge($record, $fields);
         
         // update the session
         $this->session->set_userdata('item', $record);
@@ -382,9 +406,9 @@ class Admin extends Application {
             $record->contact = $fields['contact'];
             $record->date = $fields['date'];
             $record->price = $fields['price'];
-            $record->specific->first->id = $detail['specific']['first']['id'];
+            $record->specific->first->id = $fields['firstName'];
             $record->specific->first->value = $fields['first'];
-            $record->specific->second->id = $detail['specific']['second']['id'];
+            $record->specific->second->id = $fields['secondName'];
             $record->specific->second->value = $fields['second'];
             $record->pic1 = 'Larnach-Castle-02_opt.jpg';
             $record->pic2 = 'Larnach-Castle-02_opt.jpg';
