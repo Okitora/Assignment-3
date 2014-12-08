@@ -208,12 +208,14 @@ class Admin extends Application {
         // test the incoming fields
         if (strlen($fields['attr_name']) < 1)
         {
+            $fields['attr_name'] = '';
             $this->errors[] = 'An attraction has to have a name!';
         }
         
         //has have a description....or else!
         if (strlen($fields['description']) < 1) 
         {
+            $fields['description'] = '';
             $this->errors[] = 'An attraction has to have a description!';
         }
 
@@ -234,12 +236,14 @@ class Admin extends Application {
         //needs to have a contact
         if (strlen($fields['contact']) < 1) 
         {
+            $fields['contact'] = '';
             $this->errors[] = 'An attraction has to have a contact!';
         }
         
         //needs to have a date
         if (strlen($fields['date']) < 1) 
         {
+            $fields['date'] = '';
             $this->errors[] = 'An attraction has to have a date!';
         }
         
@@ -252,15 +256,18 @@ class Admin extends Application {
         
         if(strlen($fields['price']) < 1)
         {
+            $fields['price'] = '';
             $this->errors[] = 'An attraction has to have a price! If it\'s free just put 0';
         }
         
         if(strlen($fields['first']) < 1)
         {
+            $fields['first'] = '';
             $this->errors[] = 'An attraction has to have this field filled';
         }
         if(strlen($fields['second']) < 1)
         {
+            $fields['second'] = '';
             $this->errors[] = 'An attraction has to have this field filled';
         }
         
@@ -275,8 +282,8 @@ class Admin extends Application {
         $this->session->set_userdata('item', $record);
         
         // update if ok
-        if (count($this->errors) < 1) 
-        {
+        //if (count($this->errors) < 1) 
+        //{
             // store the merged record into the model
             
             $this->attractions->convertToDBRecord($record);
@@ -284,11 +291,11 @@ class Admin extends Application {
             // remove the item record from the session container
             $this->session->unset_userdata('item');
             redirect('/admin/editlist');
-        } 
-        else 
-        {
-            $this->edit3($which);
-        }
+        //} 
+        //else 
+        //{
+        //    $this->edit3($which);
+        //}
     }
     
     
