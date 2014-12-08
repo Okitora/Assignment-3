@@ -5,11 +5,11 @@
     </div>
     
     <div class="span5">
-    <a href="/data/{pic1}" title="{id}_{pic1}"><img class="span5" src="/data/{pic1}" alt="" /></a>
+    <a href="/data/{pic1}" data-lightbox="gallery" data-title={id}_{pic1} title="{id}_{pic1}"><img class="span5" src="/data/{pic1}" alt="" /></a>
     <br>
-        <a href="/data/{pic2}" title="{id}_{pic2}"><img class="span5" src="/data/{pic2}" alt="" /></a>
+        <a href="/data/{pic2}" data-lightbox="gallery" data-title={id}_{pic2} title="{id}_{pic2}"><img class="span5" src="/data/{pic2}" alt="" /></a>
         <br>
-    <a href="/data/{pic3}" title="{id}_{pic3}"><img class="span5" src="/data/{pic3}" alt="" /></a>
+    <a href="/data/{pic3}" data-lightbox="gallery" data-title={id}_{pic3} title="{id}_{pic3}"><img class="span5" src="/data/{pic3}" alt="" /></a>
     <br/>
     </div>
     <tr>

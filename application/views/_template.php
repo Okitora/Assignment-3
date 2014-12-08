@@ -20,7 +20,9 @@ if (!defined('APPPATH'))
         <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
         
         
-        
+        <script src="/assets/js/jquery-1.11.0.min.js"></script>
+	<script src="/assets/js/lightbox.min.js"></script>
+        <link href="/assets/css/lightbox.css" rel="stylesheet" />
         
         
     </head>
